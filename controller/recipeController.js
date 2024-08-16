@@ -1,4 +1,4 @@
-const Recipe = require('../model/recipeModel');
+const Recipe = require('../models/recipeSchema');
 
 const getRecipes = (req, res) => {
   Recipe.find({})

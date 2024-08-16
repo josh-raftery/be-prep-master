@@ -25,4 +25,4 @@ const recipeSchema = new mongoose.Schema({
   sugar: { type: Number, required: false },
   fibre: { type: Number, required: false },
 });
-module.exports = mongoose.model('Recipe', recipeSchema);
+module.exports = mongoose.model('Recipe', recipeSchema, 'recipe');
