@@ -9,12 +9,12 @@ app.use(express.json());
 app.use(cors());
 
 mongoose
-  .connect("mongodb://localhost:27017/MealPrep", {})
+  .connect("mongodb://localhost:27017/", {})
   .then(() => {})
   .catch((err) => {});
 
   app.use("/api", recipeRoutes);
 
-app.listen(8002, () => {});
+// app.listen(8002, () => {});
 
 module.exports = app;
