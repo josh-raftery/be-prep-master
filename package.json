@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node ./db/seed/run-seed.js",
+    "seed-test": "NODE_ENV=test node ./db/seed/run-seed.js",
+    "seed-dev": "NODE_ENV=development node ./db/seed/run-seed.js",
+
     "test": "jest"
   },
   "dependencies": {
