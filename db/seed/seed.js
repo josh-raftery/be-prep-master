@@ -12,25 +12,25 @@ async function seedDB() {
         await db()
 
         await Recipes.deleteMany({});
-        // console.log('Existing recipes removed');
+        console.log('Existing recipes removed');
 
         await Recipes.insertMany(recipeTestData);
-        // console.log('Recipes seeded successfully');
+        console.log('Recipes seeded successfully');
 
         await Users.deleteMany({});
-        // console.log('Existing users removed');
+        console.log('Existing users removed');
 
         await Users.insertMany(usersTestData);
-        // console.log('Users seeded successfully');
+        console.log('Users seeded successfully');
 
         await Ingredients.deleteMany({});
-        // console.log('Existing ingredients removed');
+        console.log('Existing ingredients removed');
 
         await Ingredients.insertMany(ingredientsTestData);
-        // console.log('ingredients seeded successfully');
+        console.log('ingredients seeded successfully');
 
     } catch (err) {
-        // console.error('Error seeding data:', err);
+        console.error('Error seeding data:', err);
     }
 }
 
