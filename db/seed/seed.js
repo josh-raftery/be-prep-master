@@ -1,28 +1,16 @@
-const mongoose = require('mongoose');
-require('dotenv').config({ path: './.env.test' }); 
+const mongoose = require('mongoose'); 
 const recipeTestData=require("../data/test/recipeWithIDSample.json") // hardcoded test data, make programatic later
 const usersTestData= require('../data/test/userTestData.json') // hardcoded test data, make programatic later
 const ingredientsTestData=require('../data/test/ingredientsData.json')
-const mongoURI = process.env.MONGO_URI;
 const Recipes = require('../../models/recipeSchema');
 const Users = require('../../models/usersSchema')
-const Ingredients = require('../../models/usersSchema')
-
-mongoose.connect(mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => {
-    console.log('Connected to MongoDB');
-})
-.catch((err) => {
-    console.error('Error connecting to MongoDB:', err);
-    process.exit(1); 
-});
+const Ingredients = require('../../models/ingredientsSchema')
+const db = require('../../connection')
 
 async function seedDB() {
     try {
-      
+        await db()
+
         await Recipes.deleteMany({});
         console.log('Existing recipes removed');
 
@@ -43,11 +31,8 @@ async function seedDB() {
 
     } catch (err) {
         console.error('Error seeding data:', err);
-    } finally {
-
-        mongoose.connection.close();
     }
 }
 
 
-seedDB();
+module.exports = seedDB
