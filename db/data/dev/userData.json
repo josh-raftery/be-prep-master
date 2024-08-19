@@ -32,7 +32,7 @@
     "favourite_recipes": []
 },
 {
-    "user_id": 5,
+    "user_id": 5,    
     "username": "bellepepper",
     "name": "Belle",
     "avatar_url": "https://api.dicebear.com/9.x/personas/svg?seed=Mimi&backgroundColor=b6e3f4",

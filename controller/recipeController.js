@@ -1,5 +1,5 @@
 const Recipe = require('../models/recipeSchema');
-const { ObjectId } = require('mongodb');
+// const { ObjectId } = require('mongodb');
 
 
 const getRecipes = (req, res) => {
@@ -13,11 +13,11 @@ const getRecipes = (req, res) => {
 };
 
 const getRecipeById = (req, res) => {
-  const { _id } = req.params;
-  console.log('_id received:', _id);
+  const { recipe_id } = req.params;
+  console.log('recipe_id received:', recipe_id);
   try {
-      const objectId = ObjectId(_id);  // Ensure this is a valid ObjectId
-      Recipe.findOne({ "_id": objectId })
+  // Ensure this is a valid ObjectId
+      Recipe.findOne({ recipe_id })
         .then(recipe => {
           if (recipe) {
             res.json(recipe);

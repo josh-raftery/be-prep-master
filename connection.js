@@ -5,6 +5,7 @@ require('dotenv').config({
 const  mongoose = require("mongoose");
 const mongoURI = process.env.MONGO_URI;
 
+
 async function connect(){
     mongoose.connect(mongoURI, {
     })
@@ -16,5 +17,7 @@ async function connect(){
         process.exit(1); 
     });
 }
+
+
 
 module.exports = connect
