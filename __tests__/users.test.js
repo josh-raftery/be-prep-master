@@ -5,7 +5,7 @@ const ingredientsData = require("../db/data/test/dev/ingredientsData.json");
 const userData = require("../db/data/test/userTestData.json");
 const request = require("supertest");
 const recipeSchema = require("../models/recipeSchema");
-const ingredientsSchema = require("../models/ingredientsSchema");
+const ingredientsSchema = require("../models/ingredientsListSchema");
 const usersSchema = require("../models/usersSchema");
 
 beforeAll(async () => {

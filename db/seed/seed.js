@@ -1,34 +1,33 @@
-const Recipes = require('../../models/recipeSchema');
-const Users = require('../../models/usersSchema')
-const Ingredients = require('../../models/ingredientsSchema')
-const db = require('../../connection')
+const Recipes = require("../../models/recipeSchema");
+const Users = require("../../models/usersSchema");
+const Ingredients = require("../../models/ingredientsListSchema");
+const db = require("../../connection");
 
-async function seedDB({recipeData,ingredientsData,userData}) {
-    try {
-        await db()
+async function seedDB({ recipeData, ingredientsData, userData }) {
+  try {
+    await db();
 
-        await Recipes.deleteMany({});
-        console.log('Existing recipes removed');
+    await Ingredients.deleteMany({});
+    console.log("Existing ingredients removed");
 
-        await Recipes.insertMany(recipeData);
-        console.log('Recipes seeded successfully');
+    await Ingredients.insertMany(ingredientsData);
+    console.log("ingredients seeded successfully");
 
-        await Users.deleteMany({});
-        console.log('Existing users removed');
+    await Recipes.deleteMany({});
+    console.log("Existing recipes removed");
 
-        await Users.insertMany(userData);
-        console.log('Users seeded successfully');
+    await Recipes.insertMany(recipeData);
+    console.log("Recipes seeded successfully");
 
-        await Ingredients.deleteMany({});
-        console.log('Existing ingredients removed');
+    await Users.deleteMany({});
+    console.log("Existing users removed");
 
-        await Ingredients.insertMany(ingredientsData);
-        console.log('ingredients seeded successfully');
+    await Users.insertMany(userData);
+    console.log("Users seeded successfully");
 
-    } catch (err) {
-        console.error('Error seeding data:', err);
-    }
+  } catch (err) {
+    console.error("Error seeding data:", err);
+  }
 }
 
-
-module.exports = seedDB
+module.exports = seedDB;
