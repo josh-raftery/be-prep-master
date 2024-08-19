@@ -1,113 +1,425 @@
-import Image from "next/image";
-
 export default function Home() {
+  const recipeData = [
+    {
+    chef: "Nigel Slater",
+    cooking_time_minutes: 30,
+    description:
+        "This easy vegetarian lentil stew is served with cherry tomatoes and cinnamon-flavoured almonds.This meal is low calorie and if served as four portions provides 351 kcal, 20g protein, 37g carbohydrate (of which 7.5g sugars), 14g fat (of which 1.5g saturates), 11.5g fibre and 1.9g salt per portion.",
+    error: false,
+    ingredients: [
+        "2 tbsp olive oil, plus extra for frying the almonds",
+        "1 carrot, chopped",
+        "1 stalk celery, chopped",
+        "1 onion, chopped",
+        "1 turnip, chopped",
+        "2 garlic cloves, chopped",
+        "150g/5½oz baby button mushrooms, halved",
+        "250g/9oz green lentils",
+        "1.2 litres/2 pints vegetable stock",
+        "1 bay leaf",
+        "1 sprig rosemary",
+        "4 sprigs thyme",
+        "handful almonds",
+        "1 tbsp ground cinnamon",
+        "10 cherry tomatoes, quartered",
+    ],
+    instructions: [
+        "Heat the olive oil in a large pan and fry the carrot, celery, onion and turnip until softened – about five minutes.",
+        "Add the garlic and mushrooms. Fry for a further five minutes.",
+        "Add the lentils to the pan. Pour over the stock and add the herbs. Bring to the boil, then reduce the heat and simmer for 45 minutes.",
+        "Just before the end of the cooking time for the stew, in another pan, fry the almonds in a splash of olive oil with the cinnamon for two minutes.",
+        "Add the cherry tomatoes and warm through.",
+        "Serve the lentil stew with the almonds and tomatoes.",
+    ],
+    instructions_detailed: [
+        {
+        ingredient: "olive oil",
+        line: "2 tbsp olive oil, plus extra for frying the almonds",
+        },
+        { ingredient: "carrot", line: "1 carrot, chopped" },
+        { ingredient: "celery", line: "1 stalk celery, chopped" },
+        { ingredient: "onion", line: "1 onion, chopped" },
+        { ingredient: "turnip", line: "1 turnip, chopped" },
+        { ingredient: "garlic", line: "2 garlic cloves, chopped" },
+        {
+        ingredient: "mushrooms",
+        line: "150g/5½oz baby button mushrooms, halved",
+        },
+        { ingredient: "green lentils", line: "250g/9oz green lentils" },
+        {
+        ingredient: "vegetable stock",
+        line: "1.2 litres/2 pints vegetable stock",
+        },
+        { ingredient: "bay leaf", line: "1 bay leaf" },
+        { ingredient: "rosemary", line: "1 sprig rosemary" },
+        { ingredient: "thyme", line: "4 sprigs thyme" },
+        { ingredient: "almonds", line: "handful almonds" },
+        { ingredient: "cinnamon", line: "1 tbsp ground cinnamon" },
+        {
+        ingredient: "cherry tomatoes",
+        line: "10 cherry tomatoes, quartered",
+        },
+    ],
+    photo_url: null,
+    preparation_time_minutes: 30,
+    serves: 3,
+    title: "Almond lentil stew",
+    total_time_minutes: 60,
+    url: "http://bbc.co.uk/food/recipes/almond_lentil_stew_69086",
+    kcal: 351,
+    protein: 20,
+    fat: 14,
+    salt: 1,
+    carbohydrate: 37,
+    sugar: 7,
+    fibre: 11,
+    recipe_id: 1,
+    },
+    {
+    chef: "Hemsley + Hemsley",
+    cooking_time_minutes: 30,
+    description:
+        "Try these sugar-free savoury pancakes for a healthy supper or as an alternative to traditional Pancake Day crêpes.This meal provides 490 kcal, 13g protein, 35g carbohydrate (of which 13g sugars), 33g fat (of which 20g saturates), 4g fibre and 2.5g salt per portion.",
+    error: false,
+    ingredients: [
+        "100g/3½oz buckwheat flour",
+        "1 free-range egg",
+        "50g/2oz butter, melted",
+        "1 tbsp ghee",
+        "dash olive oil",
+        "salt and freshly ground black pepper",
+        "2 tbsp butter",
+        "2 large red onions, thinly sliced",
+        "2 green apples, peeled, cored, chopped into 3cm/1¼in chunks",
+        "pinch sea salt flakes",
+        "freshly ground black pepper, to taste",
+        "squeeze lemon juice",
+        "70g bag rocket, washed and dried",
+        "200g/7oz feta",
+    ],
+    instructions: [
+        "Preheat the oven to 200C/180C Fan/Gas 5. Line a baking tray with baking parchment.",
+        "Sift the flour into a mixing bowl and season with salt and pepper. Crack in the egg. Gradually add 300ml/10½fl oz water in a thin stream, beating continuously until the mixture forms a thick, smooth batter. Set aside for 1 hour to rest.",
+        "Meanwhile, for the filling, heat the butter in a frying pan over a medium heat. Add the onions and fry for 4-5 minutes, or until softened but not coloured.",
+        "Add the apples and continue to cook, stirring regularly, for 10-15 minutes, or until the apples have softened and started to brown. Season with salt, pepper and lemon juice. Set aside (keep warm).",
+        "When the batter has rested, stir in the melted butter until well combined.",
+        "Heat the ghee and a dash of olive oil in a ceramic or heavy-based frying pan over a medium-high heat. When the fat is smoking, add a tablespoonful of batter to the pan and swirl until the batter covers the base of the pan.",
+        "Fry the galette for 2-3 minutes, or until golden-brown on its underside and easy to loosen from the bottom of the pan. Flip over and fry for a minute on the other side, or until cooked through. Remove from the pan and keep warm in the oven. Repeat the process with the remaining batter.",
+        "Put a handful of rocket leaves in the centre of each galette. Divide the apple mixture equally among the galettes. Crumble over the feta.",
+        "Fold the edges of each galette over to create a square shape. Transfer them to the prepared baking tray and bake in the oven for 6-7 minutes, or until crisp. Serve with a simple green salad dressed with olive oil and a touch of apple cider vinegar.",
+    ],
+    instructions_detailed: [
+        { ingredient: "buckwheat flour", line: "100g/3½oz buckwheat flour" },
+        { ingredient: "egg", line: "1 free-range egg" },
+        { ingredient: "butter", line: "50g/2oz butter, melted" },
+        { ingredient: "ghee", line: "1 tbsp ghee" },
+        { ingredient: "olive oil", line: "dash olive oil" },
+        {
+        ingredient: "black pepper",
+        line: "salt and freshly ground black pepper",
+        },
+        { ingredient: "butter", line: "2 tbsp butter" },
+        {
+        ingredient: "red onions",
+        line: "2 large red onions, thinly sliced",
+        },
+        {
+        ingredient: "apples",
+        line: "2 green apples, peeled, cored, chopped into 3cm/1¼in chunks",
+        },
+        { ingredient: "sea salt", line: "pinch sea salt flakes" },
+        {
+        ingredient: "black pepper",
+        line: "freshly ground black pepper, to taste",
+        },
+        { ingredient: "lemon juice", line: "squeeze lemon juice" },
+        { ingredient: "rocket", line: "70g bag rocket, washed and dried" },
+        { ingredient: "feta", line: "200g/7oz feta" },
+    ],
+    photo_url:
+        "http://ichef.bbci.co.uk/food/ic/food_16x9_608/recipes/apple_rocket_and_feta_26780_16x9.jpg",
+    preparation_time_minutes: 120,
+    serves: 4,
+    title: "Apple, rocket and feta buckwheat galettes",
+    total_time_minutes: 150,
+    url: "http://bbc.co.uk/food/recipes/apple_rocket_and_feta_26780",
+    kcal: 490,
+    protein: 13,
+    fat: 33,
+    salt: 2,
+    carbohydrate: 35,
+    sugar: 13,
+    fibre: 4,
+    recipe_id: 2,
+    },
+    {
+    chef: "Hemsley + Hemsley",
+    cooking_time_minutes: 0,
+    description:
+        "This quick, healthy and energising snack can be made in seconds for when you need to grab and go.This snack provides 306 kcal, 7.5g protein, 19g carbohydrate (of which 19g sugars), 22g fat (of which 3g saturates), 7g fibre and 0.5g salt per portion.",
+    error: false,
+    ingredients: [
+        "5 tbsp tahini",
+        "2 tsp finely grated ginger",
+        "2 tsp honey",
+        "Â˝ tsp freshly ground black pepper",
+        "pinch salt",
+        "2 apples, peeled, cored, sliced into rounds",
+    ],
+    instructions: [
+        "Mix all of the ingredients except the apple slices together in a small bowl until well combined.",
+        "Spread the mixture over the apple slices and serve.",
+    ],
+    instructions_detailed: [
+        { ingredient: "tahini", line: "5 tbsp tahini" },
+        { ingredient: "ginger", line: "2 tsp finely grated ginger" },
+        { ingredient: "honey", line: "2 tsp honey" },
+        {
+        ingredient: "black pepper",
+        line: "Â˝ tsp freshly ground black pepper",
+        },
+        { ingredient: "salt", line: "pinch salt" },
+        {
+        ingredient: "apples",
+        line: "2 apples, peeled, cored, sliced into rounds",
+        },
+    ],
+    photo_url:
+        "http://ichef.bbci.co.uk/food/ic/food_16x9_608/recipes/apple_rings_with_ginger_57928_16x9.jpg",
+    preparation_time_minutes: 30,
+    serves: 2,
+    title: "Apple rings with ginger, lemon and black pepper tahini spread",
+    total_time_minutes: 30,
+    url: "http://bbc.co.uk/food/recipes/apple_rings_with_ginger_57928",
+    kcal: 306,
+    protein: 7,
+    fat: 22,
+    salt: 0,
+    carbohydrate: 19,
+    sugar: 19,
+    fibre: 7,
+    recipe_id: 3,
+    },
+    {
+    chef: "Hemsley + Hemsley",
+    cooking_time_minutes: 0,
+    description:
+        "This colourful vegan dish is a fruity, spicy treat with enough wow factor to serve as a main course at a dinner party.This meal provides 527 kcal, 18g protein, 87g carbohydrate (of which 37g sugars), 16g fat (of which 10.5g saturates), 33g fibre and 2.5g salt per portion.",
+    error: false,
+    ingredients: [
+        "18-20 Brussels sprouts, trimmed (any larger sprouts cut in half through the root)",
+        "4 large carrots, peeled, trimmed, chopped",
+        "2 red onions, chopped",
+        "4 large parsnips, peeled, trimmed, chopped",
+        "3-4 heaped tbsp coconut oil",
+        "handul chopped fresh herbs, such as rosemary or thyme",
+        "salt and freshly ground black pepper",
+        "1 tbsp coconut oil, plus extra for basting",
+        "2 tsp ground cumin",
+        "1½ tsp ground turmeric",
+        "1½ tsp ground cinnamon",
+        "1 large onion, finely chopped",
+        "3 garlic cloves, crushed",
+        "400g tin aduki beans, drained",
+        "50g/1¾oz chestnut flour",
+        "60g/2¼oz dried, ready-to-eat apricots,preferably organic, roughly chopped",
+        "handful chopped fresh flatleaf parsley",
+        "¼ tsp cayenne pepper (or 1 tsp chopped fresh chilli)",
+        "1 tsp salt",
+        "¼ tsp freshly ground black pepper",
+        "2 small white onions, quartered",
+        "250ml/9fl oz white wine",
+        "1 tbsp tamari",
+        "1 tbsp unpasteurised miso paste, to taste",
+        "small handul chopped fresh mixed herbs (optional)",
+    ],
+    instructions: [
+        "Preheat the oven to 200C/180C Fan/Gas 6. Line a baking tray with baking parchment.",
+        "Mix the vegetables together with the coconut oil in an ovenproof dish. Season with salt and black pepper. Sprinkle over the herbs. Roast in the oven for 18-20 minutes",
+        "Meanwhile, for the aduki balls, heat the coconut oil in a frying pan over a medium heat until melted. Add the cumin, turmeric and cinnamon and fry for 1-2 minutes, or until fragrant.",
+        "Add the onion and fry for 4-5 minutes, or until softened but not coloured, stirring well to coat it in the spices. Stir in the garlic and aduki beans and continue to fry for 2-3 minutes, squashing the beans with the back of a wooden spoon so that any excess moisture is released and evaporates.",
+        "Turn off the heat, then gently fold in the remaining aduki ball ingredients until well combined. Season with salt and pepper.",
+        "Roll 1½ tablespoonful portions of the mixture into balls and place the balls on the prepared baking tray. Melt coconut oil and baste the aduki balls all over with it. Bake for 12-15 minutes, turning halfway through cooking, until crisp on the outside and heated through. Remove from the oven and keep warm.",
+        "Remove the roasted vegetables from the oven and stir. Continue to roast for a further 25-35 minutes, or until the vegetables are just tender.",
+        "Meanwhile, for the miso gravy, put the onions in a small saucepan. Add the wine and 250ml/9fl oz of water and bring to the boil. Reduce the heat and simmer for 20-25 minutes, or until the onion has softened.",
+        "Stir in the tamari, miso and all of the herbs. Blend until smooth using a hand-held blender. Add a dash more water if necessary to loosen the gravy. Season with salt and pepper, adding a little more miso or tamari if desired.",
+        "To serve, divide the aduki balls equally among 4 serving plates. Spoon some of the roasted vegetables alongside. Serve the miso gravy in a jug to pass around the table.",
+    ],
+    instructions_detailed: [
+        {
+        ingredient: "Brussels sprouts",
+        line: "18-20 Brussels sprouts, trimmed (any larger sprouts cut in half through the root)",
+        },
+        {
+        ingredient: "carrots",
+        line: "4 large carrots, peeled, trimmed, chopped",
+        },
+        { ingredient: "red onions", line: "2 red onions, chopped" },
+        {
+        ingredient: "parsnips",
+        line: "4 large parsnips, peeled, trimmed, chopped",
+        },
+        { ingredient: "coconut oil", line: "3-4 heaped tbsp coconut oil" },
+        {
+        ingredient: "rosemary",
+        line: "handul chopped fresh herbs, such as rosemary or thyme",
+        },
+        {
+        ingredient: "black pepper",
+        line: "salt and freshly ground black pepper",
+        },
+        {
+        ingredient: "coconut oil",
+        line: "1 tbsp coconut oil, plus extra for basting",
+        },
+        { ingredient: "cumin", line: "2 tsp ground cumin" },
+        { ingredient: "turmeric", line: "1½ tsp ground turmeric" },
+        { ingredient: "cinnamon", line: "1½ tsp ground cinnamon" },
+        { ingredient: "onion", line: "1 large onion, finely chopped" },
+        { ingredient: "garlic", line: "3 garlic cloves, crushed" },
+        { ingredient: "aduki beans", line: "400g tin aduki beans, drained" },
+        { ingredient: "chestnut", line: "50g/1¾oz chestnut flour" },
+        {
+        ingredient: "apricots",
+        line: "60g/2¼oz dried, ready-to-eat apricots,preferably organic, roughly chopped",
+        },
+        {
+        ingredient: "parsley",
+        line: "handful chopped fresh flatleaf parsley",
+        },
+        {
+        ingredient: "cayenne pepper",
+        line: "¼ tsp cayenne pepper (or 1 tsp chopped fresh chilli)",
+        },
+        { ingredient: "salt", line: "1 tsp salt" },
+        {
+        ingredient: "black pepper",
+        line: "¼ tsp freshly ground black pepper",
+        },
+        { ingredient: "onions", line: "2 small white onions, quartered" },
+        { ingredient: "white wine", line: "250ml/9fl oz white wine" },
+        { ingredient: "tamari", line: "1 tbsp tamari" },
+        {
+        ingredient: "miso",
+        line: "1 tbsp unpasteurised miso paste, to taste",
+        },
+        {
+        ingredient: "herbs",
+        line: "small handul chopped fresh mixed herbs (optional)",
+        },
+    ],
+    photo_url:
+        "http://ichef.bbci.co.uk/food/ic/food_16x9_608/recipes/apricot_chestnut_and_76988_16x9.jpg",
+    preparation_time_minutes: 30,
+    serves: 4,
+    title:
+        "Apricot, chestnut and aduki balls with roasted vegetables and white wine miso gravy",
+    total_time_minutes: 30,
+    url: "http://bbc.co.uk/food/recipes/apricot_chestnut_and_76988",
+    kcal: 527,
+    protein: 18,
+    fat: 16,
+    salt: 2,
+    carbohydrate: 87,
+    sugar: 37,
+    fibre: 33,
+    recipe_id: 4,
+    },
+    {
+    chef: "Sejal Sukhadwala",
+    cooking_time_minutes: 0,
+    description:
+        "This delicious vegetarian curry recipe is spiced with flavours from the west coast of India.Each serving provides 345kcal ,12g protein, 22g carbohydrate (of which 3g sugars), 20g fat (of which 5g saturates), 13g fibre and trace salt.",
+    error: false,
+    ingredients: [
+        "2 x 410g/14oz tins of black eyed beans (or use 225g/8oz dried beans, soaked overnight and cooked)",
+        "1 tbsp cumin seeds",
+        "1 tbsp coriander seeds",
+        "1 tsp fennel seeds",
+        "¼ tsp fenugreek seeds",
+        "1cm/½in stick cinnamon",
+        "½ - 2 tsp crushed chilli flakes",
+        "4 tbsp groundnut oil",
+        "1 tsp black mustard seeds",
+        "10 fresh curry leaves",
+        "1 medium onion, finely chopped",
+        "2 cloves garlic, peeled and crushed",
+        "5cm/2in piece fresh ginger, grated",
+        "salt to taste",
+        "550ml/1pint water",
+        "2 tbsp coriander leaves",
+        "2 tbsp fresh coconut, grated (optional, but do not use desiccated)",
+    ],
+    instructions: [
+        "Drain and rinse the beans, and mash a few lightly with fork.",
+        "Put the cumin, coriander, fennel and fenugreek seeds with the cinnamon stick into a small heavy-based frying pan. Roast on a medium heat, stirring frequently until the spices change colour and become aromatic, taking care not to burn them.",
+        "Grind the roasted spices into a fine powder in a coffee grinder, and add crushed chilli flakes.",
+        "Heat the oil over medium heat. When hot, add the mustard seeds and curry leaves. Remove the pan immediately from heat, cover, and let the seeds and leaves crackle and pop.",
+        "Put the pan back on heat, add the onion and cook until light golden. Add the ginger and garlic, and cook for a further 30 seconds.",
+        "Add the beans, ground spice mixture, salt, and water, and bring to the boil.",
+        "Turn the heat to low, cover and simmer for 20 minutes.",
+        "Top with coriander leaves and fresh coconut, if using, and serve with rice or flatbreads.",
+    ],
+    instructions_detailed: [
+        {
+        ingredient: "black eyed beans",
+        line: "2 x 410g/14oz tins of black eyed beans (or use 225g/8oz dried beans, soaked overnight and cooked)",
+        },
+        { ingredient: "cumin", line: "1 tbsp cumin seeds" },
+        { ingredient: "coriander seeds", line: "1 tbsp coriander seeds" },
+        { ingredient: "fennel seeds", line: "1 tsp fennel seeds" },
+        { ingredient: "fenugreek", line: "¼ tsp fenugreek seeds" },
+        { ingredient: "cinnamon", line: "1cm/½in stick cinnamon" },
+        { ingredient: "chilli", line: "½ - 2 tsp crushed chilli flakes" },
+        { ingredient: "nut", line: "4 tbsp groundnut oil" },
+        { ingredient: "mustard seeds", line: "1 tsp black mustard seeds" },
+        { ingredient: "curry leaves", line: "10 fresh curry leaves" },
+        { ingredient: "onion", line: "1 medium onion, finely chopped" },
+        { ingredient: "cloves", line: "2 cloves garlic, peeled and crushed" },
+        { ingredient: "ginger", line: "5cm/2in piece fresh ginger, grated" },
+        { ingredient: "salt", line: "salt to taste" },
+        { ingredient: "water", line: "550ml/1pint water" },
+        { ingredient: "coriander", line: "2 tbsp coriander leaves" },
+        {
+        ingredient: "coconut",
+        line: "2 tbsp fresh coconut, grated (optional, but do not use desiccated)",
+        },
+    ],
+    photo_url:
+        "http://ichef.bbci.co.uk/food/ic/food_16x9_608/recipes/aromaticblackeyebean_73019_16x9.jpg",
+    preparation_time_minutes: 30,
+    serves: 4,
+    title: "Aromatic blackeye bean curry",
+    total_time_minutes: 30,
+    url: "http://bbc.co.uk/food/recipes/aromaticblackeyebean_73019",
+    kcal: 345,
+    protein: 12,
+    fat: 20,
+    salt: 0,
+    carbohydrate: 22,
+    sugar: 3,
+    fibre: 13,
+    recipe_id: 5,
+    },
+]
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <>
+      {recipeData.map((recipe) => {
+        return (
+          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+              <a href="#">
+                  <img className="rounded-t-lg" src={recipe.photo_url} alt="" />
+              </a>
+              <div className="p-5">
+                  <a href="#">
+                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{recipe.title}</h5>
+                  </a>
+                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{`Cooking Time: ${recipe.preparation_time_minutes} minutes`}</p>
+              </div>
+          </div>
+        )
+      })}
+    </>
   );
 }
