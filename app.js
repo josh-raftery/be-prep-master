@@ -1,20 +1,20 @@
-// const express = require("express");
-// const mongoose = require("mongoose");
-// const cors = require("cors");
-// const recipeRoutes = require("./recipeRoutes");
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const recipeRoutes = require("./recipeRoutes");
 
-// const app = express();
+const app = express();
 
-// app.use(express.json());
-// app.use(cors());
+app.use(express.json());
+app.use(cors());
 
-// // mongoose
-// //   .connect("mongodb://localhost:27017/", {})
-// //   .then(() => {})
-// //   .catch((err) => {});
+// mongoose
+//   .connect("mongodb://localhost:27017/", {})
+//   .then(() => {})
+//   .catch((err) => {});
 
-//   app.use("/api", recipeRoutes);
+  app.use("/api", recipeRoutes);
 
-// // app.listen(8002, () => {});
+// app.listen(8002, () => {});
 
-// module.exports = app;
+module.exports = app;
