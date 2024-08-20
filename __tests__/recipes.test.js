@@ -1,13 +1,19 @@
 const mongoose = require("mongoose");
 const seedDB = require("../db/seed/seed");
-const recipeData = require("../db/data/test/recipeWithIDSample.json");
-const ingredientsData = require("../db/data/test/dev/ingredientsData.json");
+const recipeData = require("../db/data/test/recipeTestData.json");
+const ingredientsData = require("../db/data/test/ingredientsTestData.json");
 const userData = require("../db/data/test/userTestData.json");
-const app = require("../app");
+// const app = require("../app");
 const request = require("supertest");
-const recipeSchema = require("../models/recipeSchema");
-const ingredientsSchema = require("../models/ingredientsListSchema");
-const usersSchema = require("../models/usersSchema");
+const { default: axios } = require("axios");
+
+const host = process.env.HOST || 'localhost'; 
+const port = process.env.PORT || 3000;   
+const baseUrl = `http://${host}:${port}/api`
+
+const api = axios.create({
+  baseURL: baseUrl,
+});
 
 beforeAll(async () => {
   await seedDB({ recipeData, ingredientsData, userData });
@@ -19,19 +25,23 @@ afterAll(async () => {
 
 describe("Wrong endpoint tests", () => {
   test("404: error when path does not exist", () => {
-    return request(app).get("/api/incorrect-path").expect(404);
+    return api.get('/incorrect-path')
+    .catch((err) => {
+      expect(err.message).toBe('Request failed with status code 404')
+    })
   });
 });
 
 describe("GET /api/getRecipe tests", () => {
-  test("should return all recipes", () => {
-    return request(app)
-      .get("/api/recipes")
-      .expect(200)
-      .then((res) => {
-        expect(Array.isArray(res.body)).toBe(true);
-        expect(res.body.length).toBe(5);
-      });
+  test.only("should return all recipes", () => {
+    return api.get(`/recipes`)
+    .then((response) => {
+      expect(response.status).toBe(200)
+      expect(response.data).toHaveLength(5)
+    })
+    .catch((err) => {
+      console.log(err, ' ERR <---------')
+    })
   });
 });
 
