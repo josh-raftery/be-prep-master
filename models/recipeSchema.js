@@ -29,4 +29,12 @@ const recipeSchema = new mongoose.Schema({
   recipe_id: { type: Number, required: false, unique: true }
 });
 
-module.exports = mongoose.model('Recipe', recipeSchema, 'recipe');
+let recipe = ''
+if(mongoose.models.Recipe){
+  recipe = mongoose.models.Recipe
+}else{
+  recipe = mongoose.model('Recipe', recipeSchema);
+}
+
+module.exports = recipe
+

@@ -3,12 +3,14 @@ const Recipe = require('../models/recipeSchema');
 
 
 const getRecipes = (req, res) => {
-  Recipe.find({})
+  console.log(Recipe, ' dfsfsf')
+  return Recipe.find({})
     .then(recipes => {
-      res.json(recipes);
+      console.log(recipes, ' <--------------')
+      return recipes
     })
     .catch(error => {
-      res.status(500).json({ message: "Error fetching recipes", error });
+      // res.status(500).json({ message: "Error fetching recipes", error });  // revisit
     });
 };
 
