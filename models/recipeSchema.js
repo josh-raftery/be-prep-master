@@ -29,12 +29,14 @@ const recipeSchema = new mongoose.Schema({
   recipe_id: { type: Number, required: false, unique: true }
 });
 
-let recipe = ''
-if(mongoose.models.Recipe){
-  recipe = mongoose.models.Recipe
-}else{
-  recipe = mongoose.model('Recipe', recipeSchema);
-}
+// let Recipe = ''
+// if(mongoose.models.Recipe){
+//   Recipe = mongoose.models.Recipe
+// }else{
+//   recipe = mongoose.model('Recipe', recipeSchema);
+// }
 
-module.exports = recipe
+const Recipes = mongoose.models.Recipes ? mongoose.models.Recipes : mongoose.model('Recipes', recipeSchema)
+
+module.exports = Recipes
 

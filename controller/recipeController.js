@@ -1,22 +1,26 @@
-const Recipe = require('../models/recipeSchema');
+const clientPromise = require('../connection');
+const Recipes = require('../models/recipeSchema');
 // const { ObjectId } = require('mongodb');
 
-
-const getRecipes = (req, res) => {
-  console.log(Recipe, ' dfsfsf')
-  return Recipe.find({})
-    .then(recipes => {
-      console.log(recipes, ' <--------------')
-      return recipes
-    })
-    .catch(error => {
-      // res.status(500).json({ message: "Error fetching recipes", error });  // revisit
-    });
+const getRecipes = async()=> {
+    try{
+      const client = await clientPromise
+      const db = await client.db()
+      const recipes = await db.collection('recipes')
+      const result = await recipes
+        .find({})
+        .limit(20)
+        .map(recipe => ({...recipe, _id: recipe._id.toString() }))
+        .toArray()
+      return {recipes: result}
+    }catch(err){
+      console.log(err, ' <------')
+    }
 };
 
-const getRecipeById = (req, res) => {
+const getRecipeById = () => {
   const { recipe_id } = req.params;
-  console.log('recipe_id received:', recipe_id);
+  
   try {
   // Ensure this is a valid ObjectId
       Recipe.findOne({ recipe_id })
