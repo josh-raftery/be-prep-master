@@ -3,13 +3,13 @@ require('dotenv').config({
     path: `${__dirname}/.env.${ENV}`,
 });
 
-const {MongoClient} = require('mongodb')
+import {MongoClient} from 'mongodb'
 
 const mongoURI = process.env.MONGO_URI;
 
 if(!mongoURI) throw Error('Please add your MONGO URL to .env')
 
-let client = new MongoClient(mongoURI,{})
+let client = new MongoClient
 let clientPromise
 
 if(process.env.NODE_ENV !== 'production'){
@@ -21,4 +21,4 @@ if(process.env.NODE_ENV !== 'production'){
     clientPromise = client.connect()
 }
 
-module.exports = clientPromise
+export default clientPromise
