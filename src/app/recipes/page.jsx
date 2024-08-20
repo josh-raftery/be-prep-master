@@ -2,10 +2,12 @@ import Link from "next/link";
 import recipeData from "../../../db/data/test/recipeTestData";
 import { ClockIcon } from "@heroicons/react/24/outline";
 
+
+
 export default function Recipes() {
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-4 m-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-4 m-10">
       {recipeData.map((recipe) => {
         return (
           <div

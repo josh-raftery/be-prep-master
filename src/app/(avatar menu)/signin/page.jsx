@@ -3,6 +3,7 @@ import Link from "next/link";
 export default function SignIn( ){
 return (
 <>
+<form className="m-20">
 <label for="input-group-1" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
 <div className="relative mb-6">
   <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
@@ -22,6 +23,7 @@ return (
   </span>
   <input type="text" id="website-admin" className="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="elonmusk"/>
 </div>
+</form>
 </>
 )
 
