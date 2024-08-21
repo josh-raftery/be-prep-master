@@ -2,7 +2,7 @@ import Link from "next/link";
 import recipeData from "../../../db/data/test/recipeTestData";
 import { ClockIcon } from "@heroicons/react/24/outline";
 
-
+//make axios request to get recipe data
 
 export default function Recipes() {
 
@@ -12,7 +12,7 @@ export default function Recipes() {
         return (
           <div
             className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-            key={recipe.title}
+            key={recipe.recipe_id}
           >
             {/* img has a link  */}
             <Link href={`/recipes/${recipe.recipe_id}`}>

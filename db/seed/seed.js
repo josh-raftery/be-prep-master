@@ -1,6 +1,4 @@
 const Recipes = require("../../models/recipeSchema");
-const Users = require("../../models/usersSchema");
-const Ingredients = require("../../models/ingredientsListSchema");
 const clientPromise = require("../../connection");
 
 

@@ -1,8 +1,6 @@
 
 const clientPromise = require('../connection');
 
-// const Recipes = require('../models/recipeSchema');
-// const { ObjectId } = require('mongodb');
 
 const getRecipes = async()=> {
     try{

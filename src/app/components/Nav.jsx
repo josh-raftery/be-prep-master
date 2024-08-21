@@ -77,7 +77,6 @@ export default function Nav() {
         </div>
     </div>
     </nav>
-    <Script src="https://unpkg.com/flowbite/dist/flowbite.js" strategy="afterInteractive" />
     </>
   );
 }
