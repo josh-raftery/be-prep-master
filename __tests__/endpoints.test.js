@@ -37,7 +37,7 @@ describe("Wrong endpoint tests", () => {
   });
 });
 
-describe("GET /api/getRecipe tests", () => {
+describe("GET /api/recipes", () => {
   test("should return all recipes", () => {
     return api.get(`/recipes`)
     .then((response) => {
@@ -45,7 +45,15 @@ describe("GET /api/getRecipe tests", () => {
       expect(response.data.recipes.length).toBe(20)
     })
   });
+  test('should return with queried data', () => {
+    return api.get(`/recipes?title=Artichoke pasta`)
+    .then((response) => {
+      expect(response.data.recipes[0].recipe_id).toBe(6)
+      expect(response.data.recipes[0].title).toBe("Artichoke pasta")
+    })
+  });
 });
+
 
 describe("GET /api/recipes/:_id:", () => {
   test("should fetch a recipe by ID", () => {
@@ -118,3 +126,6 @@ describe('/api/mealplan/:user_id', () => {
   });
 })
 
+describe('Name of the group', () => {
+  
+});
