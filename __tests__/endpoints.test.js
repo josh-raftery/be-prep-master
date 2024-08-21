@@ -42,7 +42,7 @@ describe("GET /api/getRecipe tests", () => {
     return api.get(`/recipes`)
     .then((response) => {
       expect(response.status).toBe(200)
-      expect(response.data.recipes.length).toBe(5)
+      expect(response.data.recipes.length).toBe(20)
     })
   });
 });
@@ -96,4 +96,25 @@ describe('Get api/users/1', () => {
     })
   });
 });
+
+describe('/api/mealplan/:user_id', () => {
+  test('GET:200 api returns meal plan for existing plan', () => {
+    return api.get('/mealplan/1')
+    .then(response => {
+        expect(response.status).toBe(200)
+        expect(response.data.user.user_id).toEqual(1)
+    })
+  })
+  test("404: error for a non-existent user ID", () => {
+    return api.get("/mealplan/999")
+    .then((response) => {
+      expect(response.status).toBe(404)
+      expect(response.error).toBe('Not Found')
+    })
+    .catch((err) => {
+      expect(err.message).toBe('Request failed with status code 404')
+      expect(err.response.status).toBe(404)
+    })
+  });
+})
 
