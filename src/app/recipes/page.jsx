@@ -2,19 +2,22 @@ import Link from "next/link";
 import recipeData from "../../../db/data/test/recipeTestData";
 import { ClockIcon } from "@heroicons/react/24/outline";
 
-//make axios request to get recipe data
 
-export default function Recipes() {
+export default async function Recipes() {
+  const res = await fetch('http://localhost:3000/api/recipes', {
+    next: { revalidate: 600 }, // Revalidate every 600 seconds - not sure if we need this or not? 
+  });
+  const responseData = await res.json()
+  const allRecipes = responseData.recipes;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-4 m-10">
-      {recipeData.map((recipe) => {
+      {allRecipes.map((recipe) => {
         return (
           <div
             className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             key={recipe.recipe_id}
           >
-            {/* img has a link  */}
             <Link href={`/recipes/${recipe.recipe_id}`}>
               <img
                 className="rounded-t-lg"
@@ -22,7 +25,6 @@ export default function Recipes() {
                 alt={`Image of ${recipe.recipe_id}`}
               />
             </Link>
-            {/* no link needed below here  */}
             <div className="p-5">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {recipe.title}

@@ -5,13 +5,8 @@ import RootLayout from "./layout";
 export default function Home() {
   return (
     <>
-      <div>
-        <RootLayout/>
-        </div>
-          <main>
-            <SearchBar />
-            <Recipes />
-          </main>
+      <SearchBar />
+      <Recipes />
     </>
   );
 }

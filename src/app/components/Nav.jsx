@@ -1,13 +1,13 @@
 'use client'
 import Link from "next/link";
-import { Dropdown, Avatar } from "flowbite-react";
+import {  Avatar, Dropdown } from "flowbite-react";
 import Script from 'next/script';
 import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
-
 
 export default function Nav() {
   return (
     <>
+
     <nav>
       <div className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -21,7 +21,8 @@ export default function Nav() {
             </span>
           </Link>
           <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <Dropdown
+          <Dropdown id ="avatar-dropdown" instanceId ="avatar-dropdown"
+
               arrowIcon={false}
               inline={true}
               label={<Avatar alt="Avatar" img="" rounded={true} />}
@@ -29,8 +30,8 @@ export default function Nav() {
               <Dropdown.Header>
                 <span className="block text-sm text-black">Hi Username</span>
               </Dropdown.Header>
-              <Dropdown.Item>
-                <Link href="/signin">Sign In / Sign Up</Link>
+              <Dropdown.Item as="a" href="/signin" target="_blank">
+                Sign In / Sign Up
               </Dropdown.Item>
               <Dropdown.Item>
                 <Link href="#">My profile</Link>
@@ -77,6 +78,7 @@ export default function Nav() {
         </div>
     </div>
     </nav>
+    <Script src="https://unpkg.com/flowbite/dist/flowbite.js" strategy="afterInteractive" />
     </>
   );
 }
