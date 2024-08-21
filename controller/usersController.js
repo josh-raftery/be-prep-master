@@ -1,5 +1,7 @@
 const { NextResponse } = require("next/server");
 const clientPromise = require("../connection");
+const User = require("../models/usersSchema.js");
+const { getUserId } = require("../db/utils/getUserId");
 
 const getUsers = async () => {
   try {
@@ -32,11 +34,33 @@ const getUsersById = async (user_id) => {
       return { error: 'An error occurred' }; 
     }
   };
+
+const postUser = async (body) => {
+  try{
+    const validation = new User(body);
+    await validation.validate();
+
+    const user_id = await getUserId()
+    body.user_id = user_id
+
+    const client = await clientPromise
+    const db = await client.db()
+    const user = await db.collection('users')
+    const result = await user
+     .insertOne(body)
+
+    return NextResponse.json({user: result}, {status:200})
+  }
+  catch(err){
+    return NextResponse.json({ error: 'Bad Request' }, { status: 400 })
+  }
+}
   
 
 
 
 module.exports = {
   getUsers,
-  getUsersById
+  getUsersById,
+  postUser
 };
