@@ -1,0 +1,86 @@
+[
+    {
+        "user_id": 1,
+        "meals": [{
+            "date": "25/08/2024",
+            "recipe_id": 1,
+            "mealType": "breakfast"
+        },
+        {
+            "date": "25/08/2024",
+            "recipe_id": 2,
+            "mealType": "lunch"
+        },
+        {
+            "date": "25/08/2024",
+            "recipe_id": 3,
+            "mealType": "dinner"
+        },
+        {
+            "date": "25/08/2024",
+            "recipe_id": 5,
+            "mealType": "snack"
+        },
+        {
+            "date": "26/08/2024",
+            "recipe_id": 1,
+            "mealType": "breakfast"
+        },
+        {
+            "date": "26/08/2024",
+            "recipe_id": 2,
+            "mealType": "lunch"
+        },
+        {
+            "date": "26/08/2024",
+            "recipe_id": 3,
+            "mealType": "dinner"
+        },
+        {
+            "date": "26/08/2024",
+            "recipe_id": 3,
+            "mealType": "snack"
+        },
+        {
+            "date": "27/08/2024",
+            "recipe_id": 1,
+            "mealType": "breakfast"
+        },
+        {
+            "date": "27/08/2024",
+            "recipe_id": 2,
+            "mealType": "lunch"
+        },
+        {
+            "date": "27/08/2024",
+            "recipe_id": 3,
+            "mealType": "dinner"
+        },
+        {
+            "date": "27/08/2024",
+            "recipe_id": 4,
+            "mealType": "dessert"
+        },
+        {
+            "date": "28/08/2024",
+            "recipe_id": 1,
+            "mealType": "breakfast"
+        },
+        {
+            "date": "28/08/2024",
+            "recipe_id": 2,
+            "mealType": "lunch"
+        },
+        {
+            "date": "28/08/2024",
+            "recipe_id": 3,
+            "mealType": "dinner"
+        },
+        {
+            "date": "28/08/2024",
+            "recipe_id": 4,
+            "mealType": "dessert"
+        }
+    ]
+    }
+]

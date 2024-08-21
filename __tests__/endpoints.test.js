@@ -3,6 +3,7 @@ const seedDB = require("../db/seed/seed");
 const recipeData = require("../db/data/test/recipeTestData.json");
 const ingredientsData = require("../db/data/test/ingredientsTestData.json");
 const userData = require("../db/data/test/userTestData.json");
+const mealPlanData = require("../db/data/test/mealPlanData.json");
 // const app = require("../app");
 const request = require("supertest");
 const { default: axios } = require("axios");
@@ -18,7 +19,7 @@ const api = axios.create({
 });
 
 beforeAll(async () => {
-  await seedDB({ recipeData, ingredientsData, userData });
+  await seedDB({ recipeData, ingredientsData, userData, mealPlanData });
 });
 
 afterAll(async () => {
