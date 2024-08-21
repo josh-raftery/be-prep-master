@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import { getRecipeById } from "../../../../../controller/recipeController";
 
 export async function GET (request) {
