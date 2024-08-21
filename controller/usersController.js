@@ -1,3 +1,4 @@
+const { NextResponse } = require("next/server");
 const clientPromise = require("../connection");
 
 const getUsers = async () => {
@@ -23,7 +24,10 @@ const getUsersById = async (user_id) => {
       const result = await user
         .findOne({ user_id: parseInt(user_id) });  
         
-      return { user: result };
+        if(result === null){
+          return NextResponse.json({ error: 'Not Found' }, { status: 404 })
+        }
+        return NextResponse.json({user: result}, {status:200})
     } catch (error) {
       return { error: 'An error occurred' }; 
     }
