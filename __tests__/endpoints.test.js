@@ -57,12 +57,6 @@ describe("GET /api/recipes/:_id:", () => {
   });
   test("404: error for a non-existent recipe ID", () => {
     return api.get("/recipes/999")
-    .then((response) => {
-      // console.log(response.data)
-      //need to add more custom error handler 404 
-    
-
-    })
     .catch((err) => {
       expect(err.message).toBe('Request failed with status code 404')
       expect(err.response.status).toBe(404)
@@ -81,7 +75,7 @@ describe('GET api/users', () => {
   });
 });
 
-describe.only('Get api/users/1', () => {
+describe('Get api/users/1', () => {
   test('should fetch the user by id', () => {
     return api.get('/users/1')
     .then(response => {
@@ -89,4 +83,16 @@ describe.only('Get api/users/1', () => {
         expect(response.data.user.user_id).toEqual(1)
     })
   });
+  test("404: error for a non-existent user ID", () => {
+    return api.get("/users/999")
+    .then((response) => {
+      expect(response.status).toBe(404)
+      expect(response.error).toBe('Not Found')
+    })
+    .catch((err) => {
+      expect(err.message).toBe('Request failed with status code 404')
+      expect(err.response.status).toBe(404)
+    })
+  });
 });
+

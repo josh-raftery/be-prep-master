@@ -1,4 +1,4 @@
-
+import { NextResponse } from 'next/server';
 const clientPromise = require('../connection');
 
 
@@ -24,11 +24,17 @@ const getRecipeById = async (recipe_id) => {
     const db = await client.db()
     const recipes = await db.collection('recipes')
     const result = await recipes
-      .findOne({ recipe_id: parseInt(recipe_id) });  
+    .findOne({ recipe_id: parseInt(recipe_id) });  
+
+    if(result === null){
+      return NextResponse.json({ error: 'Not Found' }, { status: 404 })
+    }
+
+    return NextResponse.json({recipe: result}, {status:200})
       
-    return { recipe: result };
+    // return { recipe: result };
   } catch (error) {
-    return { error: 'An error occurred' }; 
+    
   }
 };
 
