@@ -2,8 +2,12 @@ import React from "react";
 import RootLayout from "src/app/layout";
 
 export default async function SingleRecipe({ params }) {
+
+  const host = process.env.HOST || 'localhost'; 
+const port = process.env.PORT || 3000;   
+
   const res = await fetch(
-    `http://localhost:3000/api/recipes/${params.recipe_id}`,
+    `http://${host}:${port}/api/recipes/${params.recipe_id}`,
     {
       cache: "no-store",
     }

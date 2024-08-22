@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function RootLayout({ pageProps, children }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="cupcake">
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
