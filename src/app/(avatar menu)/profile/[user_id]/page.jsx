@@ -1,8 +1,13 @@
-
 export default async function Profile({ params }) {
-  const res = await fetch(`http://localhost:3000/api/users/${params.user_id}`, {
-    cache: "no-store",
-  })
+  const host = process.env.HOST || "localhost";
+  const port = process.env.PORT || 3000;
+
+  const res = await fetch(
+    `http://${host}:${port}/api/users/${params.user_id}`,
+    {
+      cache: "no-store",
+    }
+  );
 
   const responseData = await res.json();
   const user = responseData.user;
