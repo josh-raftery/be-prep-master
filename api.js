@@ -14,4 +14,13 @@ function getRecipes(params){
     return data.recipes;
   })
 }
-module.exports = {getRecipes}
+
+function getMealPlan(user_id){
+    return api.get(`/mealplan/${user_id}`)
+    .then(({data}) => {
+        return data.user
+    })
+}
+
+
+module.exports = {getRecipes,getMealPlan}

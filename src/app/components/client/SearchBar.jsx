@@ -1,6 +1,5 @@
 'use client'
 
-import { getRecipes } from 'api'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
