@@ -2,16 +2,11 @@ import Link from "next/link";
 import recipeData from "../../../db/data/test/recipeTestData";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import SearchBar from "../components/server/SearchBar";
+import { getRecipes } from "api";
 
 export default async function Recipes() {
-  const host = process.env.HOST || "localhost";
-  const port = process.env.PORT || 3000;
 
-  const res = await fetch(`http://${host}:${port}/api/recipes`, {
-    next: { revalidate: 600 }, // Revalidate every 600 seconds - not sure if we need this or not?
-  });
-  const responseData = await res.json();
-  const allRecipes = responseData.recipes;
+  const  allRecipes = await getRecipes()
 
   return (
     <>
