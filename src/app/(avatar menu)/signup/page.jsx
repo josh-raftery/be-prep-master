@@ -6,7 +6,7 @@ export default function SignUp() {
       <form className="m-20">
         <h2 className=" text-xl m-4">Sign Up</h2>
         <label
-          for="username"
+          htmlFor="username"
           className="block mb-2 text-m font-medium text-gray-900 dark:text-white"
         >
           Username
@@ -40,7 +40,7 @@ export default function SignUp() {
         </div>
 
         <label
-          for="website-admin"
+          htmlFor="website-admin"
           class="block mb-2 text-m font-medium text-gray-900 dark:text-white"
         >
           Full Name
@@ -74,7 +74,7 @@ export default function SignUp() {
         </div>
 
         <label
-          for="avatar-url"
+        htmlFor="avatar-url"
           className="block mb-2 text-m font-medium text-gray-900 dark:text-white"
         >
           Avatar URL

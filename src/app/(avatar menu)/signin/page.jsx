@@ -22,7 +22,7 @@
         <form className="m-20">
           <h2 className=" text-xl m-4">Sign Up</h2>
           <label
-            for="username"
+            htmlFor="username"
             className="block mb-2 text-m font-medium text-gray-900 dark:text-white"
           >
             Username
