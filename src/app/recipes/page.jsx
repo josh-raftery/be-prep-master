@@ -1,13 +1,17 @@
+'use client'
+
 import Link from "next/link";
-import recipeData from "../../../db/data/test/recipeTestData";
 import { ClockIcon } from "@heroicons/react/24/outline";
-import SearchBar from "../components/server/SearchBar";
+import SearchBar from "../components/client/SearchBar";
 import { getRecipes } from "api";
 
 export default async function Recipes() {
 
-  const  allRecipes = await getRecipes()
 
+  const allRecipes = await getRecipes()
+
+  console.log('d')
+  // const allRecipes = []
   return (
     <>
     <SearchBar/>
