@@ -2,18 +2,19 @@ import React from "react";
 import RootLayout from "src/app/layout";
 import Image from "next/image";
 
+
+
 export default async function SingleRecipe({ params }) {
+  const { recipe_id } = params;
   const host = process.env.HOST || "localhost";
   const port = process.env.PORT || 3000;
-
-  const res = await fetch(
-    `http://${host}:${port}/api/recipes/${params.recipe_id}`,
-    {
-      cache: "no-store",
-    }
-  );
+  const res = await fetch(`http://${host}:${port}/api/recipes/${params.recipe_id}`);
   const responseData = await res.json();
   const recipe = responseData.recipe;
+
+  if (!recipe) {
+    return <div>Recipe not found!</div>;
+  }
 
   return (
     <RootLayout>
