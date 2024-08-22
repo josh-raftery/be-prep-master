@@ -13,7 +13,7 @@ async function seedDB({ recipeData, ingredientsData, userData, mealPlanData }) {
     await db.collection('ingredients').deleteMany({});
     await db.collection('recipes').deleteMany({});
     await db.collection('users').deleteMany({});
-    await db.collection('mealplan').deleteMany({});
+    await db.collection('mealplan').deleteMany({}); //drop tables
 
     console.log("Existing data removed");
     
@@ -23,7 +23,7 @@ async function seedDB({ recipeData, ingredientsData, userData, mealPlanData }) {
     }
 
     for (const recipe of recipeData) {
-      const validation = new Recipes(recipe);
+      const validation = new Recipes(recipe); //validate
       await validation.validate();
     }
 
@@ -37,7 +37,7 @@ async function seedDB({ recipeData, ingredientsData, userData, mealPlanData }) {
       await validation.validate();
     }
 
-    await db.collection('ingredients').insertMany(ingredientsData);
+    await db.collection('ingredients').insertMany(ingredientsData); //insert
     await db.collection('recipes').insertMany(recipeData);
     await db.collection('users').insertMany(userData);
     await db.collection('mealplan').insertMany(mealPlanData);
