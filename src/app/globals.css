@@ -3,11 +3,15 @@
 @tailwind utilities;
 /* @import 'flowbite'; */
 
-.recipe-card-container {
+
+.recipe-stats,
+.recipe-card-container div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+
 
 :root {
   --foreground-rgb: 0, 0, 0;

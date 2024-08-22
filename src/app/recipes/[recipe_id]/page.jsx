@@ -1,10 +1,10 @@
 import React from "react";
 import RootLayout from "src/app/layout";
+import Image from "next/image";
 
 export default async function SingleRecipe({ params }) {
-
-  const host = process.env.HOST || 'localhost'; 
-const port = process.env.PORT || 3000;   
+  const host = process.env.HOST || "localhost";
+  const port = process.env.PORT || 3000;
 
   const res = await fetch(
     `http://${host}:${port}/api/recipes/${params.recipe_id}`,
@@ -17,149 +17,80 @@ const port = process.env.PORT || 3000;
 
   return (
     <RootLayout>
-      <div >
-        <img className="h-[500px] " src={recipe.photo_url} alt={recipe.title} />
-        <div className="flex flex-col justify-between p-4 leading-normal">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {recipe.title}
-          </h5>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            {recipe.description}
-          </p>
+      <section className="hero bg-base-200 lg:h-[600px] sm:h-[400px] m-4" id="hero-recipe">
+        <div className="hero-content flex flex-col lg:flex-row items-center lg:items-start lg:justify-between text-center lg:text-left max-w-7xl mx-auto">
+          <div className="flex-shrink-0">
+            <img
+              src={recipe.photo_url}
+              alt={recipe.title}
+              className="rounded-lg shadow-2xl w-full lg:max-w-sm"
+              width={500}
+              height={400}
+            />
+          </div>
+          <div className="mt-8 lg:mt-0 lg:ml-8">
+            <h1 className="text-3xl lg:text-5xl font-bold">{recipe.title}</h1>
+            <h2 className="text-xl lg:text-2xl mt-2">{recipe.chef}</h2>
+            <p className="py-6">{recipe.description}</p>
+          </div>
         </div>
-        <section>
-          <div id="accordion-collapse" data-accordion="collapse">
-            <div id="accordion-collapse-heading-1">
-              <button
-                type="button"
-                className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
-                data-accordion-target="#accordion-collapse-body-1"
-                aria-expanded="true"
-                aria-controls="accordion-collapse-body-1"
-              >
-                <span>Nutrition</span>
-                <svg
-                  data-accordion-icon
-                  className="w-3 h-3 rotate-180 shrink-0"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5 5 1 1 5"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div
-              id="accordion-collapse-body-1"
-              className="hidden"
-              aria-labelledby="accordion-collapse-heading-1"
-            >
-              <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                <div className="mb-2 text-gray-500 dark:text-gray-400">
-                  Per portion (in grams)
-                  <ul className="list-disc">
-                    <li>Kcal: {recipe.kcal}</li>
-                    <li>Protein: {recipe.protein}</li>
-                    <li>Fat: {recipe.fat}</li>
-                    <li>Carbohydrate: {recipe.carbohydrate}</li>
-                    <li>Sugar: {recipe.sugar}</li>
-                    <li>Salt: {recipe.salt}</li>
-                    <li>Fibre: {recipe.fibre}</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div id="accordion-collapse-heading-2">
-              <button
-                type="button"
-                className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
-                data-accordion-target="#accordion-collapse-body-2"
-                aria-expanded="false"
-                aria-controls="accordion-collapse-body-2"
-              >
-                <span>Ingredients</span>
-                <svg
-                  data-accordion-icon
-                  className="w-3 h-3 rotate-180 shrink-0"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    L="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5 5 1 1 5"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div
-              id="accordion-collapse-body-2"
-              className="hidden"
-              aria-labelledby="accordion-collapse-heading-2"
-            >
-              <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-                <ul className="list-disc">
-                  {recipe.ingredients.map((ingredient) => {
-                    return <li>{ingredient}</li>;
-                  })}
-                </ul>
-              </div>
-            </div>
-            <div id="accordion-collapse-heading-3">
-              <button
-                type="button"
-                className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
-                data-accordion-target="#accordion-collapse-body-3"
-                aria-expanded="false"
-                aria-controls="accordion-collapse-body-3"
-              >
-                <span>Method</span>
-                <svg
-                  data-accordion-icon
-                  className="w-3 h-3 rotate-180 shrink-0"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    L="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5 5 1 1 5"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div
-              id="accordion-collapse-body-3"
-              className="hidden"
-              aria-labelledby="accordion-collapse-heading-3"
-            >
-              <div className="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
-                <ol className="list-decimal">
-                  {recipe.instructions.map((step) => {
-                    return <li>{step}</li>;
-                  })}
-                </ol>
-              </div>
+      </section>
+      <section id="stats-bar" className="recipe-stats mt-8 px-4 lg:px-0 max-w-7xl mx-auto m-4">
+        <div className="stats flex flex-col lg:flex-row shadow">
+          <div className="stat bg-primary flex-1 p-4 m-2">
+            <div className="stat-title">Total Prep Time</div>
+            <div className="stat-value flex items-center text-lg">
+              <Image
+                src="/clockIcon.png"
+                alt="clock icon"
+                width={50}
+                height={50}
+              />
+              <span className="ml-2">
+                {`${recipe.preparation_time_minutes} mins`}
+              </span>
             </div>
           </div>
-        </section>
-      </div>
+          <div className="stat bg-secondary flex-1 p-4 m-2">
+            <div className="stat-title">Serves</div>
+            <div className="stat-value flex items-center text-lg">
+              <Image
+                src="/servesIcon.png"
+                alt="serving size icon"
+                width={50}
+                height={50}
+              />
+              <span className="ml-2">{recipe.serves}</span>
+            </div>
+          </div>
+          <div className="stat bg-accent flex-1 p-4 m-2">
+            <div className="stat-title">Calories</div>
+            <div className="stat-value flex items-center text-lg">
+              <Image
+                src="/caloriesIcon.png"
+                alt="calories icon"
+                width={50}
+                height={50}
+              />
+              <span className="ml-2">{recipe.kcal}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="recipe-ingredients">
+        <div className="card bg-accent text-primary-content w-96 flex flex-col m-4">
+          <div className="card-body">
+            <h2 className="card-title">Ingredients</h2>
+              {recipe.ingredients.map(()=>{
+
+              })}
+              <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div className="card-actions justify-end">
+              <button className="btn">+ Shopping List</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </RootLayout>
   );
 }
-
