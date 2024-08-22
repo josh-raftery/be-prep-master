@@ -20,7 +20,7 @@ const getRecipes = async (title, order_by, sort_by = "recipe_id") => {
     const result = await recipes
       .find(findQuery)
       .sort(sortQuery)
-      // .limit(20)
+      // .limit(20) - messing up with the post testing, as there 239 recipes
       .map((recipe) => ({ ...recipe, _id: recipe._id.toString() }))
       .toArray();
     return { recipes: result };
@@ -55,14 +55,39 @@ const postRecipe = async (body) => {
     const db = await client.db();
     const recipes = await db.collection("recipes");
     const result = await recipes.insertOne(body);
+
     return NextResponse.json({ recipes: result }, { status: 200 });
   } catch (err) {
     return NextResponse.json({ error: "Bad Request" }, { status: 400 });
   }
 };
 
+const patchRecipe = async (recipe_id, body) => {
+  try {
+    console.log(body,"<<<<<<BODY")
+    const validation = new Recipe(body);
+    await validation.validate();
+
+    const client = await clientPromise;
+    const db = await client.db();
+    const recipes = await db.collection("recipes");
+    const result = await recipes.findOneAndUpdate(
+      { recipe_id: recipe_id },
+      { $set: body }
+    )
+    if (result.modifiedCount === 0) {
+      return NextResponse.json({ error: "Recipe not found or no changes made" }, { status: 404 });
+    }
+
+    return NextResponse.json({ success: true, updated: result.modifiedCount }, { status: 200 });
+  } catch (err) {
+    return NextResponse.json({ error: "Bad SIKE" }, { status: 400 });
+  }
+};
+
 module.exports = {
   getRecipes,
   getRecipeById,
-  postRecipe
+  postRecipe,
+  patchRecipe
 };
