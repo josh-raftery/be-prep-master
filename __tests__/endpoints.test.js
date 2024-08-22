@@ -39,7 +39,7 @@ describe("GET /api/recipes", () => {
   test("should return all recipes", () => {
     return api.get(`/recipes`).then((response) => {
       expect(response.status).toBe(200);
-      expect(response.data.recipes.length).toBe(20);
+      expect(response.data.recipes.length).toEqual(239);
     });
   });
   test("should return with queried data", () => {
@@ -69,6 +69,7 @@ describe("GET api/users", () => {
   test("should fetch the users data", () => {
     return api.get("/users").then((response) => {
       expect(response.status).toBe(200);
+
       expect(response.data.users.length).toEqual(5);
     });
   });
