@@ -62,28 +62,30 @@ const postRecipe = async (body) => {
   }
 };
 
-const patchRecipe = async (recipe_id, body) => {
+const patchRecipe = async (recipe_id, updateData) => {
   try {
-    console.log(body,"<<<<<<BODY")
-    const validation = new Recipe(body);
-    await validation.validate();
-
     const client = await clientPromise;
     const db = await client.db();
-    const recipes = await db.collection("recipes");
-    const result = await recipes.findOneAndUpdate(
-      { recipe_id: recipe_id },
-      { $set: body }
-    )
-    if (result.modifiedCount === 0) {
-      return NextResponse.json({ error: "Recipe not found or no changes made" }, { status: 404 });
-    }
+    const userCollection = db.collection("recipes");
 
-    return NextResponse.json({ success: true, updated: result.modifiedCount }, { status: 200 });
+    const recipeUpdate = updateData.recipe;
+
+    const recipeId = parseInt(recipe_id);
+    const validation = new Recipe(recipeUpdate);
+    await validation.validate();
+
+    const result = await userCollection.updateOne(
+      { recipe_id: recipeId },
+      { $set: recipeUpdate }
+    );
+    return NextResponse.json(
+      { message: "User updated successfully" },
+      { status: 200 }
+    );
   } catch (err) {
-    return NextResponse.json({ error: "Bad SIKE" }, { status: 400 });
+    return NextResponse.json({ error: "Bad Request" }, { status: 400 });
   }
-};
+}
 
 module.exports = {
   getRecipes,
