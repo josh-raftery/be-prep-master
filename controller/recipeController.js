@@ -66,7 +66,7 @@ const patchRecipe = async (recipe_id, updateData) => {
   try {
     const client = await clientPromise;
     const db = await client.db();
-    const userCollection = db.collection("recipes");
+    const reciCollection = db.collection("recipes");
 
     const recipeUpdate = updateData.recipe;
 
@@ -74,22 +74,42 @@ const patchRecipe = async (recipe_id, updateData) => {
     const validation = new Recipe(recipeUpdate);
     await validation.validate();
 
-    const result = await userCollection.updateOne(
+    const result = await reciCollection.updateOne(
       { recipe_id: recipeId },
       { $set: recipeUpdate }
     );
     return NextResponse.json(
-      { message: "User updated successfully" },
+      { message: "Recipe updated successfully" },
       { status: 200 }
     );
   } catch (err) {
     return NextResponse.json({ error: "Bad Request" }, { status: 400 });
   }
-}
+};
 
+const deleteRecipe = async (recipe_id) => {
+  try {
+    const client = await clientPromise;
+    const db = await client.db();
+    const recipeCollection = db.collection("recipes");
+    const recipeId = parseInt(recipe_id);
+    const result = await recipeCollection.deleteOne({ recipe_id: recipeId });
+    if (result.deletedCount === 1) {
+      return NextResponse.json(
+        { message: "Recipe deleted successfully" },
+        { status: 200 }
+      );
+    } else {
+      return NextResponse.json({ error: "Recipe not found" }, { status: 404 });
+    }
+  } catch (err) {
+    return NextResponse.json({ error: "Bad Request" }, { status: 400 });
+  }
+};
 module.exports = {
   getRecipes,
   getRecipeById,
   postRecipe,
-  patchRecipe
+  patchRecipe,
+  deleteRecipe,
 };

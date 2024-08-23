@@ -15,7 +15,5 @@ export async function PATCH(request) {
       const updateData = await request.json();
 
       return await patchUser(user_id, updateData);
-    } catch (error) {
-      return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
-    }
+    } catch (error) {}
   }
