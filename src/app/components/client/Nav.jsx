@@ -5,11 +5,13 @@ import {  Avatar, Dropdown } from "flowbite-react";
 import Script from 'next/script';
 import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import { redirect, useRouter } from "next/navigation";
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { UserContext } from "@components/client/userProvider";
 
 
 export default function Nav() {
   const router = useRouter()
+  const {user} = useContext(UserContext)
   
   function routeHome(){
     router.push('/')
@@ -24,9 +26,19 @@ export default function Nav() {
             <img src="/logo.png" className="h-20 w-20" alt="PrepMaster logo" />
             <span className="text-left text-2xl font-semibold whitespace-nowrap text-black">
               PrepMaster
-            </span>
+            </span> 
           </div>
           <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <details className="dropdown">
+          <summary className="btn m-1">
+            Profile
+          </summary>
+          <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+            <li><a>{`Hi ${user.name}`}</a></li>
+            <Link href={user.username ? '/signout' : '/signin'} ><li><a>{user.username ? 'Sign Out' : 'Sign in'}</a></li></Link>
+            <Link href="/signup" ><li><a>Sign Up</a></li></Link>
+          </ul>
+        </details>
           <Dropdown id ="avatar-dropdown" instanceId ="avatar-dropdown"
 
               arrowIcon={false}
@@ -40,7 +52,7 @@ export default function Nav() {
                 Sign In
               </Dropdown.Item>
               <Dropdown.Item as="a" href="/signup" >
-                Sign Up
+                Sign Upusername
               </Dropdown.Item>
               <Dropdown.Item>
                 <Link href="#">My profile</Link>
