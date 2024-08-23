@@ -4,14 +4,19 @@ import Link from "next/link";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import SearchBar from "../components/client/SearchBar";
 import { getRecipes } from "api";
+import { useEffect, useState } from "react";
 
-export default async function Recipes() {
+export default function Recipes() {
 
+  const [allRecipes, setAllRecipes] = useState([])
 
-  const allRecipes = await getRecipes()
+  useEffect(() => {
+    getRecipes()
+    .then((recipes) => {
+      setAllRecipes(recipes)
+    })
+  }, [])
 
-  console.log('d')
-  // const allRecipes = []
   return (
     <>
     <SearchBar/>
