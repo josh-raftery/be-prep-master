@@ -22,5 +22,12 @@ function getMealPlan(user_id){
     })
 }
 
+function getRecipeById(recipe_id){
+  return api.get(`/recipes/${recipe_id}`)
+  .then(({data}) => {
+    return data.recipe
+  })
+}
 
-module.exports = {getRecipes,getMealPlan}
+
+module.exports = {getRecipes,getMealPlan,getRecipeById}

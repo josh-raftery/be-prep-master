@@ -1,4 +1,4 @@
-import SearchBar from "@components/server/SearchBar";
+import SearchBar from "@components/client/SearchBar";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
