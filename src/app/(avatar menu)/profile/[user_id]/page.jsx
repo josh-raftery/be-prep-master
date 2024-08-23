@@ -17,8 +17,8 @@ export default async function Profile({ params }) {
   return (
     <>
       <div className="flex flex-col items-center pb-10 m-4">
-        <container className="card bg-white max-w-3xl shadow-xl flex-col items-center">
-          <h2 className="mb-1 text-xl font-medium text-gray-900 dark:text-white m-2 flex flex-col items-center">
+        <container className="card bg-white max-w-3xl shadow-xl flex-col items-center p-4">
+          <h2 className="mb-1 text-xl font-medium text-gray-900 dark:text-white m-2 flex flex-col items-center ">
               Hi {user.name}!
           </h2>
           <figure className="px-10 pt-10">
@@ -29,13 +29,12 @@ export default async function Profile({ params }) {
             />
           </figure>
           <div className="card-body items-center text-center">
-            <h2 className="card-title">Scores!</h2>
+            
             <p>Username: {user.username}</p>
           </div>
           
-          
           <section id="scores-section">
-              <h3 className="text-md text-gray-900  m-2">Scores</h3>
+            <h3 className="text-xl font-semibold">Scores:</h3>
               <section className="rating rating-md m-2" id="stars-section">
                 <input
                   type="radio"
