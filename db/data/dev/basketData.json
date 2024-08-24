@@ -1,0 +1,27 @@
+[
+    {
+    "basket_id": 1,
+    "user_id": 1,
+    "ingredients": ["banana"]
+  },
+  {
+    "basket_id": 2,
+    "user_id": 2,
+    "ingredients": ["apple"]
+  },
+  {
+    "basket_id": 3,
+    "user_id": 3,
+    "ingredients": ["pineapple"]
+  },
+  {
+    "basket_id": 4,
+    "user_id": 4,
+    "ingredients": ["pear"]
+  },
+  {
+    "basket_id": 5,
+    "user_id": 5,
+    "ingredients": ["orange"]
+  }
+]
