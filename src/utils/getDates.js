@@ -3,8 +3,11 @@ export function getDates(diff){
     let dates = []
     for(let i = 0 ; i < 7 ; i++){
         let date = new Date()
-        console.log(diff, '<---')
-        date.setDate(date.getDate() + (i - ((date.getDay() - diff) - 1)))
+        if(date.getDay() === 0){
+            date.setDate(date.getDate() + (i -(6 - diff))) // date.getDay() returns a number 0-6, Sunday = 0 for some reason so we hardcode to 6...
+        }else{
+            date.setDate(date.getDate() + (i - ((date.getDay() - diff) - 1)))
+        }
         let day = date.getDate()
         let month = date.getMonth() + 1
         let year = date.getFullYear()

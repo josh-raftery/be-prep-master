@@ -22,7 +22,7 @@ export const UserProvider = ({ children }) => {
   };
 
   const signOut = () => {
-    setUser(null);
+    setUser({});
   };
 
   return (
