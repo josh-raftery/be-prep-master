@@ -28,4 +28,4 @@ function getRecipeById(recipe_id){
     return data.recipe
   })
 }
-
+module.exports = {getRecipes, getMealPlan, getRecipeById}
