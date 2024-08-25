@@ -1,19 +1,14 @@
 {
   "ingredients": [
     {
-      "name": "allspice",
-      "ingredient_id": 2,
-      "id": "b0c0"
+      "id": "4b10",
+      "name": "carrots",
+      "ingredient_id": "a23f1843-c02b-4917-9529-254367e55ce6"
     },
     {
-      "name": "almond asdasdasdasd",
-      "ingredient_id": 3,
-      "id": "3088"
-    },
-    {
-      "name": "almonds",
-      "ingredient_id": 4,
-      "id": "0217"
+      "id": "c839",
+      "name": "bananas",
+      "ingredient_id": "b91229f4-42f4-4bf7-8f0f-1348d9ce2082"
     }
   ]
 }
