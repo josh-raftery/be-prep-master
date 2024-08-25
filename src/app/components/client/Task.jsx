@@ -75,7 +75,7 @@ const Task = ({ ingredient }) => {
               onClick={handleDeleteItem}
               className="btn btn-danger w-full py-2 rounded-md text-white bg-red-600 hover:bg-red-700 transition-colors"
             >
-              Yes
+              YES
             </button>
           </div>
         </Modal>
