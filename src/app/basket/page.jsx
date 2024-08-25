@@ -7,10 +7,9 @@ export default async function ShoppingList() {
   const ingredients = await getAllTodos()
 
   return(
-    <main>
-      <AddIngredients/>
-      <IngredientLists ingredients={ingredients}/>
-    </main>
+    <main className="p-4">
+    <AddIngredients ingredients={ingredients} />
+  </main>
   )
 
 
