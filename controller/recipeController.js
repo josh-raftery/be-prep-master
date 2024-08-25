@@ -13,7 +13,6 @@ const getRecipes = async (title, order_by, sort_by = "recipe_id") => {
     if (order_by) {
       sortQuery[sort_by] = Number(order_by);
     }
-    console.log(sortQuery, "herehrererer");
     const client = await clientPromise;
     const db = await client.db();
     const recipes = await db.collection("recipes");

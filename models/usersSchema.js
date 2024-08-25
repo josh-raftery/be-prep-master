@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   avatar_url: { type: String, required: false },
   ingredients_used: [{ type: String }], // Array of ingredient names
   favourite_recipes: [{ type: String }], // Array of references to Recipe model
+  
 });
 
 const User = mongoose.models.User ? mongoose.models.User : mongoose.model('User', userSchema);

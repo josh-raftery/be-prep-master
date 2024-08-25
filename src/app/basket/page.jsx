@@ -1,0 +1,19 @@
+import AddIngredients from "@components/client/AddIngredient";
+import IngredientLists from "@components/client/IngredientLists";
+import { getAllTodos } from "_fake_data/api";
+
+export default async function ShoppingList() {
+
+  const ingredients = await getAllTodos()
+
+  return(
+    <main>
+      <AddIngredients/>
+      <IngredientLists ingredients={ingredients}/>
+    </main>
+  )
+
+
+
+
+}
