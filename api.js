@@ -29,5 +29,3 @@ function getRecipeById(recipe_id){
   })
 }
 
-
-module.exports = {getRecipes,getMealPlan,getRecipeById}

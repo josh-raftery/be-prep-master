@@ -1,0 +1,24 @@
+{
+  "ingredients": [
+    {
+      "name": "allspice",
+      "ingredient_id": 2,
+      "id": "b0c0"
+    },
+    {
+      "name": "almond asdasdasdasd",
+      "ingredient_id": 3,
+      "id": "3088"
+    },
+    {
+      "name": "almonds",
+      "ingredient_id": 4,
+      "id": "0217"
+    },
+    {
+      "name": "anchovies",
+      "ingredient_id": 5,
+      "id": "51ab"
+    }
+  ]
+}
