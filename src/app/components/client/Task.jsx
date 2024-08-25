@@ -26,13 +26,9 @@ const Task = ({ ingredient }) => {
     }
   };
 
-  const closeModal = () => {
-    setOpenModalEdit(false);
-  };
-
-  const handleDeleteItem = async (id) => {
+  const handleDeleteItem = async () => {
     try {
-      await deleteItem(id);
+      await deleteItem(ingredient.id);
       setOpenModalDelete(false);
       router.refresh();
     } catch (error) {
@@ -41,49 +37,46 @@ const Task = ({ ingredient }) => {
   };
 
   return (
-    <tr className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+    <tr className="border-b border-gray-300 hover:bg-gray-100 transition-colors">
       <td className="p-4">{ingredient.name}</td>
-      <td className="p-4 flex gap-4 justify-end items-center">
+      <td className="p-4 flex gap-4 items-center justify-end">
         <FiEdit
           onClick={() => setOpenModalEdit(true)}
           cursor="pointer"
-          className="text-blue-500 hover:text-blue-700 transition-colors"
+          className="text-blue-600 hover:text-blue-800 transition-colors"
           size={20}
         />
         <LuTrash2
           onClick={() => setOpenModalDelete(true)}
           cursor="pointer"
-          className="text-red-500 hover:text-red-700 transition-colors"
+          className="text-red-600 hover:text-red-800 transition-colors"
           size={20}
         />
-        <Modal isOpen={openModalEdit} onClose={closeModal} className="p-4">
+        <Modal isOpen={openModalEdit} onClose={() => setOpenModalEdit(false)} className="p-6 bg-white shadow-lg rounded-lg">
+          <h3 className="text-2xl font-semibold mb-4 text-center">Edit Item</h3>
           <form onSubmit={handleSubmitEditNewItem} className="space-y-4">
-            <h3 className="text-xl font-bold mb-4">EDIT LIST</h3>
-            <div className="flex flex-col space-y-2">
-              <input
-                value={taskToEdit}
-                onChange={(e) => setTaskToEdit(e.target.value)}
-                type="text"
-                placeholder="Type here"
-                className="input input-bordered w-full"
-              />
-              <button type="submit" className="btn btn-primary w-full">
-                Submit
-              </button>
-            </div>
+            <input
+              value={taskToEdit}
+              onChange={(e) => setTaskToEdit(e.target.value)}
+              type="text"
+              placeholder="Enter new name"
+              className="input input-bordered w-full py-2 px-4 rounded-md border-gray-300 shadow-sm"
+            />
+            <button type="submit" className="btn btn-primary w-full py-2 rounded-md text-white bg-secondary-600 hover:bg-secondary-700 transition-colors">
+              Submit
+            </button>
           </form>
         </Modal>
-        <Modal isOpen={openModalDelete} onClose={() => setOpenModalDelete(false)} className="p-4">
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold mb-4">Are you sure you want to delete this item from your basket?</h3>
-            <div className="flex gap-4 justify-end">
-              <button onClick={() => handleDeleteItem(ingredient.id)} className="btn btn-danger w-full">
-                YES
-              </button>
-              <button onClick={() => setOpenModalDelete(false)} className="btn btn-secondary w-full">
-                NO
-              </button>
-            </div>
+        <Modal isOpen={openModalDelete} onClose={() => setOpenModalDelete(false)} className="p-6 bg-white shadow-lg rounded-lg">
+          <h3 className="text-lg font-semibold mb-4 text-center">Confirm Deletion</h3>
+          <p className="text-center mb-4">Are you sure you want to delete this item from your basket?</p>
+          <div className="flex justify-center gap-4">
+            <button
+              onClick={handleDeleteItem}
+              className="btn btn-danger w-full py-2 rounded-md text-white bg-red-600 hover:bg-red-700 transition-colors"
+            >
+              Yes
+            </button>
           </div>
         </Modal>
       </td>
