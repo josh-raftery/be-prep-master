@@ -17,7 +17,7 @@ export default async function SingleRecipe({ params }) {
   }
 
   return (
-    <RootLayout>
+    <div>
       {/* Main flex container */}
       <div className="flex flex-col lg:flex-col m-4 gap-8 max-w-7xl mx-auto">
         {/* Hero Section */}
@@ -131,6 +131,6 @@ export default async function SingleRecipe({ params }) {
           </section>
         </div>
       </div>
-    </RootLayout>
+    </div>
   );
 }

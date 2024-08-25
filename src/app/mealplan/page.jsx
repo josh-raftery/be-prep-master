@@ -12,18 +12,24 @@ export  default function MealPlan(){
     const [hasMealPlan, setHasMealPlan] = useState(false)
     const [dates, setDates] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [diff, setDiff] = useState(0) // diff 1 = next week dates, diff -1 = previous week dates
+    const [diff, setDiff] = useState(0) // diff 1 = next week dates, diff -1 = previous week dates, 0 this week
+    const [today, setToday] = useState("")
     const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
 
     useEffect(() => {
         getMealPlan(user.user_id)
         .then((mealplanData) => {
-            console.log(mealplanData, ' <-----')
             setmealPlan(mealplanData)
             setHasMealPlan(true)
         })
         setDates(getDates(diff))
         setIsLoading(false)
+        const date = new Date()
+        if(date.getDay() === 0){
+            setToday("Sunday")
+        }else{
+            setToday(dates[date.getDay() - 1])
+        }
     },[])
 
     if(isLoading){
@@ -36,7 +42,7 @@ export  default function MealPlan(){
                 {days.map((day,index) => {
                     return(
                         <div key = {`${dates[index]}-container`} >
-                            <Day key={dates[index]} day={day} date={dates[index]} mealPlan={mealPlan} />
+                            <Day key={dates[index]} today={today} day={day} date={dates[index]} mealPlan={mealPlan} />
                         </div>
                     )
                 })}

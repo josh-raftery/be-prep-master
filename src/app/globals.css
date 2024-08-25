@@ -35,6 +35,12 @@ body {
   }
 }
 
+.day-container{
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+
+.day-container,
 .recipe-card-container {
   display: flex;
   justify-content: center;

@@ -10,7 +10,6 @@ import React, { useState } from 'react'
 
   function handleChange(event){
     setSearchInput(event.target.value)
-    console.log(event.target.value)
   }
 
   async function handleSubmit(event){
