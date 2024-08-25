@@ -5,17 +5,11 @@ import Task from "./Task";
 const IngredientLists = ({ ingredients }) => {
   return (
     <div className="overflow-x-auto">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      <table className="table table-zebra w-full text-left">
         <tbody>
-          {ingredients.map((ingredient) => {
-            return <Task key={ingredient.ingredient_id} ingredient={ingredient} />;
-          })}
+          {ingredients.map((ingredient) => (
+            <Task key={ingredient.ingredient_id} ingredient={ingredient} />
+          ))}
         </tbody>
       </table>
     </div>
