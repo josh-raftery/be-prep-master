@@ -21,17 +21,18 @@ function getBasket(user_id) {
 }
 
 function addItem(user_id, newIngredient) {
-  return api.patch(`/basket/${user_id}`, { $push: { ingredients: newIngredient, user_id } })
-      .then(({ data }) => {
-          return data.basket;
-      })
-      .catch(error => {
-          console.error("Error updating basket data:", error);
-          throw error;
-      });
+  return api
+    .patch(`/basket/${user_id}`, {
+      $push: { ingredients: newIngredient, user_id },
+    })
+    .then(({ data }) => {
+      return data.basket;
+    })
+    .catch((error) => {
+      console.error("Error updating basket data:", error);
+      throw error;
+    });
 }
-
-
 
 function editItem(user_id, oldName, newName) {
   return api
@@ -93,3 +94,46 @@ function getRecipes(params) {
   });
 }
 
+function getMealPlan(user_id) {
+  return api.get(`/mealplan/${user_id}`).then(({ data }) => {
+    return data.user;
+  });
+}
+
+function getRecipeById(recipe_id) {
+  return api.get(`/recipes/${recipe_id}`).then(({ data }) => {
+    return data.recipe;
+  });
+}
+
+function postUser(request) {
+  return api.post(`/users`, request).then(({ data }) => {
+    return data.user;
+  });
+}
+
+function postRecipe(request) {
+  return api.post(`/recipes`, request).then(({ data }) => {
+    return data.recipe;
+  });
+}
+
+// function getBasket(user_id){
+// return api.get(`/basket/${user_id}`)
+// .then(({data}) => {
+//   return data.basket
+// })
+// }
+
+module.exports = {
+  getBasket,
+  addItem,
+  editItem,
+  deleteItem,
+  getRecipes,
+  getRecipes,
+  getMealPlan,
+  getRecipeById,
+  postUser,
+  postRecipe,
+};
