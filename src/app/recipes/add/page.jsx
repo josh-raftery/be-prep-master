@@ -29,7 +29,6 @@ export default function AddRecipe() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(formData, " <---- formData");
 
     const recipeData = {
       ...formData,
@@ -61,7 +60,8 @@ export default function AddRecipe() {
 
   return (
     <>
-      <div className="card bg-base-100 w-96 shadow-xl">
+    <container className="flex flex-col items-center pb-10 m-4">
+      <div className="card bg-white w-96 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">Add Recipe</h2>
           {error && <p className="text-red-500">{error}</p>}
@@ -86,7 +86,7 @@ export default function AddRecipe() {
             <input
               type="text"
               placeholder="Ingredients (comma separated)"
-              className="input input-bordered w-full max-w-xs m-4"
+              className="input input-bordered w-full input-lg max-w-xs m-4"
               name="ingredients"
               value={formData.ingredients}
               onChange={handleChange}
@@ -94,7 +94,7 @@ export default function AddRecipe() {
             <input
               type="text"
               placeholder="Instructions (comma separated)"
-              className="input input-bordered w-full max-w-xs m-4"
+              className="input input-bordered w-full input-lg max-w-xs m-4"
               name="instructions"
               value={formData.instructions}
               onChange={handleChange}
@@ -137,6 +137,7 @@ export default function AddRecipe() {
           </form>
         </div>
       </div>
+      </container>
     </>
   );
 }
