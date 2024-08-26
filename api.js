@@ -43,12 +43,7 @@ function postRecipe(request){
   })
 }
 
-// function getBasket(user_id){
-// return api.get(`/basket/${user_id}`)
-// .then(({data}) => {
-//   return data.basket
-// })
-// }
+
 
 
 module.exports = {getRecipes, getMealPlan, getRecipeById, postUser, postRecipe}
