@@ -15,7 +15,7 @@ export default function RootLayout({ pageProps, children }) {
         <title>{metadata.title}</title>
       </head>
         <body suppressHydrationWarning={true}>
-          <UserProvider>
+          <UserProvider >
           <Nav />
           <main>
             {children}
