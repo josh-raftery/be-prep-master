@@ -28,4 +28,13 @@ function getRecipeById(recipe_id){
     return data.recipe
   })
 }
-module.exports = {getRecipes, getMealPlan, getRecipeById}
+
+function postUser(request){
+  return api.post(`/users`, request)
+  .then(({data}) => {
+    return data.user
+  })
+}
+
+
+module.exports = {getRecipes, getMealPlan, getRecipeById, postUser}
