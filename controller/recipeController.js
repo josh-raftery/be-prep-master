@@ -49,13 +49,15 @@ const postRecipe = async (body) => {
     await validation.validate();
     const recipe_id = await getRecipeId();
     body.recipe_id = recipe_id;
+    const recipeId = parseInt(recipe_id);
 
     const client = await clientPromise;
     const db = await client.db();
-    const recipes = await db.collection("recipes");
-    const result = await recipes.insertOne(body);
+    const recipeCollection = await db.collection("recipes");
+    const result = await recipeCollection.insertOne(body);
+    const newRecipe = await recipeCollection.findOne({ recipe_id: recipeId });
 
-    return NextResponse.json({ recipes: result }, { status: 200 });
+    return NextResponse.json({ recipe: newRecipe }, { status: 200 });
   } catch (err) {
     return NextResponse.json({ error: "Bad Request" }, { status: 400 });
   }

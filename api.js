@@ -36,5 +36,19 @@ function postUser(request){
   })
 }
 
+function postRecipe(request){
+  return api.post(`/recipes`, request)
+  .then(({data}) => {
+    return data.recipe
+  })
+}
 
-module.exports = {getRecipes, getMealPlan, getRecipeById, postUser}
+// function getBasket(user_id){
+// return api.get(`/basket/${user_id}`)
+// .then(({data}) => {
+//   return data.basket
+// })
+// }
+
+
+module.exports = {getRecipes, getMealPlan, getRecipeById, postUser, postRecipe}
