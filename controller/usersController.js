@@ -49,10 +49,8 @@ const postUser = async (body) => {
 
     const result = await userCollection.insertOne(body);
 
-
     const newUser = await userCollection.findOne({ user_id: userId });
     
-
     return NextResponse.json({ user: newUser }, { status: 200 });
   } catch (err) {
 
