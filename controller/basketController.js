@@ -1,6 +1,7 @@
 const { NextResponse } = require("next/server");
 const clientPromise = require("../connection");
 const Basket = require("../models/basketSchema");
+const BasketPatch = require("models/basketPatchSchema");
 
 
 const getAllBaskets = async () => {
@@ -38,23 +39,28 @@ const patchBasket = async (user_id, updateData) => {
     try {
       const client = await clientPromise;
       const db = await client.db();
-      const basketCollection = db.collection("basket");
-      const basketUpdate = updateData.basket;
-      const userId = parseInt(user_id);
-      const validation = new Basket(basketUpdate);
+
+      const validation = new BasketPatch(updateData);
       await validation.validate();
+
+      const basketCollection = db.collection("basket");
+
+      const newBasket = await basketCollection.findOne({
+        user_id: parseInt(user_id)
+      });
+
+      newBasket.ingredients = [...newBasket.ingredients, ...updateData.ingredients]
   
       const result = await basketCollection.updateOne(
-        { user_id: userId },
-        { $set: basketUpdate })
+        { user_id: parseInt(user_id) },
+        { $set: newBasket },
+      )
 
-    if (result.matchedCount === 0) {
-        return null;  
+      if (result.matchedCount === 0) {
+          return null;  
       }
-  
-      const updatedBasket = await basketCollection.findOne({ user_id: userId });
-      console.log(updatedBasket)
-      return updatedBasket;  
+
+      return newBasket;  
     } catch (err) {
       console.error(err);
       return null;  
