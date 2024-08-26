@@ -3,14 +3,28 @@ import { NextResponse } from "next/server";
 const clientPromise = require("../connection");
 const Recipe = require("../models/recipeSchema");
 
-const getRecipes = async (title, order_by, sort_by = "recipe_id") => {
+const getRecipes = async (
+  title,
+  order_by = "1",
+  sort_by = "recipe_id",
+  chef,
+  preparation_time_minutes
+) => {
   try {
     let findQuery = {};
     if (title) {
       findQuery.title = { $regex: title, $options: "i" };
     }
+    if (chef) {
+      findQuery.chef = { $regex: chef, $options: "i" };
+    }
+    if (preparation_time_minutes) {
+      findQuery.preparation_time_minutes = {
+        $eq: Number(preparation_time_minutes),
+      };
+    }
     let sortQuery = {};
-    if (order_by) {
+    if (sort_by) {
       sortQuery[sort_by] = Number(order_by);
     }
     const client = await clientPromise;
@@ -19,7 +33,6 @@ const getRecipes = async (title, order_by, sort_by = "recipe_id") => {
     const result = await recipes
       .find(findQuery)
       .sort(sortQuery)
-      // .limit(20) - messing up with the post testing, as there 239 recipes
       .map((recipe) => ({ ...recipe, _id: recipe._id.toString() }))
       .toArray();
     return { recipes: result };
@@ -49,13 +62,15 @@ const postRecipe = async (body) => {
     await validation.validate();
     const recipe_id = await getRecipeId();
     body.recipe_id = recipe_id;
+    const recipeId = parseInt(recipe_id);
 
     const client = await clientPromise;
     const db = await client.db();
-    const recipes = await db.collection("recipes");
-    const result = await recipes.insertOne(body);
+    const recipeCollection = await db.collection("recipes");
+    const result = await recipeCollection.insertOne(body);
+    const newRecipe = await recipeCollection.findOne({ recipe_id: recipeId });
 
-    return NextResponse.json({ recipes: result }, { status: 200 });
+    return NextResponse.json({ recipe: newRecipe }, { status: 200 });
   } catch (err) {
     return NextResponse.json({ error: "Bad Request" }, { status: 400 });
   }

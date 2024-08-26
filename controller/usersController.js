@@ -38,18 +38,23 @@ const postUser = async (body) => {
   try {
     const validation = new User(body);
     await validation.validate();
-
+ 
     const user_id = await getUserId();
     body.user_id = user_id;
+    const userId = parseInt(user_id);
 
     const client = await clientPromise;
     const db = await client.db();
-    const user = await db.collection("users");
-    const result = await user.insertOne(body);
+    const userCollection = await db.collection("users");
 
-    return NextResponse.json({ user: result }, { status: 200 });
+    const result = await userCollection.insertOne(body);
+
+    const newUser = await userCollection.findOne({ user_id: userId });
+    
+    return NextResponse.json({ user: newUser }, { status: 200 });
   } catch (err) {
-    return NextResponse.json({ error: "Bad Request" }, { status: 400 });
+
+    return NextResponse.json({ error: err.message }, { status: 400 });
   }
 };
 const patchUser = async (user_id, updateData) => {

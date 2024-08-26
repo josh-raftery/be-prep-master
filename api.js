@@ -93,24 +93,3 @@ function getRecipes(params) {
   });
 }
 
-function getMealPlan(user_id) {
-  return api.get(`/mealplan/${user_id}`).then(({ data }) => {
-    return data.user;
-  });
-}
-
-function getRecipeById(recipe_id) {
-  return api.get(`/recipes/${recipe_id}`).then(({ data }) => {
-    return data.recipe;
-  });
-}
-
-module.exports = {
-  getBasket,
-  addItem,
-  editItem,
-  deleteItem,
-  getRecipes,
-  getMealPlan,
-  getRecipeById,
-};
