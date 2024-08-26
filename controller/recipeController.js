@@ -3,11 +3,19 @@ import { NextResponse } from "next/server";
 const clientPromise = require("../connection");
 const Recipe = require("../models/recipeSchema");
 
-const getRecipes = async (title, order_by = "1", sort_by = "recipe_id") => {
+const getRecipes = async (
+  title,
+  order_by = "1",
+  sort_by = "recipe_id",
+  chef
+) => {
   try {
     let findQuery = {};
     if (title) {
       findQuery.title = { $regex: title, $options: "i" };
+    }
+    if (chef) {
+      findQuery.chef = { $regex: chef, $options: "i" };
     }
     let sortQuery = {};
     if (sort_by) {
@@ -19,7 +27,6 @@ const getRecipes = async (title, order_by = "1", sort_by = "recipe_id") => {
     const result = await recipes
       .find(findQuery)
       .sort(sortQuery)
-      // .limit(20) - messing up with the post testing, as there 239 recipes
       .map((recipe) => ({ ...recipe, _id: recipe._id.toString() }))
       .toArray();
     return { recipes: result };
