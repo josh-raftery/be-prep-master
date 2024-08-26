@@ -1,7 +1,7 @@
 'use client'
 import { useContext, useEffect, useState } from "react";
 import { getMealPlan } from "api";
-import { UserContext } from "@components/client/userProvider";
+import { UserContext } from "@components/client/UserProvider";
 import { getDates } from "src/utils/getDates";
 import Day from "@components/client/Day";
 import Loading from "@components/client/Loading";

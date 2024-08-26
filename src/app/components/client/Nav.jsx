@@ -6,7 +6,7 @@ import Script from 'next/script';
 import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import { redirect, useRouter } from "next/navigation";
 import React, { useContext, useState } from 'react'
-import { UserContext } from "@components/client/userProvider";
+import { UserContext } from "@components/client/UserProvider";
 
 
 export default function Nav() {
