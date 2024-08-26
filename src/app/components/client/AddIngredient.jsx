@@ -1,39 +1,41 @@
 "use client";
-import React, { useState } from "react";
-import Modal from "./Modal";
-import { FaPlus } from "react-icons/fa";
-import { addItem } from "_fake_data/api";
-import { useRouter } from "next/navigation";
-import { v4 as uuidv4 } from "uuid";
-import Task from "./Task";
+import React, { useState, useEffect } from 'react';
+import Modal from './Modal';
+import { FaPlus } from 'react-icons/fa';
+import { addItem, getBasket } from 'api';
+import { useRouter } from 'next/navigation';
+import Task from './Task';
 
-const AddIngredients = ({ ingredients }) => {
+const AddIngredients = ({ ingredients = [], user_id }) => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [newItemValue, setNewItemValue] = useState("");
+  const [newItemValue, setNewItemValue] = useState('');
+  const [updatedIngredients, setUpdatedIngredients] = useState(ingredients);
 
-  const handleSubmitNewItem = async (e) => {
+  useEffect(() => {
+    setUpdatedIngredients(ingredients);
+  }, [ingredients]);
+
+  
+  const handleSubmitNewItem = (e) => {
+    console.log("ARE YOU GETTING USED")
     e.preventDefault();
-    try {
-      await addItem({
-        name: newItemValue,
-        ingredient_id: uuidv4(),
+    addItem(user_id, newItemValue)
+      .then(() => {
+        setNewItemValue('');
+        setIsModalOpen(false);
+        return getBasket(user_id);
+      })
+      .then((data) => {
+        setUpdatedIngredients(data.ingredients); 
+      })
+      .catch((error) => {
+        console.error('Failed to add item:', error);
       });
-      setNewItemValue("");
-      setIsModalOpen(false);
-      router.refresh();
-    } catch (error) {
-      console.error("Failed to add item:", error);
-    }
   };
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className="p-4">
@@ -48,16 +50,22 @@ const AddIngredients = ({ ingredients }) => {
                     onClick={openModal}
                     className="btn btn-primary rounded-full w-12 h-12 flex items-center justify-center bg-blue-500 hover:bg-blue-600 transition-colors"
                   >
-                    <FaPlus size={20} className="text-white"  />
+                    <FaPlus size={20} className="text-white" />
                   </button>
                 </div>
               </th>
             </tr>
           </thead>
           <tbody>
-            {ingredients.map((ingredient) => (
-              <Task key={ingredient.ingredient_id} ingredient={ingredient} />
-            ))}
+            {updatedIngredients.length > 0 ? (
+              updatedIngredients.map((ingredient, index) => (
+                <Task key={index} ingredient={ingredient} user_id={user_id} />
+              ))
+            ) : (
+              <tr>
+                <td colSpan="2" className="p-4 text-center">No ingredients found</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

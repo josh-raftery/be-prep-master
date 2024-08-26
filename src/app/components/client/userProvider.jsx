@@ -1,5 +1,4 @@
-'use client';
-
+"use client"
 import { createContext, useContext, useState } from 'react';
 
 export const UserContext = createContext(null);
@@ -14,7 +13,8 @@ export const UserProvider = ({ children }) => {
     "name": "Samantha",
     "avatar_url": "https://api.dicebear.com/9.x/personas/svg?seed=Sammy&backgroundColor=b6e3f4",
     "ingredients_used": [],
-    "favourite_recipes": []
+    "favourite_recipes": [],
+    "basketId": 1 // Ensure basketId is part of user data
   });
 
   const signIn = (username) => {
@@ -35,3 +35,4 @@ export const UserProvider = ({ children }) => {
 export const useUser = () => {
   return useContext(UserContext);
 };
+
