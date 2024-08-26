@@ -11,6 +11,21 @@
   align-items: center;
 }
 
+.mealplan-popup{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.checkbox-custom{
+  background-color: white;
+}
+
+.checkbox-container{
+  display: flex;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

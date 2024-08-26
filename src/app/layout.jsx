@@ -1,7 +1,7 @@
 // import UserProvider from "./components/client/userProvider";
 import "./globals.css";
 import Nav from "./components/client/Nav";
-import { UserProvider } from "@components/client/UserProvider";
+import { UserProvider } from "@components/client/userProvider";
 export const metadata = {
   title: "PrepMaster",
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import RootLayout from "src/app/layout";
 import Image from "next/image";
+import AddToMealPlan from "@components/client/AddToMealplan";
 
 
 
@@ -18,6 +19,7 @@ export default async function SingleRecipe({ params }) {
 
   return (
     <div>
+      {/* <AddToMealPlan recipe={recipe}/> */}
       {/* Main flex container */}
       <div className="flex flex-col lg:flex-col m-4 gap-8 max-w-7xl mx-auto">
         {/* Hero Section */}

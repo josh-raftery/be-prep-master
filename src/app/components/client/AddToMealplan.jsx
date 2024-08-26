@@ -25,7 +25,7 @@ export default function AddToMealPlan({recipe}){
                     <h2 style={{marginTop: "1rem"}} className="card-title">{`New Meal: ${recipe.title}`}</h2>
                     <h2 className="card-title"><b>{`Select ${servingsToAllocate} slots`}</b></h2>
                     <div className="card-actions justify-end">
-                        <MealPlan diff={diff}  popUp={true} servingsToAllocate={servingsToAllocate} setServingsToAllocate={setServingsToAllocate} recipeToAdd={recipe}/>
+                        <MealPlan diff={diff} popUp={true} servingsToAllocate={servingsToAllocate} setServingsToAllocate={setServingsToAllocate} recipeToAdd={recipe}/>
                     </div>
                 </div>
             </div>
