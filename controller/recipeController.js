@@ -3,14 +3,14 @@ import { NextResponse } from "next/server";
 const clientPromise = require("../connection");
 const Recipe = require("../models/recipeSchema");
 
-const getRecipes = async (title, order_by, sort_by = "recipe_id") => {
+const getRecipes = async (title, order_by = "1", sort_by = "recipe_id") => {
   try {
     let findQuery = {};
     if (title) {
       findQuery.title = { $regex: title, $options: "i" };
     }
     let sortQuery = {};
-    if (order_by) {
+    if (sort_by) {
       sortQuery[sort_by] = Number(order_by);
     }
     const client = await clientPromise;
