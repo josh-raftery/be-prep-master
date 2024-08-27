@@ -10,7 +10,9 @@ export async function GET(request) {
   const sortBy = request.nextUrl.searchParams.get("sort_by") || "recipe_id";
   const chef = request.nextUrl.searchParams.get("chef") || null;
   const prepTime = request.nextUrl.searchParams.get("preparation_time_minutes");
-  return getRecipes(name, orderBy, sortBy, chef, prepTime)
+  const servings = request.nextUrl.searchParams.get("serves")
+
+  return getRecipes(name, orderBy, sortBy, chef, prepTime, servings)
     .then((recipes) => {
       return NextResponse.json(recipes, { status: 200 });
     })
