@@ -11,7 +11,7 @@ export default function AddToMealPlan({recipe}){
         setDiff((currDiff) => {
             if(currDiff === 0){
                 return 1
-            } else{
+            } else{http://localhost:3000/
                 return 0
             }
         })
