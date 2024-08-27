@@ -14,6 +14,6 @@ export async function PATCH(request){
     if(add){
         return addToMealPlan(updateData,user_id)
     }else{
-        // return deleteFromMealPlan
+        return deleteFromMealPlan(updateData,user_id)
     }
 }
