@@ -4,7 +4,7 @@ import { FiEdit } from "react-icons/fi";
 import { LuTrash2 } from "react-icons/lu";
 import Modal from "./Modal";
 import { deleteItem, editItem } from "api";
-import { useUser } from "./UserProvider"; // Ensure correct path
+import { useUser } from "./userProvider"; // Ensure correct path
 
 const Task = ({ ingredient }) => {
   const { user } = useUser(); // Make sure this works and provides a user context
