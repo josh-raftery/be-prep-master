@@ -33,7 +33,7 @@ export default async function Profile({ params }) {
             <p>Username: {user.username}</p>
           </div>
           
-          <section id="scores-section">
+          {/* <section id="scores-section">
             <h3 className="text-xl font-semibold">Scores:</h3>
               <section className="rating rating-md m-2" id="stars-section">
                 <input
@@ -95,30 +95,18 @@ export default async function Profile({ params }) {
                   />
                 </div>
               </section>
-            </section>
+            </section> */}
             <section> 
               <div className="card-actions justify-center">
-                {/* insert link or navigation to edit profile page */}
+                {/* insert link or navigation to favouriteRecipes */}
                 <button className="btn bg-primary mt-4">
                   <Image
-                    src="/editUserIcon.png"
-                    alt="edit profile icon"
+                    src="/chef.png"
+                    alt="chef icon"
                     width={20}
                     height={20}
                   />
-                  Edit my profile
-                </button>
-              </div>
-              <div className="card-actions justify-center">
-                {/* insert link or navigation to favouriteRecipes */}
-                <button className="btn bg-secondary mt-4">
-                  <Image
-                    src="/heartIcon.png"
-                    alt="heart icon"
-                    width={20}
-                    height={20}
-                  />
-                  My Favourite Recipes
+                  My Recipes
                 </button>
               </div>
             </section>
