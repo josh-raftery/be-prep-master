@@ -1,6 +1,6 @@
 'use client'
 
-import { UserContext } from '@components/client/UserProvider'
+import { UserContext } from '@components/client/userProvider'
 import React, { useContext } from 'react'
 import { useRouter } from 'next/navigation'
 import Loading from '@components/client/Loading'
