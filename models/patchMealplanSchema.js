@@ -12,10 +12,9 @@ const mealSchema = new mongoose.Schema({
 });
 
 const userMealsSchema = new mongoose.Schema({
-  user_id: { type: Number, required: true, unique: true }, 
   meals: [mealSchema]
 });
 
-const MealPlan = mongoose.model('MealPlan', userMealsSchema);
+const PatchMealPlan = mongoose.models.PatchMealPlan ? mongoose.models.PatchMealPlan : mongoose.model('PatchMealPlan', userMealsSchema)
 
-module.exports = MealPlan;
+module.exports = PatchMealPlan;
