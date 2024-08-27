@@ -17,9 +17,8 @@ const AddIngredients = ({ ingredients = [], user_id }) => {
     setNewItemValue({
       ...newItemValue, [name]: value
     })
-
     }
-
+  
 
   useEffect(() => {
     setUpdatedIngredients(ingredients);

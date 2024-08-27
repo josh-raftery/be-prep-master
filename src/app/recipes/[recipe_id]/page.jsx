@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -7,32 +7,29 @@ import { getRecipeById } from "api";
 import Loading from "@components/client/Loading";
 
 export default function SingleRecipe({ params }) {
-
-  const [recipe,setRecipe] = useState({})
-  const [clicked,setClicked] = useState(false)
-  const [isLoading, setisLoading] = useState(true)
+  const [recipe, setRecipe] = useState({});
+  const [clicked, setClicked] = useState(false);
+  const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
     getRecipeById(params.recipe_id)
-    .then((recipe) => {
-      setRecipe(recipe)
-      setisLoading(false)
-    })
-    .catch((err) => {
-      console.log(err, ' err')
-    })
-  },[])
+      .then((recipe) => {
+        setRecipe(recipe);
+        setisLoading(false);
+      })
+      .catch((err) => {
+        console.log(err, " err");
+      });
+  }, []);
 
-  function handleClick(){
+  function handleClick() {
     setClicked((currClicked) => {
-      return !currClicked
-    })
+      return !currClicked;
+    });
   }
 
-  if(isLoading){
-    return (
-      <Loading/>
-    )
+  if (isLoading) {
+    return <Loading />;
   }
 
   if (!recipe.recipe_id) {
@@ -41,9 +38,9 @@ export default function SingleRecipe({ params }) {
 
   return (
     <div>
-      {clicked && <AddToMealPlan recipe={recipe}/>}
+      {clicked && <AddToMealPlan recipe={recipe} />}
       {/* Main flex container */}
-      <div className="flex flex-col lg:flex-col m-4 gap-8 max-w-7xl mx-auto">
+      <div className="flex flex-col lg:flex-col gap-4 max-w-7xl mx-auto">
         {/* Hero Section */}
         <section
           className="hero bg-base-200 flex flex-col lg:flex-row items-center lg:items-start p-6 lg:p-12 rounded-lg shadow-lg"
@@ -64,18 +61,18 @@ export default function SingleRecipe({ params }) {
             <p className="py-6">{recipe.description}</p>
           </div>
           <div className="card-actions justify-end">
-                  <button onClick={handleClick} className="btn bg-secondary mt-4">
-                    + Meal Plan
-                  </button>
-                </div>
+            <button onClick={handleClick} className="btn bg-secondary mt-4">
+              + Meal Plan
+            </button>
+          </div>
         </section>
 
         {/* Stats Bar Section */}
         <section
           id="stats-bar"
-          className="recipe-stats flex flex-col lg:flex-row gap-4 lg:gap-8 m-4"
+          className="recipe-stats flex flex-col sm:flex-row gap-2 sm:gap-2 m-4"
         >
-          <div className="stat bg-primary flex-1 p-4 m-2 rounded-lg shadow-lg">
+          <div className="stat bg-primary flex-1 rounded-lg shadow-lg">
             <div className="stat-title">Total Prep Time</div>
             <div className="stat-value flex items-center text-lg">
               <Image
@@ -89,7 +86,7 @@ export default function SingleRecipe({ params }) {
               </span>
             </div>
           </div>
-          <div className="stat bg-secondary flex-1 p-4 m-2 rounded-lg shadow-lg">
+          <div className="stat bg-secondary flex-1 rounded-lg shadow-lg">
             <div className="stat-title">Serves</div>
             <div className="stat-value flex items-center text-lg">
               <Image
@@ -101,7 +98,7 @@ export default function SingleRecipe({ params }) {
               <span className="ml-2">{recipe.serves}</span>
             </div>
           </div>
-          <div className="stat bg-accent flex-1 p-4 m-2 rounded-lg shadow-lg">
+          <div className="stat bg-accent flex-1 rounded-lg shadow-lg">
             <div className="stat-title">Calories</div>
             <div className="stat-value flex items-center text-lg">
               <Image
@@ -113,13 +110,12 @@ export default function SingleRecipe({ params }) {
               <span className="ml-2">{recipe.kcal}</span>
             </div>
           </div>
-          
         </section>
 
         {/* Ingredients and Method Section */}
-        <div className="flex flex-col lg:flex-row gap-4 m-4">
-          <section id="recipe-ingredients" className="flex-1">
-            <div className="card bg-primary text-primary-content p-4 rounded-lg shadow-lg">
+        <div className="flex flex-col lg:flex-row">
+          <section id="recipe-ingredients" className="flex-1 m-4">
+            <div className="card bg-primary text-primary-content  rounded-lg shadow-lg">
               <div className="card-body">
                 <h2 className="card-title">Ingredients</h2>
                 <ul className="list-disc pl-6">
@@ -137,7 +133,7 @@ export default function SingleRecipe({ params }) {
           </section>
 
           <section id="recipe-method" className="flex-1">
-            <div className="card bg-accent text-primary-content p-4 rounded-lg shadow-lg">
+            <div className="card bg-accent text-primary-content rounded-lg shadow-lg m-4">
               <div className="card-body">
                 <h2 className="card-title">Method</h2>
                 <ul className="list-disc pl-6">
