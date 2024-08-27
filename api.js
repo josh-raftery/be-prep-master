@@ -8,6 +8,17 @@ const api = axios.create({
   baseURL: baseUrl,
 });
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function getRandomRecipe(params = {}){
+  return api.get(`/recipes`, params)
+  .then(({data}) => {
+    return data.recipes[getRandomInt(data.recipes.length - 1)]
+  })
+}
+
 
 function getRecipes(params) {
   return api.get("/recipes", { params }).then(({ data }) => {
@@ -54,4 +65,5 @@ module.exports = {
   postUser,
   postRecipe,
   addMeal,
+  getRandomRecipe,
 };
