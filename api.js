@@ -38,7 +38,12 @@ function postRecipe(request) {
   });
 }
 
-
+function addMeal(user_id,request){
+  return api.patch(`/mealplan/${user_id}?add=true`,{meals: request})
+  .then((response) => {
+    console.log(response)
+  })
+}
 
 module.exports = {
   getRecipes,
@@ -47,4 +52,5 @@ module.exports = {
   getRecipeById,
   postUser,
   postRecipe,
+  addMeal,
 };

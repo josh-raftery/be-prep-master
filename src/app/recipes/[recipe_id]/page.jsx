@@ -38,9 +38,9 @@ export default function SingleRecipe({ params }) {
 
   return (
     <div>
-      {clicked && <AddToMealPlan recipe={recipe} />}
+      {clicked && <AddToMealPlan recipe={recipe} setClicked={setClicked} />}
       {/* Main flex container */}
-      <div className="flex flex-col lg:flex-col gap-4 max-w-7xl mx-auto">
+      <div className="flex flex-col lg:flex-autocol gap-4 max-w-7xl mx-auto">
         {/* Hero Section */}
         <section
           className="hero bg-base-200 flex flex-col lg:flex-row items-center lg:items-start p-6 lg:p-12 rounded-lg shadow-lg"

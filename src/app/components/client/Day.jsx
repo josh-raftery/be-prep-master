@@ -1,12 +1,12 @@
 "use client";
 
-import { getRecipeById } from "api";
+import { addMeal, getRecipeById } from "api";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
 import Link from "next/link";
 import calculateNutrition from "src/utils/calculateNutrition";
 
-export default function Day({ day, date, mealPlan, today, popUp, setServingsToAllocate, servingsToAllocate, recipeToAdd }) {
+export default function Day({ day, date, mealPlan, today, popUp, setServingsToAllocate, servingsToAllocate, recipeToAdd,user_id,setClicked }) {
   const [todaysMeals, setTodaysMeals] = useState([]);
   const [todaysRecipes, setTodaysRecipes] = useState([]);
   const [hasFetched, setHasFetched] = useState(false);
@@ -77,6 +77,17 @@ export default function Day({ day, date, mealPlan, today, popUp, setServingsToAl
     });
   }, [todaysMeals]);
 
+  useEffect(() => {
+    if(servingsToAllocate === 0){
+      addMeal(user_id,newMeals) // only one meal,
+      .then(() => {
+        setClicked((currClicked) => {
+          return !currClicked
+        })
+      })
+    }
+  },[servingsToAllocate])
+
   if (!hasFetched) {
     return <Loading />;
   }
@@ -92,22 +103,15 @@ export default function Day({ day, date, mealPlan, today, popUp, setServingsToAl
         "recipe_id": recipeToAdd.recipe_id
       }]
     })
-    if(servingsToAllocate === 1){
-      // patchMealPlan
-    }
     setServingsToAllocate((currServings) => {
       return currServings - 1
     })
   }
 
   if (hasFetched) {
-    console.log(todaysRecipes, " todaysRecipes");
-    console.log(todaysMeals, " todays meals");
-    console.log(todaysBreakfast, " breakfast");
-    console.log(todaysLunch, " breakfast");
     if (popUp) {
       return (
-        <div className="card bg-primary text-primary-content w-96">
+        <div className="day-card card flex justify-start bg-primary text-primary-content w-96">
           <div className="card-body">
           <h2 className="card-title">{`${day}, ${date}`}</h2>
             <div className="checkbox-container" >
