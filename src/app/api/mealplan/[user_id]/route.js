@@ -1,4 +1,4 @@
-import { addToMealPlan, getMealPlan } from "../../../../../controller/mealPlanController";
+import { addToMealPlan, deleteFromMealPlan, getMealPlan } from "../../../../../controller/mealPlanController";
 
 export async function GET (request) {
     const splitUrl = request.url.split('/')
@@ -11,9 +11,9 @@ export async function PATCH(request){
     const user_id = splitUrl[splitUrl.length - 1]
     const updateData = await request.json();
     const add = request.nextUrl.searchParams.get("add")
-    if(add){
+    if(add === 'true'){
         return addToMealPlan(updateData,user_id)
-    }else{
+    }else if(add === 'false'){
         return deleteFromMealPlan(updateData,user_id)
     }
 }
