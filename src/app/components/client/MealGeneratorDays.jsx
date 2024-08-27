@@ -1,6 +1,6 @@
 "use client";
 
-import { getRecipeById } from "api";
+import { getRandomRecipe, getRecipeById, getRecipes } from "api";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
 import Link from "next/link";
@@ -15,7 +15,17 @@ export default function MealGeneratorDays({ day, date, mealPlan, setServingsToAl
   const [todaysDinner, setTodaysDinner] = useState([]);
   const [todaysSnacks, setTodaysSnacks] = useState([]);
   const [todaysDessert, setTodaysDessert] = useState([]);
-  const [newMeals,setNewMeals] = useState([])
+  const [newBreakfasts, setNewBreakfasts] = useState([])
+  const [newLunch, setNewLunch] = useState([])
+  const [newDinners, setNewDinners] = useState([])
+  const [newSnacks, setNewSnacks] = useState([])
+  const [newDesserts, setNewDesserts] = useState([])
+  const [mealQueries,setMealQueries] = useState([])
+  const [breakfastServings,setbreakfastServings] = useState(0)
+  const [lunchServings,setlunchServings] = useState(0)
+  const [dinnerServings,setdinnerServings] = useState(0)
+  const [snacksServings,setsnacksServings] = useState(0)
+  const [dessertServings,setdessertServings] = useState(0)
 
   function addToPopUp(mealType,recipe){
     if (mealType === "breakfast") {
@@ -64,8 +74,6 @@ export default function MealGeneratorDays({ day, date, mealPlan, setServingsToAl
       });
       setTodaysRecipes(recipes);
       setHasFetched(true);
-      const currNutrition = calculateNutrition(recipes);
-      setNutrition(currNutrition);
     });
   }, [todaysMeals]);
 
@@ -73,17 +81,127 @@ export default function MealGeneratorDays({ day, date, mealPlan, setServingsToAl
     return <Loading />;
   }
 
+  function onSubmit(){
+    console.log(breakfastServings, 'breakfast serve')
+    console.log(lunchServings, 'lunch serve')
+    console.log(dinnerServings, 'dinner serve')
+    console.log(snacksServings, 'snack serve')
+    console.log(dessertServings, 'dessert serve')
+
+    const queries = []
+
+    // if(breakfastServings){
+    //   queries.push(getRandomRecipe({mealType: 'breakfast', serves: breakfastServings}))
+    // }
+
+    // if(lunchServings){
+    //   queries.push(getRandomRecipe({mealType: 'lunch', serves: lunchServings}))
+    // }
+
+    // if(dinnerServings){
+    //   queries.push(getRandomRecipe({mealType: 'dinner', serves: dinnerServings}))
+    // }
+
+    // if(snacksServings){
+    //   queries.push(getRandomRecipe({mealType: 'snack', serves: snacksServings}))
+    // }
+
+    // if(dessertServings){
+    //   queries.push(getRecipes({mealType: 'dessert', serves: dessertServings}))
+    // }
+
+    // Promise.all(queries)
+    // .then((recipesArray) => {
+    //   recipesArray.forEach((mealTypeArray,typeIndex) => {
+    //     mealTypeArray.forEach((recipe,mealIndex) => {
+    //       if(typeIndex === 0){ // breakfast
+    //         setNewBreakfasts((currBreakfast) => {
+    //           currBreakfast[mealIndex].recipe_id = recipe.recipe_id
+    //         })
+    //       }
+    //       if(typeIndex === 1){ // lunch
+    //         setNewLunch((currLunch) => {
+    //           currLunch[mealIndex].recipe_id = recipe.recipe_id
+    //         })
+    //       }
+    //       if(typeIndex === 2){ // dinner
+    //         setNewDinners((currDinner) => {
+    //           currDinner[mealIndex].recipe_id = recipe.recipe_id
+    //         })
+    //       }
+    //       if(typeIndex === 3){ // snacks
+    //         setNewSnacks((currSnacks) => {
+    //           currSnacks[mealIndex].recipe_id = recipe.recipe_id
+    //         })
+    //       }
+    //       if(typeIndex === 4){ // dessert
+    //         setNewDesserts((currDessert) => {
+    //           currDessert[mealIndex].recipe_id = recipe.recipe_id
+    //         })
+    //       }
+    //     })
+    //   })
+    // })
+  }
+
   function handleClick(mealInfo){
-    
+    if(mealInfo.mealType === 'breakfast'){
+      setbreakfastServings((currServings) => {
+        return currServings + 1
+      })
+      setNewBreakfasts((currBreakfast) => {
+        return [...currBreakfast,mealInfo]
+      })
+    }
+    if(mealInfo.mealType === 'lunch'){
+      setlunchServings((currServings) => {
+        return currServings + 1
+      })
+      setNewLunch((currLunch) => {
+        return [...currLunch,mealInfo]
+      })
+    }
+    if(mealInfo.mealType === 'dinner'){
+      setdinnerServings((currServings) => {
+        return currServings + 1
+      })
+      setNewDinners((currDinner) => {
+        return [...currDinner,mealInfo]
+      })
+    }
+    if(mealInfo.mealType === 'dessert'){
+      setdessertServings((currServings) => {
+        return currServings + 1
+      })
+      setNewSnacks((currSnacks) => {
+        return [...currSnacks,mealInfo]
+      })
+    }
+    if(mealInfo.mealType === 'snacks'){
+      setsnacksServings((currServings) => {
+        return currServings + 1
+      })
+      setNewDesserts((currDessert) => {
+        return [...currDessert,mealInfo]
+      })
+    }
+
+    // build array of mealtypes to query
+    // build array of date, mealType
+
+    //send request to recipes api query my meal type
+    //slice first 'x' options
+    //add recipe ID to newMeal state
+    //send request to mealplan
+    //re-render page
     
   }
 
   if (hasFetched) {
- 
       return (
-
       <div className="card bg-primary text-primary-content w-96">
         <div className="card-body">
+        <button onClick={onSubmit} className="btn btn-outline">Generate</button>
         <h2 className="card-title">{`${day}, ${date}`}</h2>
           <div className="checkbox-container" >
             <h3 style={{ marginTop: "1rem" }} className="card-title">
