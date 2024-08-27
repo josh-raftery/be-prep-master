@@ -14,7 +14,6 @@ export async function PATCH(request){
     if(add === 'true'){
         return addToMealPlan(updateData,user_id)
     }else if(add === 'false'){
-        console.log('ffdsfdsfs')
         return deleteFromMealPlan(updateData,user_id)
     }
 }
