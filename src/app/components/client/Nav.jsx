@@ -51,8 +51,11 @@ export default function Nav() {
                     <Link href="/mealplan">
                       <li onClick={closeDropdown}>My Meal Plan</li>
                     </Link>
-                    <Link href={`/shopping-list/${user.user_id}`}>
+                    <Link href={`/shopping-list`}>
                       <li onClick={closeDropdown}>Shopping List</li>
+                    </Link>
+                    <Link href='/mealPlanGenerator'>
+                    <button>Generate Plan</button>
                     </Link>
                   </ul>
                 )}

@@ -6,9 +6,9 @@
       "ingredient_id": "a23f1843-c02b-4917-9529-254367e55ce6"
     },
     {
-      "id": "c839",
       "name": "bananas",
-      "ingredient_id": "b91229f4-42f4-4bf7-8f0f-1348d9ce2082"
+      "ingredient_id": "b91229f4-42f4-4bf7-8f0f-1348d9ce2082",
+      "id": "c839"
     }
   ]
 }
