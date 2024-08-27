@@ -8,6 +8,7 @@ const api = axios.create({
   baseURL: baseUrl,
 });
 
+
 function getRecipes(params) {
   return api.get("/recipes", { params }).then(({ data }) => {
     return data.recipes;

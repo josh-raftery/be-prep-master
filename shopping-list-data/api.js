@@ -48,3 +48,17 @@ export const editItem = async (itemToUpdate) => {
       console.error("Failed to delete item:", error);
     }
   };
+
+  export const deleteAllItems = async () => {
+    try {
+      const fetchResponse = await fetch(`${baseUrl}/ingredients`);
+      const ingredients = await fetchResponse.json();
+      for (const ingredient of ingredients) {
+        const deleteResponse = await fetch(`${baseUrl}/ingredients/${ingredient.id}`, {
+          method: "DELETE",
+        })
+      }
+      return { message: "All items deleted successfully" };
+    } catch (error) {
+    }
+  };

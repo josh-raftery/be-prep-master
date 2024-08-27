@@ -53,29 +53,31 @@ const Task = ({ ingredient }) => {
           size={20}
         />
         <Modal isOpen={openModalEdit} onClose={() => setOpenModalEdit(false)} className="p-6 bg-white shadow-lg rounded-lg">
-          <h3 className="text-2xl font-semibold mb-4 text-center">Edit Item</h3>
+          <h3 className="text-lg font-semibold mb-4 text-center">Edit Item</h3>
           <form onSubmit={handleSubmitEditNewItem} className="space-y-4">
             <input
               value={taskToEdit}
               onChange={(e) => setTaskToEdit(e.target.value)}
               type="text"
-              placeholder="Enter new name"
+              placeholder="Edit item"
               className="input input-bordered w-full py-2 px-4 rounded-md border-gray-300 shadow-sm"
             />
-            <button type="submit" className="btn btn-primary w-full py-2 rounded-md text-white bg-secondary-600 hover:bg-secondary-700 transition-colors">
+            <button type="submit" className="btn btn-accent w-full" >
               Submit
             </button>
           </form>
         </Modal>
         <Modal isOpen={openModalDelete} onClose={() => setOpenModalDelete(false)} className="p-6 bg-white shadow-lg rounded-lg">
           <h3 className="text-lg font-semibold mb-4 text-center">Confirm Deletion</h3>
-          <p className="text-center mb-4">Are you sure you want to delete this item from your basket?</p>
+          <p className="text-center mb-4">Are you sure you want to delete this item from your shopping list?</p>
           <div className="flex justify-center gap-4">
             <button
               onClick={handleDeleteItem}
-              className="btn btn-danger w-full py-2 rounded-md text-white bg-red-600 hover:bg-red-700 transition-colors"
+              className="btn text-white bg-red-600 
+              btn btn-red w-full
+              "
             >
-              YES
+              Yes
             </button>
           </div>
         </Modal>
