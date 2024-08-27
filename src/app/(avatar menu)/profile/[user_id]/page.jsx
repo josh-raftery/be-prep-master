@@ -10,8 +10,7 @@ export default async function Profile({ params }) {
       cache: "no-store",
     }
   );
-  console.log(res,'sucessfull ingredents ')
-
+  
   const responseData = await res.json();
   const user = responseData.user;
 

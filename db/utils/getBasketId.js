@@ -3,7 +3,7 @@ const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 3000;  
 
 function getBasketId(){
-    console.log('test basketid')
+   
     return axios.get(`http://${host}:${port}/api/baskets`)
     .then((response) => {
         return response.data.baskets.length + 1
