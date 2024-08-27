@@ -41,7 +41,7 @@ export default function Day({ day, date, mealPlan, today, popUp, setServingsToAl
         return [...currDinner, recipe];
       });
     }
-    if (mealType === "snack") {
+    if (mealType === "snacks") {
       setTodaysSnacks((currSnacks) => {
         return [...currSnacks, recipe];
       });
@@ -93,7 +93,7 @@ export default function Day({ day, date, mealPlan, today, popUp, setServingsToAl
       }]
     })
     if(servingsToAllocate === 1){
-
+      // patchMealPlan
     }
     setServingsToAllocate((currServings) => {
       return currServings - 1
