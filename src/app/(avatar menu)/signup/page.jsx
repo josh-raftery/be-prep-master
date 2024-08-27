@@ -26,7 +26,7 @@ export default function SignUp() {
 
   function handleSubmitSignUp(event) {
     event.preventDefault();
-    console.log(signUpUsername);
+    
   postUser(signUpUsername)
     .then((newUser) => {
       setUser(newUser);

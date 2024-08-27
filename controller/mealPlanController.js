@@ -45,7 +45,7 @@ const addToMealPlan = async (updateData,user_id) => {
       return NextResponse.json({ error: "Not Found" }, { status: 404 });
     }
 
-    console.log(result, ' resultresult')
+    
 
     const updateDB = await mealplanCollection.updateOne(
       { user_id: parseInt(user_id) },

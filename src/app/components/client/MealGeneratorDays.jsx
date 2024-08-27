@@ -79,10 +79,7 @@ export default function MealGeneratorDays({ day, date, mealPlan, setServingsToAl
   }
 
   if (hasFetched) {
-    console.log(todaysRecipes, " todaysRecipes");
-    console.log(todaysMeals, " todays meals");
-    console.log(todaysBreakfast, " breakfast");
-    console.log(todaysLunch, " breakfast");
+ 
       return (
 
       <div className="card bg-primary text-primary-content w-96">
