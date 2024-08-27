@@ -9,7 +9,8 @@ const getRecipes = async (
   sort_by = "recipe_id",
   chef,
   preparation_time_minutes,
-  serves
+  serves,
+  mealType
 ) => {
   try {
     let findQuery = {};
@@ -19,6 +20,10 @@ const getRecipes = async (
     if (chef) {
       findQuery.chef = { $regex: chef, $options: "i" };
     }
+    if (mealType) {
+      findQuery.mealType = { $regex: mealType, $options: "i" };
+    }
+    
     if (preparation_time_minutes) {
       findQuery.preparation_time_minutes = {
         $eq: Number(preparation_time_minutes),
