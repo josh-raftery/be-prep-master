@@ -69,7 +69,7 @@ export default function AddRecipe() {
             <input
               type="text"
               placeholder="Recipe Title"
-              className="input input-bordered w-full max-w-xs m-4"
+              className="input bg-white input-bordered w-full max-w-xs m-4"
               name="title"
               value={formData.title}
               onChange={handleChange}
@@ -78,7 +78,7 @@ export default function AddRecipe() {
             <input
               type="text"
               placeholder="Description"
-              className="input input-bordered w-full max-w-xs m-4"
+              className="input bg-white input-bordered w-full max-w-xs m-4"
               name="description"
               value={formData.description}
               onChange={handleChange}
@@ -86,7 +86,7 @@ export default function AddRecipe() {
             <input
               type="text"
               placeholder="Ingredients (comma separated)"
-              className="input input-bordered w-full input-lg max-w-xs m-4"
+              className="input bg-white input-bordered w-full input-lg max-w-xs m-4"
               name="ingredients"
               value={formData.ingredients}
               onChange={handleChange}
@@ -94,7 +94,7 @@ export default function AddRecipe() {
             <input
               type="text"
               placeholder="Instructions (comma separated)"
-              className="input input-bordered w-full input-lg max-w-xs m-4"
+              className="input bg-white input-bordered w-full input-lg max-w-xs m-4"
               name="instructions"
               value={formData.instructions}
               onChange={handleChange}
@@ -102,7 +102,7 @@ export default function AddRecipe() {
              <input
               type="text"
               placeholder="Servings"
-              className="input input-bordered w-full max-w-xs m-4"
+              className="input bg-white input-bordered w-full max-w-xs m-4"
               name="chef"
               value={formData.serves}
               onChange={handleChange}
@@ -110,7 +110,7 @@ export default function AddRecipe() {
             <input
               type="number"
               placeholder="Prep Time (mins)"
-              className="input input-bordered w-full max-w-xs m-4"
+              className="input bg-white input-bordered w-full max-w-xs m-4"
               name="preparation_time_minutes"
               value={formData.preparation_time_minutes}
               onChange={handleChange}
@@ -118,7 +118,7 @@ export default function AddRecipe() {
             <input
               type="number"
               placeholder="Cooking Time (mins)"
-              className="input input-bordered w-full max-w-xs m-4"
+              className="input bg-white input-bordered w-full max-w-xs m-4"
               name="cooking_time_minutes"
               value={formData.cooking_time_minutes}
               onChange={handleChange}
@@ -126,7 +126,7 @@ export default function AddRecipe() {
             <input
               type="url"
               placeholder="Photo URL"
-              className="input input-bordered w-full max-w-xs m-4"
+              className="input bg-white input-bordered w-full max-w-xs m-4"
               name="photo_url"
               value={formData.photo_url}
               onChange={handleChange}

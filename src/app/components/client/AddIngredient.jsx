@@ -12,6 +12,7 @@ const AddIngredients = ({ ingredients }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newItemValue, setNewItemValue] = useState("");
 
+
   const handleSubmitNewItem = async (e) => {
     e.preventDefault();
     try {

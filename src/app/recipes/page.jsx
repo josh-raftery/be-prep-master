@@ -21,12 +21,12 @@ export default function Recipes() {
     <>
     <SearchBar/>
     <container className="recipe-card-container">
-    <section className="grid gap-[20px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+    <section className="grid gap-[20px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-sm mx-auto">
       {allRecipes.map((recipe) => {
         return (
           <Link href={`/recipes/${recipe.recipe_id}`} key={recipe.recipe_id}>
           <div
-            className="card flex-1 h-full bg-base-100 shadow-xl h-5000"
+            className="card flex-1 h-full bg-base-100 shadow-xl h-5000 "
           >
             <figure>
               <img
