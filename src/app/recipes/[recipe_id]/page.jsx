@@ -1,25 +1,47 @@
-import React from "react";
-import RootLayout from "src/app/layout";
+'use client'
+
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import AddToMealPlan from "@components/client/AddToMealplan";
+import { getRecipeById } from "api";
+import Loading from "@components/client/Loading";
 
+export default function SingleRecipe({ params }) {
 
+  const [recipe,setRecipe] = useState({})
+  const [clicked,setClicked] = useState(false)
+  const [isLoading, setisLoading] = useState(true)
 
-export default async function SingleRecipe({ params }) {
-  const { recipe_id } = params;
-  const host = process.env.HOST || "localhost";
-  const port = process.env.PORT || 3000;
-  const res = await fetch(`http://${host}:${port}/api/recipes/${params.recipe_id}`);
-  const responseData = await res.json();
-  const recipe = responseData.recipe;
+  useEffect(() => {
+    getRecipeById(params.recipe_id)
+    .then((recipe) => {
+      setRecipe(recipe)
+      setisLoading(false)
+    })
+    .catch((err) => {
+      console.log(err, ' err')
+    })
+  },[])
 
-  if (!recipe) {
+  function handleClick(){
+    setClicked((currClicked) => {
+      return !currClicked
+    })
+  }
+
+  if(isLoading){
+    return (
+      <Loading/>
+    )
+  }
+
+  if (!recipe.recipe_id) {
     return <div>Recipe not found!</div>;
   }
 
   return (
     <div>
-      {/* <AddToMealPlan recipe={recipe}/> */}
+      {clicked && <AddToMealPlan recipe={recipe}/>}
       {/* Main flex container */}
       <div className="flex flex-col lg:flex-col m-4 gap-8 max-w-7xl mx-auto">
         {/* Hero Section */}
@@ -42,13 +64,8 @@ export default async function SingleRecipe({ params }) {
             <p className="py-6">{recipe.description}</p>
           </div>
           <div className="card-actions justify-end">
-                  <button className="btn bg-secondary mt-4"><Image
-                src="/heartIcon.png"
-                alt="heart icon"
-                width={20}
-                height={20}
-              />
-                    + Favourites
+                  <button onClick={handleClick} className="btn bg-secondary mt-4">
+                    + Meal Plan
                   </button>
                 </div>
         </section>
