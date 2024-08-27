@@ -1,12 +1,15 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import AddToMealPlan from "@components/client/AddToMealplan";
 import { getRecipeById } from "api";
 import Loading from "@components/client/Loading";
+import { addItem } from "shopping-list-data/api";
+import { v4 as uuidv4 } from "uuid";
 
 export default function SingleRecipe({ params }) {
+  const router = useRouter();
   const [recipe, setRecipe] = useState({});
   const [clicked, setClicked] = useState(false);
   const [isLoading, setisLoading] = useState(true);
@@ -22,11 +25,31 @@ export default function SingleRecipe({ params }) {
       });
   }, []);
 
+  const ingredientArray = recipe.ingredients;
+
   function handleClick() {
     setClicked((currClicked) => {
       return !currClicked;
     });
   }
+
+  const handleAddToShoppingList = async () => {
+    try {
+      await Promise.all(
+        ingredientArray.map(async (item) => {
+          await addItem({
+            name: item,
+            ingredient_id: uuidv4(),
+          });
+        })
+      );
+  
+      router.push("/shopping-list");
+      router.refresh("/shopping-list");
+    } catch (err) {
+      console.log(err, " err");
+    }
+  };
 
   if (isLoading) {
     return <Loading />;
@@ -60,12 +83,12 @@ export default function SingleRecipe({ params }) {
             <h2 className="text-xl lg:text-2xl mt-2">{recipe.chef}</h2>
             <p className="py-6">{recipe.description}</p>
           </div>
-          <div className="card-actions justify-end">
-            <button onClick={handleClick} className="btn bg-secondary mt-4">
-              + Meal Plan
-            </button>
-          </div>
         </section>
+        <div className="card-actions justify-center">
+          <button onClick={handleClick} className="btn bg-secondary mt-4">
+            + Meal Plan
+          </button>
+        </div>
 
         {/* Stats Bar Section */}
         <section
@@ -124,14 +147,16 @@ export default function SingleRecipe({ params }) {
                   ))}
                 </ul>
                 <div className="card-actions justify-end">
-                  <button className="btn bg-secondary mt-4">
+                  <button
+                    onClick={handleAddToShoppingList}
+                    className="btn bg-secondary mt-4"
+                  >
                     + Shopping List
                   </button>
                 </div>
               </div>
             </div>
           </section>
-
           <section id="recipe-method" className="flex-1">
             <div className="card bg-accent text-primary-content rounded-lg shadow-lg m-4">
               <div className="card-body">

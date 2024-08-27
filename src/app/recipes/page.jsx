@@ -21,7 +21,7 @@ export default function Recipes() {
     <>
     <SearchBar/>
     <container className="recipe-card-container">
-    <section className="grid gap-[20px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-sm mx-auto">
+    <section className="grid gap-[20px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  mx-auto">
       {allRecipes.map((recipe) => {
         return (
           <Link href={`/recipes/${recipe.recipe_id}`} key={recipe.recipe_id}>
