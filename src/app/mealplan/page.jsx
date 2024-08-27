@@ -5,6 +5,7 @@ import { UserContext } from "@components/client/userProvider";
 import { getDates } from "src/utils/getDates";
 import Day from "@components/client/Day";
 import Loading from "@components/client/Loading";
+import MpGen from "@components/client/MpGen";
 
 export  default function MealPlan({popUp, diff=0, setServingsToAllocate, servingsToAllocate,recipeToAdd}){
     const {user} = useContext(UserContext)
@@ -39,16 +40,30 @@ export  default function MealPlan({popUp, diff=0, setServingsToAllocate, serving
 
     if(mealPlan.meals && !isLoading){
         return (
-            <section className="week-container" >
-                {days.map((day,index) => {
-                    return(
-                        <div key = {`${dates[index]}-container`} >
-                            <Day key={dates[index]} today={today} day={day} date={dates[index]} mealPlan={mealPlan} popUp={popUp} servingsToAllocate={servingsToAllocate} setServingsToAllocate={setServingsToAllocate} recipeToAdd={recipeToAdd}/>
-                        </div>
-                    )
-                })}
+          <>
+          <MpGen />
+          <br />
+            <section className="week-container">
+              {days.map((day, index) => {
+                return (
+                  <div key={`${dates[index]}-container`}>
+                    <Day
+                      key={dates[index]}
+                      today={today}
+                      day={day}
+                      date={dates[index]}
+                      mealPlan={mealPlan}
+                      popUp={popUp}
+                      servingsToAllocate={servingsToAllocate}
+                      setServingsToAllocate={setServingsToAllocate}
+                      recipeToAdd={recipeToAdd}
+                    />
+                  </div>
+                );
+              })}
             </section>
-        )
+          </>
+        );
     }
 }
 
