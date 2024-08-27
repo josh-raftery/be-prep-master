@@ -14,7 +14,7 @@ export default function MealPlanGenerator() {
   const [isLoading, setIsLoading] = useState(true);
   const [diff, setDiff] = useState(0); // diff 1 = next week dates, diff -1 = previous week dates, 0 this week
   const [today, setToday] = useState("");
-  const [newMeal, setNewMeal] = useState(""); 
+  const [newMeal, setNewMeal] = useState("");
   const days = [
     "Monday",
     "Tuesday",
@@ -26,18 +26,19 @@ export default function MealPlanGenerator() {
   ];
 
   useEffect(() => {
-    setIsLoading(true)
-    getMealPlan(user.user_id).then((mealPlanData) => {
-      setMealPlan(mealPlanData);
-      setHasMealPlan(true);
-    })
-    .catch((err) =>{
-        console.log('Failed to fetch meal plan', err)
-        setHasMealPlan(false)
-    })
-    .finally(() =>{
-      setIsLoading(false)
-    })
+    setIsLoading(true);
+    getMealPlan(user.user_id)
+      .then((mealPlanData) => {
+        setMealPlan(mealPlanData);
+        setHasMealPlan(true);
+      })
+      .catch((err) => {
+        console.log("Failed to fetch meal plan", err);
+        setHasMealPlan(false);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
     setDates(getDates(diff));
     const date = new Date();
 
@@ -57,79 +58,71 @@ export default function MealPlanGenerator() {
       }
     });
   }
- function handleChange (e){
-  setNewMeal(e.target.value)
- }
+  function handleChange(e) {
+    setNewMeal(e.target.value);
+  }
 
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      if (newMeal.trim() === "") return;
-      // Add new meal to the current day's meal plan
-      const updatedMealPlan = [...mealPlan, { day: today, meal: newMeal }];
-      setMealPlan(updatedMealPlan);
-      setNewMeal("");
-      // Optionally save the updated meal plan to the server
-      // saveMealPlan(user.user_id, updatedMealPlan).catch((error) => {
-      //   console.error("Failed to save meal plan:", error);
-      // });
-    }
-    if (isLoading) {
-      return <Loading />;
-    }
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    if (newMeal.trim() === "") return;
+    const updatedMealPlan = [...mealPlan, { day: today, meal: newMeal }];
+    setMealPlan(updatedMealPlan);
+    setNewMeal("");
+  }
+  if (isLoading) {
+    return <Loading />;
+  }
 
- 
-    return (
-      <div className="mealplan-popup">
-        <div className="card bg-primary text-primary-content w-96 ">
-          <div className="card-body">
-            <h2 className="card-title">
-              Meal Plan
-              <button
-                onClick={handleClick}
-                className="btn btn-outline"
-                style={{ marginLeft: "7rem" }}
-              >
-                {diff === 0 ? "Next Week" : "This Week"}
-              </button>
-            </h2>
-            {/* Form to add new meal
-             */}
-            <form onSubmit={handleFormSubmit}>
-              <div className="form-control">
-                <label htmlFor="mealInput" className="label">
-                  <span className="label-text">Add a meal for {today}</span>
-                </label>
-                <input
-                  type="text"
-                  id="mealInput"
-                  value={newMeal}
-                  onChange={handleChange}
-                  className="input input-bordered"
-                  placeholder="Enter meal name"
+  return (
+    <div className="mealplan-popup">
+      <div className="card bg-primary text-primary-content w-96 ">
+        <div className="card-body">
+          <h2 className="card-title">
+            Meal Plan
+            <button
+              onClick={handleClick}
+              className="btn btn-outline"
+              style={{ marginLeft: "7rem" }}
+            >
+              {diff === 0 ? "Next Week" : "This Week"}
+            </button>
+          </h2>
+          {/* Form to add new meal
+           */}
+          <form onSubmit={handleFormSubmit}>
+            <div className="form-control">
+              <label htmlFor="mealInput" className="label">
+                <span className="label-text">Add a meal for {today}</span>
+              </label>
+              <input
+                type="text"
+                id="mealInput"
+                value={newMeal}
+                onChange={handleChange}
+                className="input input-bordered"
+                placeholder="Enter meal name"
+              />
+            </div>
+            <button type="submit" className="btn btn-primary mt-4">
+              Add Meal
+            </button>
+          </form>
+          {/* Display the meal plan  */}
+          <div className="card-actions justify-end">
+            {days.map((day, index) => (
+              <div key={`${dates[index]}-container`}>
+                <MealGeneratorDays
+                  key={dates[index]}
+                  today={today}
+                  day={day}
+                  date={dates[index]}
+                  mealPlan={mealPlan}
                 />
               </div>
-              <button type="submit" className="btn btn-primary mt-4">
-                Add Meal
-              </button>
-            </form>
-                {/* Display the meal plan  */}
-            <div className="card-actions justify-end">
-              {days.map((day, index) => (
-                  <div key={`${dates[index]}-container`}>
-                    <MealGeneratorDays
-                      key={dates[index]}
-                      today={today}
-                      day={day}
-                      date={dates[index]}
-                      mealPlan={mealPlan}
-                    />
-                  </div>
-                ))}
-              
-            </div>
+            ))}
           </div>
         </div>
       </div>
-    );
-  
+    </div>
+  );
 }
