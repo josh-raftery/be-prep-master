@@ -1,44 +1,44 @@
-
 import React, { useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { LuTrash2 } from "react-icons/lu";
 import Modal from "./Modal";
-import { deleteItem, editItem } from "api";
-import { useUser } from "./userProvider"; // Ensure correct path
+import { useRouter } from "next/navigation";
+import { deleteItem, editItem } from "shopping-list-data/api";
 
 const Task = ({ ingredient }) => {
-  const { user } = useUser(); // Make sure this works and provides a user context
-  const user_id = user.user_id; // Ensure this is available and correct
+  const router = useRouter();
   const [openModalEdit, setOpenModalEdit] = useState(false);
-  const [taskToEdit, setTaskToEdit] = useState(ingredient);
+  const [taskToEdit, setTaskToEdit] = useState(ingredient.name);
   const [openModalDelete, setOpenModalDelete] = useState(false);
 
-  const handleSubmitEditNewItem = (e) => {
+  const handleSubmitEditNewItem = async (e) => {
     e.preventDefault();
-    editItem(user_id, ingredient, taskToEdit)
-      .then(() => {
-        setOpenModalEdit(false);
-        // Refresh data or handle state update as needed
-      })
-      .catch((error) => {
-        console.error("Failed to edit item:", error);
+    try {
+      await editItem({
+        id: ingredient.id,
+        name: taskToEdit,
+        ingredient_id: ingredient.ingredient_id,
       });
+      setOpenModalEdit(false);
+      router.refresh();
+    } catch (error) {
+      console.error("Failed to edit item:", error);
+    }
   };
 
-  const handleDeleteItem = () => {
-    deleteItem(user_id, ingredient)
-      .then(() => {
-        setOpenModalDelete(false);
-        // Refresh data or handle state update as needed
-      })
-      .catch((error) => {
-        console.error("Failed to delete item:", error);
-      });
+  const handleDeleteItem = async () => {
+    try {
+      await deleteItem(ingredient.id);
+      setOpenModalDelete(false);
+      router.refresh();
+    } catch (error) {
+      console.error("Failed to delete item:", error);
+    }
   };
 
   return (
     <tr className="border-b border-gray-300 hover:bg-gray-100 transition-colors">
-      <td className="p-4">{ingredient}</td>
+      <td className="p-4">{ingredient.name}</td>
       <td className="p-4 flex gap-4 items-center justify-end">
         <FiEdit
           onClick={() => setOpenModalEdit(true)}
