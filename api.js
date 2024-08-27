@@ -13,7 +13,9 @@ const api = axios.create({
 function getBasket(user_id) {
   return api
     .get(`/basket/${user_id}`)
-    .then(({ data }) => data.basket)
+    .then(({ data }) => {
+      return data.basket;
+    })
     .catch((error) => {
       console.error("Error fetching data:", error);
       throw error;
@@ -21,12 +23,13 @@ function getBasket(user_id) {
 }
 
 function addItem(user_id, newIngredient) {
+  console.log(newIngredient)
   return api
     .patch(`/basket/${user_id}`, {
       $push: { ingredients: newIngredient, user_id },
     })
     .then(({ data }) => {
-      return data.basket;
+      return data.basket.ingredients;
     })
     .catch((error) => {
       console.error("Error updating basket data:", error);
@@ -34,57 +37,62 @@ function addItem(user_id, newIngredient) {
     });
 }
 
-function editItem(user_id, oldName, newName) {
-  return api
-    .get(`/basket/${user_id}`)
-    .then(({ data }) => {
-      const updatedIngredients = data.ingredients.map((ingredient) =>
-        ingredient === oldName ? newName : ingredient
-      );
+function editItem(user_id, ingredients, oldName, newName) {
+  const updatedIngredients = Array.isArray(ingredients)
+    ? ingredients.map((ingredient) =>
+        ingredient.toLowerCase() === oldName.toLowerCase() ? newName : ingredient
+      )
+    : [];
 
-      return api
-        .put(
-          `/basket/${user_id}`,
-          {
-            ...data,
-            ingredients: updatedIngredients,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .then(({ data }) => {
-          return data;
-        });
-    })
+    console.log(updatedIngredients)
+
+  return api
+    .patch(
+      `/basket/${user_id}`,
+      {
+        ingredients: updatedIngredients,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    .then(({ data }) => data)
     .catch((error) => {
       console.error("Failed to update item:", error);
+      throw error; 
     });
 }
 
-function deleteItem(user_id, nameToDelete) {
-  return api
-    .get(`/basket/${user_id}`)
-    .then(({ data }) => {
-      const updatedIngredients = data.ingredients.filter(
-        (ingredient) => ingredient !== nameToDelete
-      );
 
-      return api
-        .put(`/basket/${user_id}`, {
-          ...data,
-          ingredients: updatedIngredients,
-        })
-        .then(({ data }) => {
-          return data;
-        });
-    })
+
+
+function deleteItem(user_id, ingredients, nameToDelete) {
+
+  const updatedIngredients = Array.isArray(ingredients)
+    ? ingredients.filter((ingredient) => ingredient !== nameToDelete)
+    : [];
+
+  return api
+    .patch(
+      `/basket/${user_id}`,
+      {
+        ingredients: updatedIngredients,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        }
+      }
+    )
+    .then(({ data }) => data) 
     .catch((error) => {
       console.error("Failed to delete item:", error);
+      throw error; 
     });
 }
+
 
 // Additional Functions
 

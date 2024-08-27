@@ -10,7 +10,16 @@ const AddIngredients = ({ ingredients = [], user_id }) => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newItemValue, setNewItemValue] = useState('');
-  const [updatedIngredients, setUpdatedIngredients] = useState(ingredients);
+  const [updatedIngredients, setUpdatedIngredients] = useState('');
+
+  function handleChange(event){
+    const { name, value } = event.target
+    setNewItemValue({
+      ...newItemValue, [name]: value
+    })
+
+    }
+
 
   useEffect(() => {
     setUpdatedIngredients(ingredients);
@@ -18,7 +27,7 @@ const AddIngredients = ({ ingredients = [], user_id }) => {
 
   
   const handleSubmitNewItem = (e) => {
-    console.log("ARE YOU GETTING USED")
+    console.log("ADD INGREDITNES IS GETTING USED")
     e.preventDefault();
     addItem(user_id, newItemValue)
       .then(() => {
@@ -75,8 +84,8 @@ const AddIngredients = ({ ingredients = [], user_id }) => {
           <h3 className="text-xl font-bold mb-4">ADD NEW ITEM</h3>
           <div className="flex flex-col space-y-2">
             <input
-              value={newItemValue}
-              onChange={(e) => setNewItemValue(e.target.value)}
+              value={newItemValue.ingredients}
+              onChange={handleChange}
               type="text"
               placeholder="Type here"
               className="input input-bordered w-full"
