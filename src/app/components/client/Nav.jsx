@@ -34,12 +34,12 @@ export default function Nav() {
               <div className="dropdown">
                 <button className="btn m-1 btn-primary" onClick={() => toggleDropdown("recipes")}>Recipes</button>
                 {activeDropdown === "recipes" && (
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-30 p-2 shadow">
+                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
                     <Link href="/recipes">
                       <li onClick={closeDropdown}>All Recipes</li>
                     </Link>
-                    <Link href="/recipes/add">
-                      <li onClick={closeDropdown}>Add Recipe</li>
+                    <Link href="/recipes/post-recipe">
+                      <li onClick={closeDropdown}>Post a Recipe</li>
                     </Link>
                   </ul>
                 )}
@@ -47,7 +47,7 @@ export default function Nav() {
               <div className="dropdown">
                 <button className="btn m-1 btn-secondary" onClick={() => toggleDropdown("mealplan")}>Meal Plan</button>
                 {activeDropdown === "mealplan" && (
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-30 p-2 shadow">
+                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
                     <Link href="/mealplan">
                       <li onClick={closeDropdown}>My Meal Plan</li>
                     </Link>
@@ -63,15 +63,18 @@ export default function Nav() {
               <div className="dropdown">
                 <button className="btn m-1 btn-accent" onClick={() => toggleDropdown("profile")}>Profile</button>
                 {activeDropdown === "profile" && (
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-30 p-2 shadow">
+                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
                     <Link href={`/profile/${user.user_id}`}>
                       <li onClick={closeDropdown}>My Profile</li>
                     </Link>
-                    <Link href={user.username ? "/signout" : "/signin"}>
-                      <li onClick={closeDropdown}>{user.username ? "Sign Out" : "Sign in"}</li>
+                    <Link href="/signin">
+                      <li onClick={closeDropdown}>Sign In</li>
                     </Link>
                     <Link href="/signup">
                       <li onClick={closeDropdown}>Sign Up</li>
+                    </Link>
+                    <Link href={user.username ? "/signout" : "/signin"}>
+                      <li onClick={closeDropdown}>{user.username ? "Sign Out" : "Sign in"}</li>
                     </Link>
                   </ul>
                 )}

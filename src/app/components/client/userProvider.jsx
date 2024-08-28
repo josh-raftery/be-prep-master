@@ -13,16 +13,16 @@ export const UserProvider = ({ children }) => {
     "name": "Samantha",
     "avatar_url": "https://api.dicebear.com/9.x/personas/svg?seed=Sammy&backgroundColor=b6e3f4",
     "ingredients_used": [],
-    "favourite_recipes": [],
-    "basketId": 1 // Ensure basketId is part of user data
+    "my_recipes": [],
+  
   });
 
-  const signIn = (username) => {
-    setUser({ username });
+  const signIn = async (userData) => {
+    setUser(userData); // Update the user state with the provided user data
   };
 
   const signOut = () => {
-    setUser({});
+    setUser(null); // Clear user state on sign out
   };
 
   return (

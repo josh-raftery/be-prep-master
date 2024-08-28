@@ -12,6 +12,7 @@ export default function AddRecipe() {
     description: "",
     ingredients: "",
     instructions: "",
+    serves: "",
     preparation_time_minutes: "",
     cooking_time_minutes: "",
     photo_url: "",
@@ -36,6 +37,7 @@ export default function AddRecipe() {
       instructions: formData.instructions.split(",").map(item => item.trim()), 
       chef: user.username,
     };
+    console.log(formData)
 
     postRecipe(recipeData)
       .then((newRecipe) => {
@@ -53,6 +55,7 @@ export default function AddRecipe() {
       description: "",
       ingredients: "",
       instructions: "",
+      serves: "",
       preparation_time_minutes: "",
       cooking_time_minutes: "",
       photo_url: "",
@@ -64,7 +67,7 @@ export default function AddRecipe() {
     <container className="flex flex-col items-center pb-10 m-4">
       <div className="card bg-white w-96 shadow-xl">
         <div className="card-body">
-          <h2 className="card-title">Add Recipe</h2>
+          <h2 className="card-title">Post A New Recipe</h2>
           {error && <p className="text-red-500">{error}</p>}
           <form className="form-control" onSubmit={handleSubmit}>
             <input
@@ -83,6 +86,7 @@ export default function AddRecipe() {
               name="description"
               value={formData.description}
               onChange={handleChange}
+              required
             />
             <input
               type="text"
@@ -91,6 +95,7 @@ export default function AddRecipe() {
               name="ingredients"
               value={formData.ingredients}
               onChange={handleChange}
+              required
             />
             <input
               type="text"
@@ -99,12 +104,13 @@ export default function AddRecipe() {
               name="instructions"
               value={formData.instructions}
               onChange={handleChange}
+              required
             />
              <input
-              type="text"
+              type="number"
               placeholder="Servings"
               className="input bg-white input-bordered w-full max-w-xs m-4"
-              name="chef"
+              name="serves"
               value={formData.serves}
               onChange={handleChange}
             />
@@ -115,14 +121,7 @@ export default function AddRecipe() {
               name="preparation_time_minutes"
               value={formData.preparation_time_minutes}
               onChange={handleChange}
-            />
-            <input
-              type="number"
-              placeholder="Cooking Time (mins)"
-              className="input bg-white input-bordered w-full max-w-xs m-4"
-              name="cooking_time_minutes"
-              value={formData.cooking_time_minutes}
-              onChange={handleChange}
+              required
             />
             <input
               type="url"
@@ -131,9 +130,10 @@ export default function AddRecipe() {
               name="photo_url"
               value={formData.photo_url}
               onChange={handleChange}
+              required
             />
             <button type="submit" className="btn btn-primary m-4">
-              Add Recipe
+              Submit
             </button>
           </form>
         </div>
