@@ -34,7 +34,6 @@ function getMealPlan(user_id) {
 
 function getRecipeById(recipe_id) {
   return api.get(`/recipes/${recipe_id}`).then(({ data }) => {
-    console.log(data.recipe, '<----in api file')
     return data.recipe;
   });
 }
