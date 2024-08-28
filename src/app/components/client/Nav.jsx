@@ -57,6 +57,10 @@ export default function Nav() {
                     <Link href='/mealPlanGenerator'>
                     <button>Generate Plan</button>
                     </Link>
+                    <Link href='/achievements'>
+                    Progress
+                    </Link>
+
                   </ul>
                 )}
               </div>
