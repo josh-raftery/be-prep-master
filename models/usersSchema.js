@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   avatar_url: { type: String, required: false },
   ingredients_used: [{ type: String }], // Array of ingredient names
-  favourite_recipes: [{ type: String }], // Array of references to Recipe model
+  my_recipes: [{ type: String }], // Array of references to Recipe model
   
 });
 

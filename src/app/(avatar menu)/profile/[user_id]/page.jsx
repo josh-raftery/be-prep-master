@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Profile({ params }) {
   const host = process.env.HOST || "localhost";
@@ -10,115 +11,65 @@ export default async function Profile({ params }) {
       cache: "no-store",
     }
   );
-  
+
   const responseData = await res.json();
   const user = responseData.user;
 
+  const myRecipesData = await Promise.all(
+    user.my_recipes.map(async (recipe_id) => {
+      const resRecipe = await fetch(
+        `http://${host}:${port}/api/recipes/${recipe_id}`
+      );
+      return await resRecipe.json();
+    })
+  );
+
   return (
     <>
-      <div className="flex flex-col items-center pb-10 m-4">
-        <container className="card bg-white max-w-3xl shadow-xl flex-col items-center p-4">
-          <h2 className="mb-1 text-xl font-medium text-gray-900 dark:text-white m-2 flex flex-col items-center ">
-              Hi {user.name}!
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+        <div className="card bg-white max-w-3xl shadow-xl p-4 flex flex-col items-center m-2">
+          <h2 className="text-xl font-medium text-gray-900 dark:text-white mb-4">
+            Hi {user.name}!
           </h2>
           <figure className="px-10 pt-10">
             <img
               alt="avatar image"
-              className="w-48 h-48 mb-3 rounded-full shadow-lg"
+              className="w-48 h-48 mb-4 rounded-full shadow-lg"
               src={user.avatar_url}
             />
           </figure>
-          <div className="card-body items-center text-center">
-            
+          <div className="card-body items-center text-center text-lg font-medium text-gray-900 dark:text-white mb-4">
             <p>Username: {user.username}</p>
           </div>
-          
-          {/* <section id="scores-section">
-            <h3 className="text-xl font-semibold">Scores:</h3>
-              <section className="rating rating-md m-2" id="stars-section">
-                <input
-                  type="radio"
-                  name="rating-8"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-                <input
-                  type="radio"
-                  name="rating-8"
-                  className="mask mask-star-2 bg-orange-400"
-                  defaultChecked
-                />
-                <input
-                  type="radio"
-                  name="rating-8"
-                  className="mask mask-star-2 bg-orange-400"
-                  defaultChecked
-                />
-                <input
-                  type="radio"
-                  name="rating-8"
-                  className="mask mask-star-2 bg-orange-400"
-                  defaultChecked
-                />
-                <input
-                  type="radio"
-                  name="rating-8"
-                  className="mask mask-star-2 bg-orange-400"
-                />
-              </section>
-              <section id="hearts-section" className="m-2">
-                <div className="rating gap-1">
-                  <input
-                    type="radio"
-                    name="rating-3"
-                    className="mask mask-heart bg-red-400"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-3"
-                    className="mask mask-heart bg-orange-400"
-                    defaultChecked
-                  />
-                  <input
-                    type="radio"
-                    name="rating-3"
-                    className="mask mask-heart bg-yellow-400"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-3"
-                    className="mask mask-heart bg-lime-400"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-3"
-                    className="mask mask-heart bg-green-400"
-                  />
+        </div>
+
+        <div className="card bg-primary max-w-3xl shadow-xl p-4 m-4 flex flex-col items-center">
+          <h2 className="text-xl font-medium text-gray-900 dark:text-white mb-4">
+            My Posted Recipes
+          </h2>
+          <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+            {myRecipesData.map((recipeObj) => (
+              <Link
+                href={`/recipes/${recipeObj.recipe.recipe_id}`}
+                key={recipeObj.recipe.recipe_id}
+              >
+                <div className="card bg-base-100 shadow-xl flex flex-col items-center p-4">
+                  <figure>
+                    <img
+                      src={recipeObj.recipe.photo_url}
+                      alt={`Image of ${recipeObj.recipe.recipe_id}`}
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+                  </figure>
+                  <div className="card-body text-center">
+                    <h2 className="card-title">{recipeObj.recipe.title}</h2>
+                  </div>
                 </div>
-              </section>
-            </section> */}
-            <section> 
-              <div className="card-actions justify-center">
-                {/* insert link or navigation to favouriteRecipes */}
-                <button className="btn bg-primary mt-4">
-                  <Image
-                    src="/chef.png"
-                    alt="chef icon"
-                    width={20}
-                    height={20}
-                  />
-                  My Recipes
-                </button>
-              </div>
-            </section>
-        </container>  
+              </Link>
+            ))}
+          </section>
+        </div>
       </div>
-
-
-
-
-
-
-
     </>
   );
 }
