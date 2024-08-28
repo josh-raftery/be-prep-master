@@ -14,6 +14,7 @@ export default function SingleRecipe({ params }) {
   const [clicked, setClicked] = useState(false);
   const [isLoading, setisLoading] = useState(true);
 
+
   useEffect(() => {
     getRecipeById(params.recipe_id)
       .then((recipe) => {

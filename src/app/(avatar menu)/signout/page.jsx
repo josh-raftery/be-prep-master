@@ -9,7 +9,7 @@ export default function SignOut() {
     const router = useRouter()
     const {signOut} = useContext(UserContext)
     signOut()
-    router.push('/home')
+    router.push('/')
     return (
         <Loading/>
     )
