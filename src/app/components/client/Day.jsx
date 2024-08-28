@@ -32,7 +32,6 @@ export default function Day({
   const [todaysDinner, setTodaysDinner] = useState([]);
   const [todaysSnacks, setTodaysSnacks] = useState([]);
   const [todaysDessert, setTodaysDessert] = useState([]);
-  const hasFetchedMealPlan = useRef(false);
   const [nutrition, setNutrition] = useState({
     fat: 0,
     calories: 0,
@@ -71,7 +70,6 @@ export default function Day({
   }
 
   useEffect(() => {
-    console.log('here')
     const todaysMealsInput = mealPlan.meals.filter((meal) => {
       if (meal.date === date) {
         return meal;
@@ -81,7 +79,6 @@ export default function Day({
   }, [cleared]);
 
   useEffect(() => {
-    console.log('here')
     const promisesArray = todaysMeals.map((meal) => {
       return getRecipeById(meal.recipe_id);
     });
@@ -252,7 +249,7 @@ export default function Day({
                   : "collapse-title text-xl font-medium"
               }
             >
-              {day + date}
+              {day}
             </div>
             <div className="collapse-content">
               {todaysRecipes.length > 0 ? (
@@ -295,7 +292,7 @@ export default function Day({
                   );
                 })
               ) : (
-                <p>No meals!</p>
+                <p style={{marginRight: "1.8rem"}} >No meals!</p>
               )}
               {todaysRecipes.length > 0 && (
                 <section

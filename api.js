@@ -13,7 +13,7 @@ function getRandomInt(max) {
 }
 
 function getRandomRecipe(params = {}){
-  return api.get(`/recipes`, params)
+  return api.get(`/recipes`, {params})
   .then(({data}) => {
     return data.recipes[getRandomInt(data.recipes.length - 1)]
   })
