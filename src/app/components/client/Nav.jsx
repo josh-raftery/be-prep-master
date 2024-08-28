@@ -103,11 +103,22 @@ export default function Nav() {
                     </Link>
                     <div className="divider"></div>
                     <Link href="/mealPlanGenerator">
-                      <button className="btn btn-ghost ">Generate Plan</button>
+                      <button
+                        className="btn btn-ghost"
+                        onClick={closeDropdown}
+                        style={{ whiteSpace: "no wrap" }}
+                      >
+                        Generate Plan
+                      </button>
                     </Link>
                     <div className="divider"></div>
                     <Link href="/achievements">
-                      <button className="btn btn-ghost ml-4 ">Progress</button>
+                      <button
+                        className="btn btn-ghost ml-4 "
+                        onClick={closeDropdown}
+                      >
+                        Progress
+                      </button>
                     </Link>
                   </ul>
                 )}
