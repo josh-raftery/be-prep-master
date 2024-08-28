@@ -10,7 +10,15 @@ const ToCook = () => {
 
   useEffect(() => {
     getRecipes().then((data) => {
-      setRecipes(data);
+      const cookedStatus =
+        JSON.parse(localStorage.getItem("cookedStatus")) || {};
+
+      const updatedData = data.map((element) => ({
+        ...element,
+        cooked: cookedStatus[element.recipe_id] || false,
+      }));
+
+      setRecipes(updatedData);
     });
     setLoading(false);
   }, []);
@@ -25,7 +33,13 @@ const ToCook = () => {
         }
       })
     );
+    const updatedStats = {
+      ...JSON.parse(localStorage.getItem("cookedStatus")),
+      [recipeId]: true,
+    };
+    localStorage.setItem("cookedStatus", JSON.stringify(updatedStats));
   };
+
   if (loading) {
     return (
       <div>
