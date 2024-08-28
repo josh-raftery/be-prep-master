@@ -6,7 +6,11 @@ function getRecipeId() {
   return axios
     .get(`http://${host}:${port}/api/recipes`)
     .then((response) => {
-      return response.data.recipes.length + 1;
+      const recipe_ids = response.data.recipes.map((recipe) => {
+        return recipe.recipe_id
+      })
+      const highestId = Math.max(...recipe_ids)
+      return highestId + 1
     })
     .catch((err) => {
       console.log(err, " axios err ");
