@@ -19,6 +19,25 @@ const getUsers = async () => {
   }
 };
 
+const getUserForSignIn = async (username) => {
+  try {
+    const client = await clientPromise;
+    const db = await client.db();
+    const users = await db.collection("users");
+    
+    const result = await users.findOne({ username: username });
+    
+    if (!result) {
+      return null;  // Return null if user not found
+    }
+    
+    return result;  // Return the user object directly
+  } catch (error) {
+    console.error("Error in getUserForSignIn:", error);
+    return null;  // Return null if there's an error
+  }
+};
+
 const getUsersById = async (user_id) => {
   try {
     const client = await clientPromise;
@@ -123,5 +142,6 @@ module.exports = {
   getUsersById,
   postUser,
   patchUser,
-  addToMyRecipes
+  addToMyRecipes,
+  getUserForSignIn
 };

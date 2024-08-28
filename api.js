@@ -68,6 +68,20 @@ function patchUserMyRecipes(user_id, request){
   })
 }
 
+function getUserByUsername(username) {
+  console.log(username, "<----username string from api file");  // Debugging log
+
+  return api.get(`/users`, { params: { username } })  // Pass username as a query param
+    .then(({ data }) => {
+      console.log(data, "<----data from api file");
+      return data;
+    })
+    .catch((error) => {
+      console.error("Error fetching user by username:", error);
+      throw error;
+    });
+}
+
 module.exports = {
   getRecipes,
   getRecipes,
@@ -78,5 +92,6 @@ module.exports = {
   addMeal,
   patchUserMyRecipes,
   getRandomRecipe,
-  deleteMeal
+  deleteMeal,
+  getUserByUsername
 };

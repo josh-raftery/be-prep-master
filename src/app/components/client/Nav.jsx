@@ -47,7 +47,7 @@ export default function Nav() {
                 </button>
                 {/* EH */}
                 {activeDropdown === "recipes" && (
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-30 p-2 shadow">
+                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
                     <Link href="/recipes">
                       <button
                         className="btn  btn-ghost"
@@ -59,13 +59,13 @@ export default function Nav() {
                     </Link>
                     <div className="divider"></div>
 
-                    <Link href="/recipes/add">
+                    <Link href="/recipes/post-recipe">
                       <button
                         className="btn btn-ghost"
                         onClick={closeDropdown}
                         style={{ whiteSpace: "nowrap" }}
-                      >
-                        Add Recipe
+                      >Post a Recipe
+                 
                       </button>
                     </Link>
                   </ul>
@@ -80,7 +80,7 @@ export default function Nav() {
                   Meal Plan
                 </button>
                 {activeDropdown === "mealplan" && (
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-30 p-2 shadow">
+                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
                     <Link href="/mealplan">
                       <button
                         className="btn  btn-ghost "
@@ -132,7 +132,7 @@ export default function Nav() {
                   Profile
                 </button>
                 {activeDropdown === "profile" && (
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-30 p-2 shadow">
+                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
                     <Link href={`/profile/${user.user_id}`}>
                       <button
                         className="btn btn-ghost"
@@ -142,6 +142,18 @@ export default function Nav() {
                         My Profile
                       </button>
                     </Link>
+
+                    <div className="divider"></div>
+
+                    <Link href="/signin">
+                      <button
+                        className="btn btn-ghost "
+                        onClick={closeDropdown}
+                        style={{ whiteSpace: "nowrap" }}
+                      >
+                        Sign Up
+                      </button>
+
                     <div className="divider"></div>
 
                     <Link href={user.username ? "/signout" : "/signin"}>
@@ -152,6 +164,7 @@ export default function Nav() {
                       >
                         {user.username ? "Sign Out" : "Sign in"}
                       </button>
+
                     </Link>
                     <div className="divider"></div>
 
@@ -163,6 +176,9 @@ export default function Nav() {
                       >
                         Sign Up
                       </button>
+                    </Link>
+                    <Link href={user.username ? "/signout" : "/signin"}>
+                      <li onClick={closeDropdown}>{user.username ? "Sign Out" : "Sign in"}</li>
                     </Link>
                   </ul>
                 )}
