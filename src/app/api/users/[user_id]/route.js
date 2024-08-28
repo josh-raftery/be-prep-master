@@ -13,15 +13,11 @@ export async function PATCH(request) {
       const user_id = splitUrl[splitUrl.length - 1]
       const updateData = await request.json()
       const myrecipes = request.nextUrl.searchParams.get("myrecipes")
-      // const ingredientsused = request.nextUrl.searchParams.get("ingredientsused")
+    
       if(myrecipes === 'true'){
         return addToMyRecipes(user_id, updateData)}
       }catch (error) {
           console.log(error)
         }}
-      // if(ingredientsused === 'true')
-      // return addIngredientsUsed(user_id, updateData);
-    // } catch (error) {
-    //   console.log(error)
-    // }
+     
   
