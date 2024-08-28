@@ -5,6 +5,9 @@ const port = process.env.PORT || 3000;
 function getMealId(user_id){
     return axios.get(`http://${host}:${port}/api/mealplan/${user_id}`)
     .then((response) => {
+        if(response.data.user.meals.length === 0){
+            return 1
+        }
         const meal_ids = response.data.user.meals.map((meal) => {
             return meal.meal_id
         })
