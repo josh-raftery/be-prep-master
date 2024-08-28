@@ -5,6 +5,7 @@ import { UserContext } from "@components/client/userProvider";
 import { getDates } from "src/utils/getDates";
 import Day from "@components/client/Day";
 import Loading from "@components/client/Loading";
+import ToCook from "@components/client/ToCook";
 
 
 export default function MealPlan({
@@ -53,25 +54,25 @@ export default function MealPlan({
 
   if (mealPlan.meals && !isLoading) {
     return (
-      <section className="week-container">
-        {days.map((day, index) => {
-          return (
-            <div key={`${dates[index]}-container`}>
-              <Day
-                key={dates[index]}
-                today={today}
-                day={day}
-                date={dates[index]}
-                mealPlan={mealPlan}
-                popUp={popUp}
-                servingsToAllocate={servingsToAllocate}
-                setServingsToAllocate={setServingsToAllocate}
-                recipeToAdd={recipeToAdd}
-              />
-            </div>
-          );
-        })}
-      </section>
+        <section className="week-container">
+          {days.map((day, index) => {
+            return (
+              <div key={`${dates[index]}-container`}>
+                <Day
+                  key={dates[index]}
+                  today={today}
+                  day={day}
+                  date={dates[index]}
+                  mealPlan={mealPlan}
+                  popUp={popUp}
+                  servingsToAllocate={servingsToAllocate}
+                  setServingsToAllocate={setServingsToAllocate}
+                  recipeToAdd={recipeToAdd}
+                />
+              </div>
+            );
+          })}
+        </section>
     );
   }
 }
