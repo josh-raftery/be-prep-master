@@ -2,7 +2,7 @@
 import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { UserContext } from "@components/client/userProvider";
-import { postRecipe } from "api";
+import { postRecipe, patchUserMyRecipes } from "api";
 
 export default function AddRecipe() {
   const { user, setUser } = useContext(UserContext);
@@ -39,7 +39,8 @@ export default function AddRecipe() {
 
     postRecipe(recipeData)
       .then((newRecipe) => {
-        router.push(`/recipes/${newRecipe.recipe_id}`); 
+        router.push(`/recipes/${newRecipe.recipe_id}`)
+        patchUserMyRecipes( user.user_id, newRecipe.recipe_id) 
       })
       .catch((error) => {
         setError("An error occurred while adding the recipe.");

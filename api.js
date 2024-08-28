@@ -34,6 +34,7 @@ function getMealPlan(user_id) {
 
 function getRecipeById(recipe_id) {
   return api.get(`/recipes/${recipe_id}`).then(({ data }) => {
+    console.log(data.recipe, '<----in api file')
     return data.recipe;
   });
 }
@@ -57,6 +58,13 @@ function addMeal(user_id,request){
   })
 }
 
+function patchUserMyRecipes(user_id, request){
+  console.log(request, '<---- request')
+  return api.patch(`/users/${user_id}?myrecipes=true`, {my_recipes: request}).then((response) => {
+    console.log(response)
+  })
+}
+
 module.exports = {
   getRecipes,
   getRecipes,
@@ -65,5 +73,6 @@ module.exports = {
   postUser,
   postRecipe,
   addMeal,
-  getRandomRecipe,
+  patchUserMyRecipes,
+  getRandomRecipe
 };

@@ -1,4 +1,4 @@
-import { getUsersById,patchUser } from 'controller/usersController';
+import { getUsersById, patchUser, addToMyRecipes } from 'controller/usersController';
 
 export async function GET (request) {
     const splitUrl = request.url.split('/')
@@ -11,9 +11,17 @@ export async function PATCH(request) {
       const url = new URL(request.url);
       const splitUrl = url.pathname.split('/')
       const user_id = splitUrl[splitUrl.length - 1]
-
-      const updateData = await request.json();
-
-      return await patchUser(user_id, updateData);
-    } catch (error) {}
-  }
+      const updateData = await request.json()
+      const myrecipes = request.nextUrl.searchParams.get("myrecipes")
+      // const ingredientsused = request.nextUrl.searchParams.get("ingredientsused")
+      if(myrecipes === 'true'){
+        return addToMyRecipes(user_id, updateData)}
+      }catch (error) {
+          console.log(error)
+        }}
+      // if(ingredientsused === 'true')
+      // return addIngredientsUsed(user_id, updateData);
+    // } catch (error) {
+    //   console.log(error)
+    // }
+  
