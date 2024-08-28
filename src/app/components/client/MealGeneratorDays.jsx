@@ -59,7 +59,7 @@ export default function MealGeneratorDays({
         return currDinner;
       });
     }
-    if (mealType === "snacks") {
+    if (mealType === "snack") {
       setTodaysSnacks((currSnacks) => {
         addMealIfNotExists(currSnacks, setTodaysSnacks);
         return currSnacks;
@@ -134,7 +134,7 @@ export default function MealGeneratorDays({
         return [...currSnacks, mealInfo];
       });
     }
-    if (mealInfo.mealType === "snacks") {
+    if (mealInfo.mealType === "snack") {
       setsnacksServings((currServings) => {
         return currServings + 1;
       });
@@ -228,7 +228,7 @@ export default function MealGeneratorDays({
               </h3>
               <input
                 onClick={() => {
-                  handleClick({ mealType: "snacks", date });
+                  handleClick({ mealType: "snack", date });
                 }}
                 style={{ marginLeft: "277px", marginTop: "1.2rem" }}
                 type="checkbox"

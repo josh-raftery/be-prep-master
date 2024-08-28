@@ -89,7 +89,7 @@ export default function MealPlan({
           <button onClick={thisWeek} className={diff === 0 ? "btn btn-outline btn-success" : "btn btn-outline"}>This Week</button>
           <button style={{marginLeft: "1rem"}} onClick={() => changeWeek(1)} className={diff > 0 ? "btn btn-outline btn-success" : "btn btn-outline"}>Next Week</button>
         </div>
-        <div style={{marginBottom: "1rem"}} className="clear-button" >
+        <div style={{marginBottom: "0.5rem"}} className="clear-button" >
           <button onClick={clearPlan} className="btn btn-wide btn-outline btn-error">Clear Meal Plan</button>
         </div>
         <section className="week-container">

@@ -131,7 +131,7 @@ export default function Nav() {
                 >
                   Profile
                 </button>
-                {activeDropdown === "profile" && (
+                {activeDropdown === "profile" && 
                   <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
                     <Link href={`/profile/${user.user_id}`}>
                       <button
@@ -153,6 +153,7 @@ export default function Nav() {
                       >
                         Sign Up
                       </button>
+                    </Link>
 
                     <div className="divider"></div>
 
@@ -181,7 +182,7 @@ export default function Nav() {
                       <li onClick={closeDropdown}>{user.username ? "Sign Out" : "Sign in"}</li>
                     </Link>
                   </ul>
-                )}
+                }
               </div>
             </div>
           </div>

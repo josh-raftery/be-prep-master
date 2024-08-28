@@ -5,6 +5,7 @@ import { UserContext } from "@components/client/userProvider";
 import { getDates } from "src/utils/getDates";
 import Loading from "@components/client/Loading";
 import MealGeneratorDays from "@components/client/MealGeneratorDays";
+import { useRouter } from "next/navigation";
 
 export default function MealPlanGenerator() {
   const { user } = useContext(UserContext);
@@ -28,6 +29,8 @@ export default function MealPlanGenerator() {
   const [dessertServings,setdessertServings] = useState(0)
   const [hasAdded, sethasAdded] = useState(false)
   const [recipeAdded,setRecipeAdded] = useState(false)
+
+  const router = useRouter();
   
   const days = [
     "Monday",
@@ -83,6 +86,7 @@ export default function MealPlanGenerator() {
     const queries = [];
   
     if (breakfastServings) {
+      if(breakfastServings)
       queries.push(getRandomRecipe({ mealType: 'breakfast', serves: breakfastServings }));
     }
   
@@ -104,6 +108,7 @@ export default function MealPlanGenerator() {
   
     Promise.all(queries).then((recipesArray) => {
       recipesArray.forEach((recipe) => {
+        console.log(recipe, ' recipe')
         for (let i = 0; i < recipe.serves; i++) {
           if (recipe.mealType === 'breakfast') {
             newBreakfastsCopy[i].recipe_id = recipe.recipe_id;
@@ -112,6 +117,7 @@ export default function MealPlanGenerator() {
             newLunchCopy[i].recipe_id = recipe.recipe_id;
           }
           if (recipe.mealType === 'dinner') {
+            console.log(recipe.recipe_id, ' newDinner')
             newDinnersCopy[i].recipe_id = recipe.recipe_id;
           }
           if (recipe.mealType === 'snack') {
@@ -135,17 +141,8 @@ export default function MealPlanGenerator() {
   
       addMeal(user.user_id, allMeals)
       .then((response) => {
-        setMealPlan((currMealPlan) => {
-          return {
-            ...currMealPlan,
-            meals: [...currMealPlan.meals, ...response],
-          }
-        })
-        setsnacksServings(0)
-        setdessertServings(0)
-        setbreakfastServings(0)
-        setdinnerServings(0)
-        setlunchServings(0)
+        router.push("/mealplan");
+        router.refresh("/mealplan");
       });
     });
   }
