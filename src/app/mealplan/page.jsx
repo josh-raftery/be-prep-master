@@ -1,6 +1,6 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
-import { getMealPlan } from "api";
+import { deleteMeal, getMealPlan } from "api";
 import { UserContext } from "@components/client/userProvider";
 import { getDates } from "src/utils/getDates";
 import Day from "@components/client/Day";
@@ -10,7 +10,6 @@ import ToCook from "@components/client/ToCook";
 
 export default function MealPlan({
   popUp,
-  diff = 0,
   setServingsToAllocate,
   servingsToAllocate,
   recipeToAdd,
@@ -20,8 +19,9 @@ export default function MealPlan({
   const [hasMealPlan, setHasMealPlan] = useState(false);
   const [dates, setDates] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [diff, setDiff] = useState(0) // diff 1 = next week dates, diff -1 = previous week dates, 0 this week
+  const [diff, setDiff] = useState(0) // diff 1 = next week dates, diff -1 = previous week dates, 0 this week
   const [today, setToday] = useState("");
+  const [cleared,setCleared] = useState(false)
   const days = [
     "Monday",
     "Tuesday",
@@ -48,12 +48,50 @@ export default function MealPlan({
     }
   }, [diff]);
 
+  function changeWeek(inc){
+    setDiff((currDiff) => {
+      return currDiff + inc
+    })
+  }
+
+  function thisWeek(){
+    setDiff(0)
+  }
+
+  function clearPlan(){
+    console.log(mealPlan.meals, ' meals')
+    const meal_ids = mealPlan.meals.map((meal) => {
+      let meal_id = meal.meal_id
+      return { meal_id }
+    })
+    deleteMeal(user.user_id, meal_ids)
+    .then(() => {
+      console.log(mealPlan, ' meal plan')
+      setmealPlan((currMealPlan) => {
+        let newMealPlan = currMealPlan
+        newMealPlan.meals = []
+        console.log(newMealPlan, ' newMealPlan')
+        return newMealPlan
+      })
+      setCleared(true)
+    })
+  }
+
   if (isLoading) {
     return <Loading />;
   }
 
   if (mealPlan.meals && !isLoading) {
     return (
+      <>
+        <div className="date-buttons" >
+          <button style={{marginRight: "1rem"}} onClick={() => changeWeek(-1)} className={diff < 0 ? "btn btn-outline btn-success" : "btn btn-outline"}>Last Week</button>
+          <button onClick={thisWeek} className={diff === 0 ? "btn btn-outline btn-success" : "btn btn-outline"}>This Week</button>
+          <button style={{marginLeft: "1rem"}} onClick={() => changeWeek(1)} className={diff > 0 ? "btn btn-outline btn-success" : "btn btn-outline"}>Next Week</button>
+        </div>
+        <div style={{marginBottom: "1rem"}} className="clear-button" >
+          <button onClick={clearPlan} className="btn btn-wide btn-outline btn-error">Clear Meal Plan</button>
+        </div>
         <section className="week-container">
           {days.map((day, index) => {
             return (
@@ -68,11 +106,15 @@ export default function MealPlan({
                   servingsToAllocate={servingsToAllocate}
                   setServingsToAllocate={setServingsToAllocate}
                   recipeToAdd={recipeToAdd}
+                  diff={diff}
+                  cleared={cleared}
+                  setCleared={setCleared}
                 />
               </div>
             );
           })}
         </section>
+      </>
     );
   }
 }

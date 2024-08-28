@@ -3,7 +3,13 @@
 @tailwind utilities;
 /* @import 'flowbite'; */
 
+.date-buttons{
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
 
+.clear-button,
+.date-buttons,
 .recipe-stats,
 .recipe-card-container div {
   display: flex;

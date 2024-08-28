@@ -19,6 +19,10 @@ function getRandomRecipe(params = {}){
   })
 }
 
+function deleteMeal(user_id,request){
+  console.log(request, ' request')
+  return api.patch(`/mealplan/${user_id}?add=false`,{meals: request})
+}
 
 function getRecipes(params) {
   return api.get("/recipes", { params }).then(({ data }) => {
@@ -73,5 +77,6 @@ module.exports = {
   postRecipe,
   addMeal,
   patchUserMyRecipes,
-  getRandomRecipe
+  getRandomRecipe,
+  deleteMeal
 };

@@ -1,21 +1,38 @@
 "use client";
 
 import { addMeal, getRecipeById } from "api";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Loading from "./Loading";
 import Link from "next/link";
 import calculateNutrition from "src/utils/calculateNutrition";
+import { FaBullseye } from "react-icons/fa";
 
-export default function Day({ day, date, mealPlan, today, popUp, setServingsToAllocate, servingsToAllocate, recipeToAdd,user_id,setClicked }) {
+export default function Day({
+  diff,
+  day,
+  date,
+  mealPlan,
+  today,
+  popUp,
+  setServingsToAllocate,
+  servingsToAllocate,
+  recipeToAdd,
+  user_id,
+  setClicked,
+  newMeals,
+  setNewMeals,
+  cleared,
+  setCleared
+}) {
   const [todaysMeals, setTodaysMeals] = useState([]);
   const [todaysRecipes, setTodaysRecipes] = useState([]);
   const [hasFetched, setHasFetched] = useState(false);
   const [todaysBreakfast, setTodaysBreakfast] = useState([]);
-  const [todaysLunch, setTodaysLunch] = useState([])
+  const [todaysLunch, setTodaysLunch] = useState([]);
   const [todaysDinner, setTodaysDinner] = useState([]);
   const [todaysSnacks, setTodaysSnacks] = useState([]);
   const [todaysDessert, setTodaysDessert] = useState([]);
-  const [newMeals,setNewMeals] = useState([])
+  const hasFetchedMealPlan = useRef(false);
   const [nutrition, setNutrition] = useState({
     fat: 0,
     calories: 0,
@@ -25,7 +42,7 @@ export default function Day({ day, date, mealPlan, today, popUp, setServingsToAl
     sugar: 0,
   });
 
-  function addToPopUp(mealType,recipe){
+  function addToPopUp(mealType, recipe) {
     if (mealType === "breakfast") {
       setTodaysBreakfast((currBreakfast) => {
         return [...currBreakfast, recipe];
@@ -54,128 +71,158 @@ export default function Day({ day, date, mealPlan, today, popUp, setServingsToAl
   }
 
   useEffect(() => {
+    console.log('here')
     const todaysMealsInput = mealPlan.meals.filter((meal) => {
       if (meal.date === date) {
         return meal;
       }
     });
     setTodaysMeals(todaysMealsInput);
-  }, []);
+  }, [cleared]);
 
   useEffect(() => {
+    console.log('here')
     const promisesArray = todaysMeals.map((meal) => {
       return getRecipeById(meal.recipe_id);
     });
     Promise.all(promisesArray).then((recipes) => {
       recipes.forEach((recipe, index) => {
-        addToPopUp(todaysMeals[index].mealType,recipe)
+        addToPopUp(todaysMeals[index].mealType, recipe);
       });
       setTodaysRecipes(recipes);
       setHasFetched(true);
       const currNutrition = calculateNutrition(recipes);
       setNutrition(currNutrition);
+      setCleared(false)
     });
   }, [todaysMeals]);
-
-  useEffect(() => {
-    if(servingsToAllocate === 0){
-      addMeal(user_id,newMeals) // only one meal,
-      .then(() => {
-        setClicked((currClicked) => {
-          return !currClicked
-        })
-      })
-    }
-  },[servingsToAllocate])
 
   if (!hasFetched) {
     return <Loading />;
   }
 
-  function handleClick(mealInfo){
-    addToPopUp(mealInfo.mealType, recipeToAdd)
+  function handleClick(mealInfo) {
+    addToPopUp(mealInfo.mealType, recipeToAdd);
     setTodaysRecipes((currRecipes) => {
-      return [...currRecipes, recipeToAdd]
-    })
+      return [...currRecipes, recipeToAdd];
+    });
     setNewMeals((currMeals) => {
-      return [...currMeals, {
-        ...mealInfo,
-        "recipe_id": recipeToAdd.recipe_id
-      }]
-    })
+      return [
+        ...currMeals,
+        {
+          ...mealInfo,
+          recipe_id: recipeToAdd.recipe_id,
+        },
+      ];
+    });
     setServingsToAllocate((currServings) => {
-      return currServings - 1
-    })
+      return currServings - 1;
+    });
   }
 
-  if (hasFetched) {
+  if (hasFetched && !cleared) {
     if (popUp) {
       return (
         <div className="day-card card flex justify-start bg-primary text-primary-content w-96">
           <div className="card-body">
-          <h2 className="card-title">{`${day}, ${date}`}</h2>
-            <div className="checkbox-container" >
+            <h2 className="card-title">{`${day}, ${date}`}</h2>
+            <div className="checkbox-container">
               <h3 style={{ marginTop: "1rem" }} className="card-title">
                 Breakfast:
               </h3>
-              <input onClick={() => {handleClick({mealType: "breakfast", date })}} style={{marginLeft: "250px", marginTop: "1.2rem"}} type="checkbox" className="checkbox-custom checkbox" />
+              <input
+                onClick={() => {
+                  handleClick({ mealType: "breakfast", date });
+                }}
+                style={{ marginLeft: "250px", marginTop: "1.2rem" }}
+                type="checkbox"
+                className="checkbox-custom checkbox"
+              />
             </div>
             {todaysBreakfast.length > 0 ? (
               todaysBreakfast.map((breakfast) => {
-                return <p>{breakfast.title}</p>
+                return <p>{breakfast.title}</p>;
               })
             ) : (
               <p>No breakfast</p>
             )}
-            <div className="checkbox-container" >
-                <h3 style={{ marginTop: "1rem" }} className="card-title">
-                  Lunch:
-                </h3>
-                <input onClick={() => {handleClick({mealType: "lunch", date })}} style={{marginLeft: "285px", marginTop: "1.2rem"}} type="checkbox" className="checkbox-custom checkbox" />
+            <div className="checkbox-container">
+              <h3 style={{ marginTop: "1rem" }} className="card-title">
+                Lunch:
+              </h3>
+              <input
+                onClick={() => {
+                  handleClick({ mealType: "lunch", date });
+                }}
+                style={{ marginLeft: "285px", marginTop: "1.2rem" }}
+                type="checkbox"
+                className="checkbox-custom checkbox"
+              />
             </div>
-              
+
             {todaysLunch.length > 0 ? (
               todaysLunch.map((lunch) => {
-                return <p>{lunch.title}</p>
+                return <p>{lunch.title}</p>;
               })
             ) : (
               <p>No Lunch</p>
             )}
-            <div className="checkbox-container" >
+            <div className="checkbox-container">
               <h3 style={{ marginTop: "1rem" }} className="card-title">
                 Dinner:
               </h3>
-              <input onClick={() => {handleClick({mealType: "dinner", date })}} style={{marginLeft: "277px", marginTop: "1.2rem"}} type="checkbox" className="checkbox-custom checkbox" />
+              <input
+                onClick={() => {
+                  handleClick({ mealType: "dinner", date });
+                }}
+                style={{ marginLeft: "277px", marginTop: "1.2rem" }}
+                type="checkbox"
+                className="checkbox-custom checkbox"
+              />
             </div>
             {todaysDinner.length > 0 ? (
               todaysDinner.map((dinner) => {
-                return <p>{dinner.title}</p>
+                return <p>{dinner.title}</p>;
               })
             ) : (
               <p>No Dinner</p>
             )}
-            <div className="checkbox-container" >
+            <div className="checkbox-container">
               <h3 style={{ marginTop: "1rem" }} className="card-title">
                 Snacks:
               </h3>
-              <input onClick={() => {handleClick({mealType: "snacks", date })}} style={{marginLeft: "277px", marginTop: "1.2rem"}} type="checkbox" className="checkbox-custom checkbox" />
+              <input
+                onClick={() => {
+                  handleClick({ mealType: "snacks", date });
+                }}
+                style={{ marginLeft: "277px", marginTop: "1.2rem" }}
+                type="checkbox"
+                className="checkbox-custom checkbox"
+              />
             </div>
             {todaysSnacks.length > 0 ? (
               todaysSnacks.map((snack) => {
-                return <p>{snack.title}</p>
+                return <p>{snack.title}</p>;
               })
             ) : (
               <p>No Snacks</p>
             )}
-            <div className="checkbox-container" >
+            <div className="checkbox-container">
               <h3 style={{ marginTop: "1rem" }} className="card-title">
                 Dessert:
               </h3>
-              <input onClick={() => {handleClick({mealType: "dessert", date, })}} style={{marginLeft: "270px", marginTop: "1.2rem"}} type="checkbox" className="checkbox-custom checkbox" />
+              <input
+                onClick={() => {
+                  handleClick({ mealType: "dessert", date });
+                }}
+                style={{ marginLeft: "270px", marginTop: "1.2rem" }}
+                type="checkbox"
+                className="checkbox-custom checkbox"
+              />
             </div>
             {todaysDessert.length > 0 ? (
               todaysDessert.map((dessert) => {
-                return <p>{dessert.title}</p>
+                return <p>{dessert.title}</p>;
               })
             ) : (
               <p>No Dinner</p>
@@ -188,19 +235,19 @@ export default function Day({ day, date, mealPlan, today, popUp, setServingsToAl
         <div className="day-container">
           <div
             className={
-              day === today
+              day === today && diff === 0
                 ? "collapse bg-base-200 bg-primary"
                 : "collapse bg-base-200"
             }
           >
-            {day === today ? (
+            {day === today && diff === 0 ? (
               <input type="radio" name="my-accordion-1" defaultChecked />
             ) : (
               <input type="radio" name="my-accordion-1" />
             )}
             <div
               className={
-                day === today
+                day === today && diff === 0
                   ? "collapse-title bg-primary text-xl font-medium"
                   : "collapse-title text-xl font-medium"
               }
