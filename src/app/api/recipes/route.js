@@ -11,8 +11,9 @@ export async function GET(request) {
   const chef = request.nextUrl.searchParams.get("chef") || null;
   const prepTime = request.nextUrl.searchParams.get("preparation_time_minutes");
   const servings = request.nextUrl.searchParams.get("serves")
+  const mealType = request.nextUrl.searchParams.get("mealType")
 
-  return getRecipes(name, orderBy, sortBy, chef, prepTime, servings)
+  return getRecipes(name, orderBy, sortBy, chef, prepTime, servings, mealType)
     .then((recipes) => {
       return NextResponse.json(recipes, { status: 200 });
     })

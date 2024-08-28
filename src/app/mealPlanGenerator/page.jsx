@@ -75,7 +75,7 @@ export default function MealPlanGenerator() {
 
   return (
     <div className="mealplan-popup">
-      <div className="card bg-primary text-primary-content w-96 ">
+      <div className="card bg-primary text-primary-content w-full shadow-lg ">
         <div className="card-body">
           <h2 className="card-title">
             Meal Plan
@@ -92,18 +92,18 @@ export default function MealPlanGenerator() {
           <form onSubmit={handleFormSubmit}>
             <div className="form-control">
               <label htmlFor="mealInput" className="label">
-                <span className="label-text">Add a meal for {today}</span>
+                <span className="label-text text-lg">Add a meal for {today}</span>
               </label>
               <input
                 type="text"
                 id="mealInput"
                 value={newMeal}
                 onChange={handleChange}
-                className="input input-bordered"
+                className="input input-bordered w-full max-w-xs"
                 placeholder="Enter meal name"
               />
             </div>
-            <button type="submit" className="btn btn-primary mt-4">
+            <button type="submit" className="btn mt-4">
               Add Meal
             </button>
           </form>
