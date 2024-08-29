@@ -56,27 +56,34 @@ const getUsersById = async (user_id) => {
 
 const postUser = async (body) => {
   try {
-    const validation = new User(body);
-    await validation.validate();
- 
-    const user_id = await getUserId();
-    body.user_id = user_id;
-    const userId = parseInt(user_id);
-
     const client = await clientPromise;
     const db = await client.db();
     const userCollection = await db.collection("users");
 
+    const allUsers = await userCollection
+    .find({})
+    .toArray()
+
+    const user_id = allUsers.length + 1
+
+    body.user_id = user_id;
+    body.ingredients_used = []
+    body.my_recipes = []
+    console.log(body)
+    
+    const validation = new User(body);
+    await validation.validate();
+
     const result = await userCollection.insertOne(body);
 
-    const newUser = await userCollection.findOne({ user_id: userId });
+    const newUser = await userCollection.findOne({ user_id });
     
     return NextResponse.json({ user: newUser }, { status: 200 });
   } catch (err) {
 
     return NextResponse.json({ error: err.message }, { status: 400 });
   }
-};
+}
 const patchUser = async (user_id, updateData) => {
   try {
     const client = await clientPromise;
