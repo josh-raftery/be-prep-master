@@ -47,7 +47,7 @@ export default function SignUp() {
 
   return (
     <>
-      <container className="flex flex-col items-center pb-10 m-4">
+      <div className="flex flex-col items-center pb-10 m-4">
         <form className="card bg-white max-w-xl shadow-xl">
           <div className="card-body">
             <h2 className="card-title">Sign Up</h2>
@@ -93,7 +93,7 @@ export default function SignUp() {
             </div>
           </div>
         </form>
-      </container>
+      </div>
     </>
   );
 }
