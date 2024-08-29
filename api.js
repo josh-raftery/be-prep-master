@@ -62,18 +62,15 @@ function addMeal(user_id,request){
 }
 
 function patchUserMyRecipes(user_id, request){
-  console.log(request, '<---- request')
   return api.patch(`/users/${user_id}?myrecipes=true`, {my_recipes: request}).then((response) => {
     console.log(response)
   })
 }
 
 function getUserByUsername(username) {
-  console.log(username, "<----username string from api file");  // Debugging log
 
-  return api.get(`/users`, { params: { username } })  // Pass username as a query param
+  return api.get(`/users`, { params: { username } })  
     .then(({ data }) => {
-      console.log(data, "<----data from api file");
       return data;
     })
     .catch((error) => {

@@ -25,6 +25,8 @@ export default function AddRecipe() {
     setFormData({
       ...formData,
       [name]: value,
+      chef: user.username,
+      cooking_time_minutes: formData.preparation_time_minutes
     });
   }
 
@@ -35,9 +37,7 @@ export default function AddRecipe() {
       ...formData,
       ingredients: formData.ingredients.split(",").map(item => item.trim()), 
       instructions: formData.instructions.split(",").map(item => item.trim()), 
-      chef: user.username,
     };
-    console.log(formData)
 
     postRecipe(recipeData)
       .then((newRecipe) => {
@@ -51,20 +51,20 @@ export default function AddRecipe() {
 
     setFormData({
       title: "",
-      chef: "",
-      description: "",
-      ingredients: "",
-      instructions: "",
-      serves: "",
-      preparation_time_minutes: "",
-      cooking_time_minutes: "",
-      photo_url: "",
+    chef: "",
+    description: "",
+    ingredients: "",
+    instructions: "",
+    serves: "",
+    preparation_time_minutes: "",
+    cooking_time_minutes: "",
+    photo_url: "",
     });
   }
 
   return (
     <>
-    <container className="flex flex-col items-center pb-10 m-4">
+    <section className="flex flex-col items-center pb-10 m-4">
       <div className="card bg-white w-96 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">Post A New Recipe</h2>
@@ -138,7 +138,7 @@ export default function AddRecipe() {
           </form>
         </div>
       </div>
-      </container>
+    </section>
     </>
   );
 }
