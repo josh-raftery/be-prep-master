@@ -20,7 +20,7 @@ export default function Recipes() {
   return (
     <>
     <SearchBar/>
-    <container className="recipe-card-container">
+    <div className="recipe-card-container">
     <section className="grid gap-[20px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  mx-auto">
       {allRecipes.map((recipe) => {
         return (
@@ -55,7 +55,7 @@ export default function Recipes() {
         );
       })}
     </section>
-    </container>
+    </div>
     </>
   );
 }
