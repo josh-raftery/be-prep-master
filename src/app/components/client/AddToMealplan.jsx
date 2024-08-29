@@ -17,6 +17,7 @@ export default function AddToMealPlan({ recipe, setClicked }) {
   const [isLoading, setIsLoading] = useState(true);
   const [today, setToday] = useState("");
   const [recipeToAdd, setRecipeToAdd] = useState(recipe);
+  const [cleared,setCleared] = useState(false)
   const days = [
     "Monday",
     "Tuesday",
