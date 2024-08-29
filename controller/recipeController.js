@@ -63,7 +63,6 @@ const getRecipeById = async (recipe_id) => {
 
     return NextResponse.json({ recipe: result }, { status: 200 });
 
-    // return { recipe: result };
   } catch (error) {}
 };
 
@@ -74,7 +73,7 @@ const postRecipe = async (body) => {
     const recipe_id = await getRecipeId();
     body.recipe_id = recipe_id;
     const recipeId = parseInt(recipe_id);
-
+  
     const client = await clientPromise;
     const db = await client.db();
     const recipeCollection = await db.collection("recipes");
@@ -83,7 +82,8 @@ const postRecipe = async (body) => {
 
     return NextResponse.json({ recipe: newRecipe }, { status: 200 });
   } catch (err) {
-    return NextResponse.json({ error: "Bad Request" }, { status: 400 });
+    console.error('Validation error:', err);
+    return NextResponse.json({ error: err.message || "Bad Request", details: err.errors }, { status: 400 });
   }
 };
 

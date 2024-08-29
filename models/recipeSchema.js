@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const ingredientSchema = new mongoose.Schema({
   ingredient: { type: String, required: false },
-  line: { type: String, required: true },
+  line: { type: String, required: false },
 });
 
 const recipeSchema = new mongoose.Schema({
   chef: { type: String, required: true },
-  cooking_time_minutes: { type: Number, required: true },
+  cooking_time_minutes: { type: Number, required: false },
   description: { type: String, required: true },
   error: { type: Boolean, default: false },
   ingredients: [{ type: String, required: true }],
