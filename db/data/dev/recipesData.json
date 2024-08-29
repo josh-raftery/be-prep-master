@@ -149,7 +149,7 @@
       "5 tbsp tahini",
       "2 tsp finely grated ginger",
       "2 tsp honey",
-      "Â˝ tsp freshly ground black pepper",
+      "1/2 tsp freshly ground black pepper",
       "pinch salt",
       "2 apples, peeled, cored, sliced into rounds"
     ],
@@ -163,7 +163,7 @@
       { "ingredient": "honey", "line": "2 tsp honey" },
       {
         "ingredient": "black pepper",
-        "line": "Â˝ tsp freshly ground black pepper"
+        "line": "1/2 tsp freshly ground black pepper"
       },
       { "ingredient": "salt", "line": "pinch salt" },
       {
@@ -396,7 +396,7 @@
       "1 tbsp finely chopped parsley",
       "1 tbsp finely chopped thyme, leaves only",
       "450g/1lb linguine pasta, cooked",
-      "Â˝ lemon, juice only",
+      "1/2 lemon, juice only",
       "parmesan shavings, to serve (or similar vegetarian hard cheese)"
     ],
     "instructions": [
@@ -417,7 +417,7 @@
         "line": "1 tbsp finely chopped thyme, leaves only"
       },
       { "ingredient": "linguine", "line": "450g/1lb linguine pasta, cooked" },
-      { "ingredient": "lemon", "line": "Â˝ lemon, juice only" },
+      { "ingredient": "lemon", "line": "1/2 lemon, juice only" },
       {
         "ingredient": "parmesan",
         "line": "parmesan shavings, to serve (or similar vegetarian hard cheese)"
@@ -447,7 +447,7 @@
     "ingredients": [
       "3 handfuls freshly podded peas",
       "1 bunch skinny asparagus, blanched",
-      "100g/3Â˝ oz feta cheese",
+      "100g/3.5 oz feta cheese",
       "handful chopped mint leaves",
       "lemon juice, to taste",
       "olive oil, to taste",
@@ -464,7 +464,7 @@
         "ingredient": "asparagus",
         "line": "1 bunch skinny asparagus, blanched"
       },
-      { "ingredient": "feta", "line": "100g/3Â˝ oz feta cheese" },
+      { "ingredient": "feta", "line": "100g/3.5 oz feta cheese" },
       { "ingredient": "mint", "line": "handful chopped mint leaves" },
       { "ingredient": "lemon juice", "line": "lemon juice, to taste" },
       { "ingredient": "olive oil", "line": "olive oil, to taste" },
@@ -504,11 +504,11 @@
       "2 x 400g/14oz can borlotti or butter beans",
       "75g/3oz brown sugar",
       "1 tsp smoked paprika",
-      "100ml/3Â˝fl oz vegetable stock",
+      "100ml vegetable stock",
       "75g/3oz molasses",
       "100g/4oz tomato ketchup",
       "1 tbsp Dijon mustard",
-      "30ml/1Âźfl oz sherry vinegar",
+      "30ml sherry vinegar",
       "1 tbsp chopped fresh parsley",
       "flatbread"
     ],
@@ -538,14 +538,14 @@
       { "ingredient": "paprika", "line": "1 tsp smoked paprika" },
       {
         "ingredient": "vegetable stock",
-        "line": "100ml/3Â˝fl oz vegetable stock"
+        "line": "100ml vegetable stock"
       },
       { "ingredient": "molasses", "line": "75g/3oz molasses" },
       { "ingredient": "ketchup", "line": "100g/4oz tomato ketchup" },
       { "ingredient": "Dijon mustard", "line": "1 tbsp Dijon mustard" },
       {
         "ingredient": "sherry vinegar",
-        "line": "30ml/1Âźfl oz sherry vinegar"
+        "line": "30ml sherry vinegar"
       },
       { "ingredient": "parsley", "line": "1 tbsp chopped fresh parsley" },
       { "ingredient": "flatbread", "line": "flatbread" }
@@ -639,8 +639,8 @@
       "80g/3oz mixed dried exotic fruit, (such as mango, papaya, banana, fig, golden raisins), chopped",
       "55ml/2fl oz brandy",
       "30g/1oz soft light brown sugar",
-      "Â˝ tsp allspice",
-      "100g/3Â˝oz butter, plus extra for spreading",
+      "1/2 tsp allspice",
+      "100g/3.5 oz butter, plus extra for spreading",
       "6 eating apples, cored",
       "200g/7oz Greek yoghurt, to serve"
     ],
@@ -660,10 +660,10 @@
       },
       { "ingredient": "brandy", "line": "55ml/2fl oz brandy" },
       { "ingredient": "brown sugar", "line": "30g/1oz soft light brown sugar" },
-      { "ingredient": "allspice", "line": "Â˝ tsp allspice" },
+      { "ingredient": "allspice", "line": "1/2 tsp allspice" },
       {
         "ingredient": "butter",
-        "line": "100g/3Â˝oz butter, plus extra for spreading"
+        "line": "100g/3.5 oz butter, plus extra for spreading"
       },
       { "ingredient": "apples", "line": "6 eating apples, cored" },
       { "ingredient": "yoghurt", "line": "200g/7oz Greek yoghurt, to serve" }
@@ -779,7 +779,7 @@
     "description": "Bake a healthy paella-style dish of salmon and chorizo rice.Each serving provides 876kcal, 60g protein, 48g carbohydrate (of which 6g sugars), 49g fat (of which 16g saturates), 3g fibre and 3.5g salt.",
     "error": false,
     "ingredients": [
-      "100g/3Â˝oz chorizo",
+      "100g/3.5 oz chorizo",
       "1 onion, sliced",
       "1 garlic clove, sliced",
       "200g/7oz short-grain rice such as arborio rice",
@@ -803,7 +803,7 @@
       "Serve the salmon on top of the chorizo rice."
     ],
     "instructions_detailed": [
-      { "ingredient": "chorizo", "line": "100g/3Â˝oz chorizo" },
+      { "ingredient": "chorizo", "line": "100g/3.5 oz chorizo" },
       { "ingredient": "onion", "line": "1 onion, sliced" },
       { "ingredient": "garlic", "line": "1 garlic clove, sliced" },
       {
@@ -902,7 +902,7 @@
       "1 large onion, chopped",
       "2 garlic cloves, crushed",
       "3 x 400g cans of chopped tomatoes",
-      "Âź - Â˝ tsp dried chilli flakes",
+      "1/2 tsp dried chilli flakes",
       "2 tsp balsamic vinegar",
       "2 tsp sugar",
       "1 large handful basil leaves, torn into small pieces",
@@ -923,7 +923,7 @@
       },
       {
         "ingredient": "dried chilli",
-        "line": "Âź - Â˝ tsp dried chilli flakes"
+        "line": "1/2 tsp dried chilli flakes"
       },
       { "ingredient": "balsamic vinegar", "line": "2 tsp balsamic vinegar" },
       { "ingredient": "sugar", "line": "2 tsp sugar" },
@@ -1029,7 +1029,7 @@
     "ingredients": [
       "175g/6oz frozen mixed berries, defrosted",
       "340g/12oz fat-free Greek yoghurt",
-      "10g/Âźoz flaked almonds, toasted"
+      "10g flaked almonds, toasted"
     ],
     "instructions": [
       "Spoon the yoghurt into two glasses, top with half the berries, and then repeat the layers.",
@@ -1043,7 +1043,7 @@
       { "ingredient": "yoghurt", "line": "340g/12oz fat-free Greek yoghurt" },
       {
         "ingredient": "flaked almonds",
-        "line": "10g/Âźoz flaked almonds, toasted"
+        "line": "10g flaked almonds, toasted"
       }
     ],
     "photo_url": "http://ichef.bbci.co.uk/food/ic/food_16x9_608/recipes/berry_yoghurt_95274_16x9.jpg",
@@ -1606,7 +1606,7 @@
     "description": "This healthy vegan smoothie is packed full of vitamins and given a gentle kick with eastern spices. Each smoothie provides 197 kcal, 4g protein, 18g carbohydrate (of which 14g sugars), 12g fat (of which 10g saturates), 2.5g fibre and 0.4g salt.",
     "error": false,
     "ingredients": [
-      "1 young beetroot (approximately 120g/4Âźoz), cooked",
+      "1 young beetroot (approximately 120g), cooked",
       "125ml/4fl oz coconut milk, chilled",
       "1 ripe banana",
       "2 cardamom seeds (see tips)",
@@ -1624,7 +1624,7 @@
     "instructions_detailed": [
       {
         "ingredient": "beetroot",
-        "line": "1 young beetroot (approximately 120g/4Âźoz), cooked"
+        "line": "1 young beetroot (approximately 120g), cooked"
       },
       {
         "ingredient": "coconut milk",
@@ -1844,7 +1844,7 @@
       "2 large carrots, trimmed, cut into long, thin batons (these should resemble French fries in size and shape)",
       "salt, to taste",
       "50g/2oz ground almonds",
-      "30g/1Âźoz parmesan, grated",
+      "30g parmesan, grated",
       "1â2 tsp dried oregano",
       "small pinch cayenne pepper",
       "1 free-range egg, beaten"
@@ -1863,7 +1863,7 @@
       },
       { "ingredient": "salt", "line": "salt, to taste" },
       { "ingredient": "ground almonds", "line": "50g/2oz ground almonds" },
-      { "ingredient": "parmesan", "line": "30g/1Âźoz parmesan, grated" },
+      { "ingredient": "parmesan", "line": "30g parmesan, grated" },
       { "ingredient": "oregano", "line": "1â2 tsp dried oregano" },
       { "ingredient": "cayenne pepper", "line": "small pinch cayenne pepper" },
       { "ingredient": "egg", "line": "1 free-range egg, beaten" }
@@ -2086,8 +2086,8 @@
     "ingredients": [
       "1 tbsp olive oil",
       "1 garlic clove, chopped",
-      "Â˝ red onion, chopped",
-      "150g/5Â˝oz celery, chopped",
+      "1/2 red onion, chopped",
+      "150g/5.5 oz celery, chopped",
       "200ml/7fl oz hot chicken stock",
       "2 slices toasted ciabatta, to serve"
     ],
@@ -2100,8 +2100,8 @@
     "instructions_detailed": [
       { "ingredient": "olive oil", "line": "1 tbsp olive oil" },
       { "ingredient": "garlic", "line": "1 garlic clove, chopped" },
-      { "ingredient": "red onion", "line": "Â˝ red onion, chopped" },
-      { "ingredient": "celery", "line": "150g/5Â˝oz celery, chopped" },
+      { "ingredient": "red onion", "line": "1/2 red onion, chopped" },
+      { "ingredient": "celery", "line": "150g/5.5 oz celery, chopped" },
       {
         "ingredient": "chicken stock",
         "line": "200ml/7fl oz hot chicken stock"
@@ -2137,7 +2137,7 @@
       "1-2 tbsp extra virgin olive oil, plus extra for dressing",
       "1 fresh red chilli, seeded, finely chopped (or 5 tsp dried chilli flakes)",
       "sea salt and freshly ground black pepper",
-      "Â˝ lemon, juice only",
+      "1/2 lemon, juice only",
       "handful fresh mint, roughly chopped",
       "handful fresh basil, roughly chopped"
     ],
@@ -2163,7 +2163,7 @@
         "ingredient": "black pepper",
         "line": "sea salt and freshly ground black pepper"
       },
-      { "ingredient": "lemon", "line": "Â˝ lemon, juice only" },
+      { "ingredient": "lemon", "line": "1/2 lemon, juice only" },
       { "ingredient": "mint", "line": "handful fresh mint, roughly chopped" },
       { "ingredient": "basil", "line": "handful fresh basil, roughly chopped" }
     ],
@@ -2194,7 +2194,7 @@
       "salt and freshly ground black pepper",
       "150ml/5fl oz full-fat milk",
       "1 tsp mustard powder",
-      "70g/2Â˝oz cheddar cheese, grated",
+      "70g/2.5 oz cheddar cheese, grated",
       "small handful chopped fresh chives",
       "2 free-range egg whites, preferably organic",
       "pinch salt",
@@ -2230,7 +2230,7 @@
       },
       { "ingredient": "milk", "line": "150ml/5fl oz full-fat milk" },
       { "ingredient": "mustard powder", "line": "1 tsp mustard powder" },
-      { "ingredient": "cheddar", "line": "70g/2Â˝oz cheddar cheese, grated" },
+      { "ingredient": "cheddar", "line": "70g/2.5 oz cheddar cheese, grated" },
       { "ingredient": "chives", "line": "small handful chopped fresh chives" },
       {
         "ingredient": "egg whites",
@@ -2504,7 +2504,7 @@
       "1 red pepper, deseeded and cut into 3cm/1in chunks",
       "1 yellow pepper, deseeded and cut into 3cm/1in chunks",
       "1 tbsp cornflour",
-      "150g/5Â˝oz fat-free natural yogurt",
+      "150g/5.5 oz fat-free natural yogurt",
       "1 tbsp medium or mild curry powder",
       "2 garlic cloves, thinly sliced",
       "227g/8oz tin chopped tomatoes",
@@ -2517,7 +2517,7 @@
       "Add the chicken and peppers into the pan with the onion and cook for three minutes, turning occasionally.",
       "Meanwhile, in a small bowl, mix the cornflour with 2 tablespoons cold water and stir in the yoghurt until thoroughly mixed.",
       "Sprinkle the curry powder over the chicken and vegetables, add the garlic and cook for 30 seconds.",
-      "Tip the tomatoes into the pan, add the yoghurt mixture, 150ml/3Â˝fl oz of water and coriander.",
+      "Tip the tomatoes into the pan, add the yoghurt mixture, 150ml/3.5 fl oz of water and coriander.",
       "Bring to a gentle simmer and cook for 20-25 minutes, stirring occasionally until the chicken is tender and the sauce is thick. Season with freshly ground black pepper to taste and garnish with coriander."
     ],
     "instructions_detailed": [
@@ -2536,7 +2536,7 @@
         "line": "1 yellow pepper, deseeded and cut into 3cm/1in chunks"
       },
       { "ingredient": "cornflour", "line": "1 tbsp cornflour" },
-      { "ingredient": "fat", "line": "150g/5Â˝oz fat-free natural yogurt" },
+      { "ingredient": "fat", "line": "150g/5.5 oz fat-free natural yogurt" },
       {
         "ingredient": "curry powder",
         "line": "1 tbsp medium or mild curry powder"
@@ -3685,7 +3685,7 @@
     "ingredients": [
       "250g/9oz plain flour",
       "2 tsp baking powder",
-      "1 tsp ground cinnamon, plus Â˝ tsp extra for the topping",
+      "1 tsp ground cinnamon, plus 1/2 tsp extra for the topping",
       "pinch of salt",
       "2 ripe bananas, mashed",
       "150g/5oz blueberries",
@@ -3708,7 +3708,7 @@
       { "ingredient": "baking powder", "line": "2 tsp baking powder" },
       {
         "ingredient": "cinnamon",
-        "line": "1 tsp ground cinnamon, plus Â˝ tsp extra for the topping"
+        "line": "1 tsp ground cinnamon, plus 1/2 tsp extra for the topping"
       },
       { "ingredient": "salt", "line": "pinch of salt" },
       { "ingredient": "bananas", "line": "2 ripe bananas, mashed" },
@@ -3741,8 +3741,8 @@
     "description": "This porridge is made with water and skimmed milk to keep the calories low. A little ground cinnamon makes it taste sweeter without adding calories and it is topped with juicy grated pear. As part of an Intermittent diet plan, 1 serving provides a half portion of your 6 daily vegetable portions, 1 of your dairy portions and 219 kcal.",
     "error": false,
     "ingredients": [
-      "60g/2Âźoz jumbo porridge oats",
-      "Âź tsp ground cinnamon, plus a little to sprinkle",
+      "60g jumbo porridge oats",
+      "1/2 tsp ground cinnamon, plus a little to sprinkle",
       "300ml/10fl oz semi-skimmed milk",
       "1 ripe medium pear",
       "1 wedge lemon"
@@ -3752,10 +3752,10 @@
       "Coarsely grate the pear, and place on top of the porridge. Squeeze over the lemon juice and sprinkle with a tiny pinch of ground cinnamon."
     ],
     "instructions_detailed": [
-      { "ingredient": "oats", "line": "60g/2Âźoz jumbo porridge oats" },
+      { "ingredient": "oats", "line": "60g jumbo porridge oats" },
       {
         "ingredient": "cinnamon",
-        "line": "Âź tsp ground cinnamon, plus a little to sprinkle"
+        "line": "1/2 tsp ground cinnamon, plus a little to sprinkle"
       },
       { "ingredient": "milk", "line": "300ml/10fl oz semi-skimmed milk" },
       { "ingredient": "pear", "line": "1 ripe medium pear" },
@@ -3786,7 +3786,7 @@
       "400g tin butter beans, drained",
       "2 fat garlic cloves",
       "10 sun-dried tomatoes",
-      "75g/2Â˝oz fresh basil, reserve a few leaves to garnish",
+      "75g/2.5 oz fresh basil, reserve a few leaves to garnish",
       "4 tbsp lemon juice",
       "pinch chilli flakes",
       "salt and freshly ground black pepper",
@@ -3810,7 +3810,7 @@
       { "ingredient": "tomatoes", "line": "10 sun-dried tomatoes" },
       {
         "ingredient": "basil",
-        "line": "75g/2Â˝oz fresh basil, reserve a few leaves to garnish"
+        "line": "75g/2.5 oz fresh basil, reserve a few leaves to garnish"
       },
       { "ingredient": "lemon juice", "line": "4 tbsp lemon juice" },
       { "ingredient": "chilli", "line": "pinch chilli flakes" },
@@ -3854,7 +3854,7 @@
       "600g/1lb 5oz parsnips, cut into 2cm/1in pieces",
       "2 garlic cloves, crushed",
       "600g/1lb 5oz Bramley apples, peeled, quartered and cut into chunks",
-      "1 litre/1Âž pints vegetable or chicken stock",
+      "1 litre vegetable or chicken stock",
       "150ml/5fl oz milk",
       "flaked sea salt and freshly ground black pepper"
     ],
@@ -3878,7 +3878,7 @@
       },
       {
         "ingredient": "chicken stock",
-        "line": "1 litre/1Âž pints vegetable or chicken stock"
+        "line": "1 litre vegetable or chicken stock"
       },
       { "ingredient": "milk", "line": "150ml/5fl oz milk" },
       {
@@ -3910,7 +3910,7 @@
     "ingredients": [
       "340g/12oz fat-free natural Greek-style yoghurt",
       "1 banana, peeled and sliced",
-      "15g/Â˝oz mixed seeds (pumpkin, sesame and sunflower) (or use toasted flaked almonds)"
+      "15g mixed seeds (pumpkin, sesame and sunflower) (or use toasted flaked almonds)"
     ],
     "instructions": [
       "Divide the yoghurt between two small bowls. Scatter the banana on top.",
@@ -3924,7 +3924,7 @@
       { "ingredient": "banana", "line": "1 banana, peeled and sliced" },
       {
         "ingredient": "flaked almonds",
-        "line": "15g/Â˝oz mixed seeds (pumpkin, sesame and sunflower) (or use toasted flaked almonds)"
+        "line": "15g mixed seeds (pumpkin, sesame and sunflower) (or use toasted flaked almonds)"
       }
     ],
     "photo_url": "http://ichef.bbci.co.uk/food/ic/food_16x9_608/recipes/crunchy_banana_yoghurt_48211_16x9.jpg",
@@ -3949,7 +3949,7 @@
     "description": "A great little side dish that can be scaled up to suit the numbers, superb served with roast lamb or chicken or as part of a mezze.Each serving provides 131kcal, 0.3g protein, 5.5g carbohydrate (of which 5g sugars), 11g fat (of which 1.5g saturates), 3g fibre and 0.2g salt.",
     "error": false,
     "ingredients": [
-      "150g/5Â˝oz Chantenay carrots, or other small carrots",
+      "150g/5.5 oz Chantenay carrots, or other small carrots",
       "drizzle olive oil",
       "2 garlic cloves, unpeeled",
       "1 sprig rosemary",
@@ -3966,7 +3966,7 @@
     "instructions_detailed": [
       {
         "ingredient": "carrots",
-        "line": "150g/5Â˝oz Chantenay carrots, or other small carrots"
+        "line": "150g/5.5 oz Chantenay carrots, or other small carrots"
       },
       { "ingredient": "olive oil", "line": "drizzle olive oil" },
       { "ingredient": "garlic", "line": "2 garlic cloves, unpeeled" },
@@ -4236,7 +4236,7 @@
     "error": false,
     "ingredients": [
       "2 fennel bulbs, shredded",
-      "Â˝ small red cabbage, shredded",
+      "1/2 small red cabbage, shredded",
       "4 beetroot, peeled and shredded",
       "4 spring onions, chopped",
       "6 tbsp soured cream",
@@ -4248,7 +4248,7 @@
     ],
     "instructions_detailed": [
       { "ingredient": "fennel", "line": "2 fennel bulbs, shredded" },
-      { "ingredient": "red cabbage", "line": "Â˝ small red cabbage, shredded" },
+      { "ingredient": "red cabbage", "line": "1/2 small red cabbage, shredded" },
       { "ingredient": "beetroot", "line": "4 beetroot, peeled and shredded" },
       { "ingredient": "spring onions", "line": "4 spring onions, chopped" },
       { "ingredient": "soured cream", "line": "6 tbsp soured cream" },
@@ -4358,7 +4358,7 @@
       "salt and freshly ground black pepper"
     ],
     "instructions": [
-      "Put the freekeh and 1 litre/1Âž pint water in a pan together with 1 teaspoon of salt and 1 tablespoon of the olive oil. Bring to the boil, then turn down to a simmer and cook for 15 minutes until just tender. Drain and allow to cool.",
+      "Put the freekeh and 1 litre water in a pan together with 1 teaspoon of salt and 1 tablespoon of the olive oil. Bring to the boil, then turn down to a simmer and cook for 15 minutes until just tender. Drain and allow to cool.",
       "When cool, mix together the freekeh with the spring onions, pomegranate seeds and herbs. Season with salt and pepper.",
       "Whisk together the remaining 4 tablespoons of olive oil and the pomegranate molasses with a pinch of salt, and dress the salad with it, mixing gently. Serve topped with pistachios."
     ],
@@ -5212,8 +5212,8 @@
       "2 medium-large ripe tomatoes, quartered",
       "1 orange or yellow pepper, deseeded and cut into 2cm chunks",
       "low-calorie cooking oil spray",
-      "75g/2Â˝oz bulgur wheat",
-      "20g/Âžoz pine nuts",
+      "75g/2.5 oz bulgur wheat",
+      "20g pine nuts",
       "1 lemon",
       "4 spring onions, thinly sliced",
       "3 heaped tbsp roughly chopped fresh coriander",
@@ -5243,8 +5243,8 @@
         "line": "1 orange or yellow pepper, deseeded and cut into 2cm chunks"
       },
       { "ingredient": "oil", "line": "low-calorie cooking oil spray" },
-      { "ingredient": "bulgur wheat", "line": "75g/2Â˝oz bulgur wheat" },
-      { "ingredient": "pine nuts", "line": "20g/Âžoz pine nuts" },
+      { "ingredient": "bulgur wheat", "line": "75g/2.5 oz bulgur wheat" },
+      { "ingredient": "pine nuts", "line": "20g pine nuts" },
       { "ingredient": "lemon", "line": "1 lemon" },
       {
         "ingredient": "spring onions",
@@ -5478,7 +5478,7 @@
       "1 vegetable stock cube",
       "1 tsp dried mixed herbs",
       "400g/14oz tin butter beans, drained and rinsed",
-      "1 head young spring greens (approximately 125g/4Â˝oz), trimmed and sliced",
+      "1 head young spring greens (approximately 125g), trimmed and sliced",
       "sea salt and freshly ground black pepper"
     ],
     "instructions": [
@@ -5510,7 +5510,7 @@
       },
       {
         "ingredient": "spring greens",
-        "line": "1 head young spring greens (approximately 125g/4Â˝oz), trimmed and sliced"
+        "line": "1 head young spring greens (approximately 125g), trimmed and sliced"
       },
       { "ingredient": 0, "line": "sea salt and freshly ground black pepper" }
     ],
@@ -5621,7 +5621,7 @@
     "description": "This quick and easy chorizo topping is a fantastic alternative to good old baked beans when piled onto hot toast. This meal provides 322 kcal, 18g protein, 32g carbohydrate (of which 5g sugars), 14g fat (of which 5g saturates), 5g fibre and 1.7g salt per portion.",
     "error": false,
     "ingredients": [
-      "100g/3Â˝oz cooking chorizo, diced",
+      "100g/3.5 oz cooking chorizo, diced",
       "200g/7oz tinned chickpeas, drained and rinsed",
       "200g/7oz tinned chopped tomatoes",
       "1 tbsp chopped fresh thyme leaves",
@@ -5635,7 +5635,7 @@
       "To serve, spoon the chickpea mixture on top of the toast and garnish with parsley."
     ],
     "instructions_detailed": [
-      { "ingredient": "chorizo", "line": "100g/3Â˝oz cooking chorizo, diced" },
+      { "ingredient": "chorizo", "line": "100g/3.5 oz cooking chorizo, diced" },
       {
         "ingredient": "chickpeas",
         "line": "200g/7oz tinned chickpeas, drained and rinsed"
@@ -5859,10 +5859,10 @@
       "1 tbsp vegetable oil",
       "1 medium onion, finely chopped",
       "1 large potato (about 250g/9oz), cut into small cubes",
-      "300g/10Â˝oz frozen petits pois or garden peas",
+      "300g/10.5 oz frozen petits pois or garden peas",
       "400ml/14fl oz chicken stock, or vegetable stock if preferred",
       "200ml/7fl oz semi-skimmed or whole milk",
-      "100g/3Â˝oz thick cut ham",
+      "100g/3.5 oz thick cut ham",
       "small handful fresh mint leaves, optional",
       "salt and freshly ground black pepper"
     ],
@@ -5882,7 +5882,7 @@
       },
       {
         "ingredient": "peas",
-        "line": "300g/10Â˝oz frozen petits pois or garden peas"
+        "line": "300g/10.5 oz frozen petits pois or garden peas"
       },
       {
         "ingredient": "vegetable stock",
@@ -5892,7 +5892,7 @@
         "ingredient": "milk",
         "line": "200ml/7fl oz semi-skimmed or whole milk"
       },
-      { "ingredient": "ham", "line": "100g/3Â˝oz thick cut ham" },
+      { "ingredient": "ham", "line": "100g/3.5 oz thick cut ham" },
       {
         "ingredient": "mint",
         "line": "small handful fresh mint leaves, optional"
@@ -6189,7 +6189,7 @@
       "50ml/2fl oz vegetable oil",
       "3 medium onions, chopped",
       "4 garlic cloves, finely chopped",
-      "75g/2Â˝oz fresh root ginger, finely chopped or grated",
+      "75g/2.5 oz fresh root ginger, finely chopped or grated",
       "1 tsp salt",
       "1 tsp Kashmiri chilli powder",
       "1 tsp garam masala",
@@ -6198,7 +6198,7 @@
       "lime wedges"
     ],
     "instructions": [
-      "Drain the soaked beans, put them in a heavy casserole pot, cover with fresh water and sprinkle in the turmeric. Place over a medium heat, bring to a simmer, then lower the heat and simmer uncovered for 1-1Â˝ hours, or until the beans are tender, topping up with water if the pot starts to look dry.",
+      "Drain the soaked beans, put them in a heavy casserole pot, cover with fresh water and sprinkle in the turmeric. Place over a medium heat, bring to a simmer, then lower the heat and simmer uncovered for 1-1.5 hours, or until the beans are tender, topping up with water if the pot starts to look dry.",
       "Heat the oil in a large pan or karahi over a medium heat and fry the onions, garlic and ginger for 10 minutes or until tinged golden-brown. Add the salt, chilli powder and garam masala and fry for 30 seconds, then stir in the yogurt and cook for five minutes.",
       "Add the drained cooked beans to the onion mixture, along with enough of the cooking liquid to just cover the beans (topping up with water if necessary) and simmer for 10 minutes, mashing a few beans against the side of the pan with the back of a spoon to thicken the gravy. Serve with basmati rice and wedges of lime."
     ],
@@ -6213,7 +6213,7 @@
       { "ingredient": "garlic", "line": "4 garlic cloves, finely chopped" },
       {
         "ingredient": "ginger",
-        "line": "75g/2Â˝oz fresh root ginger, finely chopped or grated"
+        "line": "75g/2.5 oz fresh root ginger, finely chopped or grated"
       },
       { "ingredient": "salt", "line": "1 tsp salt" },
       { "ingredient": "chilli powder", "line": "1 tsp Kashmiri chilli powder" },
@@ -6692,10 +6692,10 @@
       "400g/14oz potatoes, peeled and cut into chips",
       "1 tsp vegetable oil",
       "1 large egg, separated",
-      "Â˝ lemon, zest only",
+      "1/2 lemon, zest only",
       "handful fresh lemon thyme",
       "2 x 150g skinless, boneless cod loin fillets",
-      "150g/5Â˝oz peas, fresh or frozen, to serve",
+      "150g/5.5 oz peas, fresh or frozen, to serve",
       "1 lemon, cut into wedges, to serve",
       "salt and freshly ground black pepper"
     ],
@@ -6713,7 +6713,7 @@
       },
       { "ingredient": "vegetable oil", "line": "1 tsp vegetable oil" },
       { "ingredient": "egg", "line": "1 large egg, separated" },
-      { "ingredient": "lemon", "line": "Â˝ lemon, zest only" },
+      { "ingredient": "lemon", "line": "1/2 lemon, zest only" },
       { "ingredient": "lemon", "line": "handful fresh lemon thyme" },
       {
         "ingredient": "cod",
@@ -6721,7 +6721,7 @@
       },
       {
         "ingredient": "peas",
-        "line": "150g/5Â˝oz peas, fresh or frozen, to serve"
+        "line": "150g/5.5 oz peas, fresh or frozen, to serve"
       },
       { "ingredient": "lemon", "line": "1 lemon, cut into wedges, to serve" },
       {
@@ -7797,7 +7797,7 @@
       "4 heads pak choi, trimmed and thinly sliced",
       "200g/7oz mixed mushrooms, sliced",
       "1 carrot, julienned",
-      "Â˝ red cabbage, stalk removed, leaves shredded",
+      "1/2 red cabbage, stalk removed, leaves shredded",
       "5cm/2in piece fresh root ginger, peeled, grated",
       "6 spring onions, trimmed, finely sliced on the diagonal",
       "4 tbsp lime juice",
@@ -7841,7 +7841,7 @@
       { "ingredient": "carrot", "line": "1 carrot, julienned" },
       {
         "ingredient": "red cabbage",
-        "line": "Â˝ red cabbage, stalk removed, leaves shredded"
+        "line": "1/2 red cabbage, stalk removed, leaves shredded"
       },
       {
         "ingredient": "ginger",
@@ -8585,8 +8585,8 @@
       "small bunch of fresh coriander, roughly chopped",
       "1 large carrot, cut into fine matchsticks",
       "1 bunch of spring onions, shredded",
-      "Â˝ cucumber, peeled, halved, de-seeded and cut into matchsticks",
-      "Â˝ Chinese lettuce, finely shredded"
+      "1/2 cucumber, peeled, halved, de-seeded and cut into matchsticks",
+      "1/2 Chinese lettuce, finely shredded"
     ],
     "instructions": [
       "Cut the chicken into thin strips and mix with the honey, vinegar and soy sauce. Leave to marinate in a non-metallic bowl for about 30 minutes.",
@@ -8622,9 +8622,9 @@
       },
       {
         "ingredient": "cucumber",
-        "line": "Â˝ cucumber, peeled, halved, de-seeded and cut into matchsticks"
+        "line": "1/2 cucumber, peeled, halved, de-seeded and cut into matchsticks"
       },
-      { "ingredient": "lettuce", "line": "Â˝ Chinese lettuce, finely shredded" }
+      { "ingredient": "lettuce", "line": "1/2 Chinese lettuce, finely shredded" }
     ],
     "photo_url": "http://ichef.bbci.co.uk/food/ic/food_16x9_608/recipes/orientalchickensalad_68063_16x9.jpg",
     "preparation_time_minutes": 30,
@@ -8941,8 +8941,8 @@
       "1 garlic clove, crushed",
       "200g/7oz asparagus, blanched, cut into bite-sized pieces",
       "150g/5oz fresh peas, podded",
-      "100g/3Â˝oz frozen soya beans, defrosted",
-      "100g/3Â˝oz baby spinach",
+      "100g/3.5 oz frozen soya beans, defrosted",
+      "100g/3.5 oz baby spinach",
       "450g/1lb cooked tagliolini or tagliatelle (a few tablespoons of cooking water reserved)",
       "1 lemon, juice and zest",
       "large handful fresh spring herbs, including mint, basil, dill and parsley, chopped",
@@ -8968,9 +8968,9 @@
       { "ingredient": "peas", "line": "150g/5oz fresh peas, podded" },
       {
         "ingredient": "soya beans",
-        "line": "100g/3Â˝oz frozen soya beans, defrosted"
+        "line": "100g/3.5 oz frozen soya beans, defrosted"
       },
-      { "ingredient": "spinach", "line": "100g/3Â˝oz baby spinach" },
+      { "ingredient": "spinach", "line": "100g/3.5 oz baby spinach" },
       {
         "ingredient": "tagliatelle",
         "line": "450g/1lb cooked tagliolini or tagliatelle (a few tablespoons of cooking water reserved)"
@@ -9022,7 +9022,7 @@
       "110g/4oz red onions, cut in quarters",
       "3-4 cloves garlic",
       "2 tbsp olive oil",
-      "75ml/2Â˝fl oz clear honey",
+      "75ml clear honey",
       "2 sprigs rosemary, plus extra chopped rosemary to garnish",
       "salt and freshly ground black pepper",
       "500g/1lb 2oz packet of pasta",
@@ -9055,7 +9055,7 @@
       },
       { "ingredient": "garlic", "line": "3-4 cloves garlic" },
       { "ingredient": "olive oil", "line": "2 tbsp olive oil" },
-      { "ingredient": "honey", "line": "75ml/2Â˝fl oz clear honey" },
+      { "ingredient": "honey", "line": "75ml clear honey" },
       {
         "ingredient": "rosemary",
         "line": "2 sprigs rosemary, plus extra chopped rosemary to garnish"
@@ -9719,14 +9719,14 @@
       "8 ripe tomatoes, seeded and diced",
       "1 clove of garlic, peeled and crushed",
       "1 small onion, peeled and finely chopped",
-      "Âź fresh green chilli, de-seeded and finely chopped",
+      "1/2 fresh green chilli, de-seeded and finely chopped",
       "1 tbsp fresh coriander, finely chopped",
       "2 ripe avocados, peeled and stoned",
       "1 lime, juice only",
       "1 clove of garlic, peeled and crushed",
       "1 small onion, peeled and finely chopped",
       "3 small tomatoes, seeded and chopped",
-      "Âź fresh green chilli, de-seeded and finely chopped",
+      "1/2 fresh green chilli, de-seeded and finely chopped",
       "1 tbsp fresh coriander, finely chopped",
       "1 courgette, cut into four slices lengthways",
       "1 red pepper, seeded and cut into quarters, lengthways",
@@ -9756,7 +9756,7 @@
       },
       {
         "ingredient": "chilli",
-        "line": "Âź fresh green chilli, de-seeded and finely chopped"
+        "line": "1/2 fresh green chilli, de-seeded and finely chopped"
       },
       {
         "ingredient": "fresh coriander",
@@ -9775,7 +9775,7 @@
       { "ingredient": 0, "line": "3 small tomatoes, seeded and chopped" },
       {
         "ingredient": "chilli",
-        "line": "Âź fresh green chilli, de-seeded and finely chopped"
+        "line": "1/2 fresh green chilli, de-seeded and finely chopped"
       },
       {
         "ingredient": "fresh coriander",
@@ -9907,7 +9907,7 @@
     "error": false,
     "ingredients": [
       "4 skinless, boneless chicken breasts or thighs",
-      "Â˝ lemon, juice only",
+      "1/2 lemon, juice only",
       "1 tsp garam masala",
       "salt",
       "2 tbsp vegetable oil or ghee (clarified butter)",
@@ -9926,7 +9926,7 @@
         "ingredient": "chicken breasts",
         "line": "4 skinless, boneless chicken breasts or thighs"
       },
-      { "ingredient": "lemon", "line": "Â˝ lemon, juice only" },
+      { "ingredient": "lemon", "line": "1/2 lemon, juice only" },
       { "ingredient": "garam masala", "line": "1 tsp garam masala" },
       { "ingredient": "salt", "line": "salt" },
       {
@@ -9975,7 +9975,7 @@
       "2 free-range eggs, beaten",
       "3 tbsp gram flour",
       "3 tsp dried oregano or thyme",
-      "Â˝ tsp chilli flakes (or chopped fresh chilli, to taste)",
+      "1/2 tsp chilli flakes (or chopped fresh chilli, to taste)",
       "3 garlic cloves, crushed",
       "5 spring onions, trimmed and finely sliced",
       "225g/8oz halloumi, diced",
@@ -10003,7 +10003,7 @@
       { "ingredient": "oregano", "line": "3 tsp dried oregano or thyme" },
       {
         "ingredient": "chilli",
-        "line": "Â˝ tsp chilli flakes (or chopped fresh chilli, to taste)"
+        "line": "1/2 tsp chilli flakes (or chopped fresh chilli, to taste)"
       },
       { "ingredient": "garlic", "line": "3 garlic cloves, crushed" },
       {
@@ -10128,7 +10128,7 @@
       "2 tbsp chopped fresh coriander",
       "1 mango, peeled, finely chopped",
       "2 tbsp olive oil",
-      "Â˝ lemon, juice only"
+      "1/2 lemon, juice only"
     ],
     "instructions": [
       "Combine all the ingredients in a bowl and mix together.",
@@ -10150,7 +10150,7 @@
       },
       { "ingredient": "mango", "line": "1 mango, peeled, finely chopped" },
       { "ingredient": "olive oil", "line": "2 tbsp olive oil" },
-      { "ingredient": "lemon", "line": "Â˝ lemon, juice only" }
+      { "ingredient": "lemon", "line": "1/2 lemon, juice only" }
     ],
     "photo_url": "http://ichef.bbci.co.uk/food/ic/food_16x9_608/recipes/quinoasaladwithavoca_84148_16x9.jpg",
     "preparation_time_minutes": 30,
@@ -10260,7 +10260,7 @@
       "4 tbsp olive oil",
       "2 onions, chopped",
       "2 garlic cloves, crushed",
-      "Â˝ tsp sugar",
+      "1/2 tsp sugar",
       "salt and freshly ground black pepper",
       "small bunch basil, roughly torn"
     ],
@@ -10278,7 +10278,7 @@
       { "ingredient": "olive oil", "line": "4 tbsp olive oil" },
       { "ingredient": "onions", "line": "2 onions, chopped" },
       { "ingredient": "garlic", "line": "2 garlic cloves, crushed" },
-      { "ingredient": "sugar", "line": "Â˝ tsp sugar" },
+      { "ingredient": "sugar", "line": "1/2 tsp sugar" },
       {
         "ingredient": "black pepper",
         "line": "salt and freshly ground black pepper"
@@ -10312,7 +10312,7 @@
       "2 tomatoes, finely chopped",
       "salt, to taste",
       "1 onion, finely chopped",
-      "Â˝ lime, juice only",
+      "1/2 lime, juice only",
       "3 ripe avocados"
     ],
     "instructions": [
@@ -10325,7 +10325,7 @@
       { "ingredient": "tomatoes", "line": "2 tomatoes, finely chopped" },
       { "ingredient": "salt", "line": "salt, to taste" },
       { "ingredient": "onion", "line": "1 onion, finely chopped" },
-      { "ingredient": "lime", "line": "Â˝ lime, juice only" },
+      { "ingredient": "lime", "line": "1/2 lime, juice only" },
       { "ingredient": "avocado", "line": "3 ripe avocados" }
     ],
     "photo_url": "http://ichef.bbci.co.uk/food/ic/food_16x9_608/recipes/realguacamole_81424_16x9.jpg",
@@ -10356,7 +10356,7 @@
       "2 garlic cloves, finely chopped",
       "225g/8oz chestnut mushrooms, sliced",
       "350g/12oz arborio rice",
-      "150ml/Âź pint dry white wine",
+      "150ml  dry white wine",
       "1.2 litres/2 pints hot vegetable stock",
       "2 tbsp chopped fresh parsley",
       "25g/1oz butter",
@@ -10378,7 +10378,7 @@
         "line": "225g/8oz chestnut mushrooms, sliced"
       },
       { "ingredient": "arborio rice", "line": "350g/12oz arborio rice" },
-      { "ingredient": "white wine", "line": "150ml/Âź pint dry white wine" },
+      { "ingredient": "white wine", "line": "150ml pint dry white wine" },
       {
         "ingredient": "vegetable stock",
         "line": "1.2 litres/2 pints hot vegetable stock"
@@ -10894,7 +10894,7 @@
     ],
     "instructions": [
       "Heat the oven to 220C/425F/Gas 7 (200C fan).",
-      "Cut the courgette and aubergine into 5mm/Âź in slices. Cut the peppers in 5mm/Âźin strips. Place all the vegetables in a roasting tin with the garlic and drizzle with oil. Season well with salt and pepper.",
+      "Cut the courgette and aubergine into 5mm slices. Cut the peppers in 5mm strips. Place all the vegetables in a roasting tin with the garlic and drizzle with oil. Season well with salt and pepper.",
       "Roast the vegetables for 20 minutes, then add the drained artichoke hearts. Toss everything together and return to the oven for a further 5-10 minutes, or until hot. Remove from the oven and leave to cool.",
       "When cool, toss the vegetables with balsamic vinegar and serve."
     ],
@@ -11067,7 +11067,7 @@
       "1 unwaxed lemon, juice and zest",
       "pinch salt",
       "4 tbsp coconut flour",
-      "Â˝ tsp bicarbonate of soda",
+      "1/2 tsp bicarbonate of soda",
       "150g/5oz full-fat probiotic yoghurt or coconut-flavoured Greek-style yoghurt",
       "400g/14oz blueberries, washed and drained"
     ],
@@ -11093,7 +11093,7 @@
       { "ingredient": "coconut", "line": "4 tbsp coconut flour" },
       {
         "ingredient": "bicarbonate of soda",
-        "line": "Â˝ tsp bicarbonate of soda"
+        "line": "1/2 tsp bicarbonate of soda"
       },
       {
         "ingredient": "yoghurt",
@@ -11396,7 +11396,7 @@
       "8 midi vine tomatoes, halved",
       "low-calorie cooking spray",
       "3 large free-range eggs",
-      "35g/1Âźoz smoked salmon, roughly chopped",
+      "35g smoked salmon, roughly chopped",
       "1 tbsp chopped chives",
       "25g/1oz fresh watercress, to serve",
       "freshly ground black pepper"
@@ -11413,7 +11413,7 @@
       { "ingredient": "eggs", "line": "3 large free-range eggs" },
       {
         "ingredient": "smoked salmon",
-        "line": "35g/1Âźoz smoked salmon, roughly chopped"
+        "line": "35g smoked salmon, roughly chopped"
       },
       { "ingredient": "chives", "line": "1 tbsp chopped chives" },
       {
@@ -11451,7 +11451,7 @@
       "1 tbsp capers",
       "4 anchovies",
       "200ml/7floz white wine",
-      "300g/10Â˝oz cherry tomatoes, halved, deseeded",
+      "300g/10.5 oz cherry tomatoes, halved, deseeded",
       "salt and freshly ground black pepper",
       "150g/5oz black olives, pitted",
       "1 handful parsley, finely chopped",
@@ -11487,7 +11487,7 @@
       { "ingredient": "white wine", "line": "200ml/7floz white wine" },
       {
         "ingredient": "cherry tomatoes",
-        "line": "300g/10Â˝oz cherry tomatoes, halved, deseeded"
+        "line": "300g/10.5 oz cherry tomatoes, halved, deseeded"
       },
       { "ingredient": 0, "line": "salt and freshly ground black pepper" },
       { "ingredient": "olives", "line": "150g/5oz black olives, pitted" },
@@ -12388,8 +12388,8 @@
     "error": false,
     "ingredients": [
       "4 slices dark rye bread (pumpernickel)",
-      "100g/3Â˝oz quark, drained",
-      "100g/3Â˝oz smoked salmon slices",
+      "100g/3.5 oz quark, drained",
+      "100g/3.5 oz smoked salmon slices",
       "squeeze lemon juice",
       "1 tsp finely chopped fresh chives, to garnish",
       "freshly ground black pepper",
@@ -12404,10 +12404,10 @@
         "ingredient": "rye bread",
         "line": "4 slices dark rye bread (pumpernickel)"
       },
-      { "ingredient": 0, "line": "100g/3Â˝oz quark, drained" },
+      { "ingredient": 0, "line": "100g/3.5 oz quark, drained" },
       {
         "ingredient": "smoked salmon",
-        "line": "100g/3Â˝oz smoked salmon slices"
+        "line": "100g/3.5 oz smoked salmon slices"
       },
       { "ingredient": "lemon", "line": "squeeze lemon juice" },
       {
@@ -12950,11 +12950,11 @@
       "1 tsp ground cumin",
       "1 onion, grated",
       "spray oil, for frying",
-      "20g/Âžoz chopped chorizo",
+      "20g chopped chorizo",
       "1 x 400g tin chopped tomatoes",
       "1 x 400g tin cannellini beans, drained",
       "200g/7oz roasted red peppers from a jar (not in oil), drained weight, chopped",
-      "100g/3Â˝oz basmati rice",
+      "100g/3.5 oz basmati rice",
       "salt and freshly ground black pepper"
     ],
     "instructions": [
@@ -12973,7 +12973,7 @@
       { "ingredient": "cumin", "line": "1 tsp ground cumin" },
       { "ingredient": "onion", "line": "1 onion, grated" },
       { "ingredient": "oil", "line": "spray oil, for frying" },
-      { "ingredient": "chorizo", "line": "20g/Âžoz chopped chorizo" },
+      { "ingredient": "chorizo", "line": "20g chopped chorizo" },
       {
         "ingredient": "chopped tomatoes",
         "line": "1 x 400g tin chopped tomatoes"
@@ -12986,7 +12986,7 @@
         "ingredient": 0,
         "line": "200g/7oz roasted red peppers from a jar (not in oil), drained weight, chopped"
       },
-      { "ingredient": "basmati rice", "line": "100g/3Â˝oz basmati rice" },
+      { "ingredient": "basmati rice", "line": "100g/3.5 oz basmati rice" },
       {
         "ingredient": "black pepper",
         "line": "salt and freshly ground black pepper"
@@ -13979,7 +13979,7 @@
     "error": false,
     "ingredients": [
       "2 tbsp groundnut oil",
-      "400g/14oz firm fresh tofu, drained and cut into 1cm/Â˝in thick rectangles",
+      "400g/14oz firm fresh tofu, drained and cut into 1cm thick rectangles",
       "3 tbsp light soy sauce",
       "1 tsp dark soy sauce",
       "1 tbsp Chinese black rice vinegar or balsamic vinegar",
@@ -14001,7 +14001,7 @@
       { "ingredient": 0, "line": "2 tbsp groundnut oil" },
       {
         "ingredient": "tofu",
-        "line": "400g/14oz firm fresh tofu, drained and cut into 1cm/Â˝in thick rectangles"
+        "line": "400g/14oz firm fresh tofu, drained and cut into 1cm thick rectangles"
       },
       { "ingredient": "soy sauce", "line": "3 tbsp light soy sauce" },
       { "ingredient": "soy sauce", "line": "1 tsp dark soy sauce" },
@@ -14169,7 +14169,7 @@
     "ingredients": [
       "2 heads of spring greens, leaves separated, tough stalks removed, roughly chopped",
       "2 tbsp rapeseed oil",
-      "4 rashers smoked streaky bacon, chopped into 1cm/Â˝in pieces",
+      "4 rashers smoked streaky bacon, chopped into 1cm pieces",
       "50g/2oz toasted hazelnut pieces",
       "salt and freshly ground black pepper"
     ],
@@ -14186,7 +14186,7 @@
       { "ingredient": "rapeseed oil", "line": "2 tbsp rapeseed oil" },
       {
         "ingredient": "bacon",
-        "line": "4 rashers smoked streaky bacon, chopped into 1cm/Â˝in pieces"
+        "line": "4 rashers smoked streaky bacon, chopped into 1cm pieces"
       },
       { "ingredient": "hazelnut", "line": "50g/2oz toasted hazelnut pieces" },
       {
@@ -14217,13 +14217,13 @@
     "error": false,
     "ingredients": [
       "3 tbsp olive oil",
-      "40g/1Â˝oz butter",
+      "40g/1.5 oz butter",
       "2 large onions, finely chopped",
       "1 leek, halved lengthways and thinly sliced",
       "250g/9oz potatoes, peeled and finely chopped",
       "3 sticks celery, finely chopped",
       "150g/5oz savoy cabbage",
-      "2 litres/3Â˝ pints beef or vegetable stock",
+      "2 litres pints beef or vegetable stock",
       "400g/14oz can Italian chopped tomatoes",
       "salt and freshly ground black pepper",
       "2 tbsp green basil pesto"
@@ -14236,7 +14236,7 @@
     ],
     "instructions_detailed": [
       { "ingredient": "olive oil", "line": "3 tbsp olive oil" },
-      { "ingredient": "butter", "line": "40g/1Â˝oz butter" },
+      { "ingredient": "butter", "line": "40g.5  butter" },
       { "ingredient": "onions", "line": "2 large onions, finely chopped" },
       {
         "ingredient": "leek",
@@ -14250,7 +14250,7 @@
       { "ingredient": "savoy cabbage", "line": "150g/5oz savoy cabbage" },
       {
         "ingredient": "vegetable stock",
-        "line": "2 litres/3Â˝ pints beef or vegetable stock"
+        "line": "2 litres pints beef or vegetable stock"
       },
       {
         "ingredient": "chopped tomatoes",
@@ -14422,7 +14422,7 @@
     "ingredients": [
       "450g/1lb firm white fish fillets, such as cod or sole, skinned or a whole fish such as Dover sole or turbot",
       "1 tsp coarse sea salt or plain salt",
-      "1Â˝ tbsp finely shredded fresh root ginger",
+      "1 tbsp finely shredded fresh root ginger",
       "3 tbsp finely shredded spring onions",
       "2 tbsp light soy sauce",
       "2 tbsp dark soy sauce",
@@ -14445,7 +14445,7 @@
       { "ingredient": "salt", "line": "1 tsp coarse sea salt or plain salt" },
       {
         "ingredient": "ginger",
-        "line": "1Â˝ tbsp finely shredded fresh root ginger"
+        "line": "1 tbsp finely shredded fresh root ginger"
       },
       {
         "ingredient": "spring onions",
@@ -14497,7 +14497,7 @@
       "1 tsp salt",
       "2 tbsp groundnut oil",
       "enough long grain rice to fill a glass measuring jug to 400ml/14fl oz, steamed and cooled completely",
-      "Âź tsp freshly ground black pepper",
+      "1/2 tsp freshly ground black pepper",
       "2 tbsp finely chopped spring onions"
     ],
     "instructions": [
@@ -14549,7 +14549,7 @@
       },
       {
         "ingredient": "black pepper",
-        "line": "Âź tsp freshly ground black pepper"
+        "line": "1/2 tsp freshly ground black pepper"
       },
       {
         "ingredient": "spring onions",
@@ -15731,10 +15731,10 @@
       "1 tbsp olive oil",
       "1 garlic clove, chopped",
       "2 chicken thighs, thinly sliced",
-      "Â˝ red pepper, seeds removed, thinly sliced",
+      "1/2 red pepper, seeds removed, thinly sliced",
       "1 tbsp soy sauce",
       "30g/1oz mangetout, green beans or sugar snap peas",
-      "100ml/3Â˝fl oz chicken stock",
+      "100ml/3.5 fl oz chicken stock",
       "1 nest of egg noodles, cooked according to the packet instructions"
     ],
     "instructions": [
@@ -15750,14 +15750,14 @@
       },
       {
         "ingredient": "pepper",
-        "line": "Â˝ red pepper, seeds removed, thinly sliced"
+        "line": "1/2 red pepper, seeds removed, thinly sliced"
       },
       { "ingredient": "soy sauce", "line": "1 tbsp soy sauce" },
       {
         "ingredient": "mangetout",
         "line": "30g/1oz mangetout, green beans or sugar snap peas"
       },
-      { "ingredient": "chicken stock", "line": "100ml/3Â˝fl oz chicken stock" },
+      { "ingredient": "chicken stock", "line": "100ml/3.5 fl oz chicken stock" },
       {
         "ingredient": "noodles",
         "line": "1 nest of egg noodles, cooked according to the packet instructions"
@@ -16287,7 +16287,7 @@
     "ingredients": [
       "6 new potatoes, preferably Charlotte, Ratte and truffle",
       "salt",
-      "30ml/1Âźfl oz olive oil, plus extra for drizzling",
+      "30ml olive oil, plus extra for drizzling",
       "1 banana shallot, very finely chopped",
       "25ml/1fl oz chardonnay vinegar",
       "2 thyme sprigs, leaves only",
@@ -16306,7 +16306,7 @@
       { "ingredient": "salt", "line": "salt" },
       {
         "ingredient": "olive oil",
-        "line": "30ml/1Âźfl oz olive oil, plus extra for drizzling"
+        "line": "30ml oz olive oil, plus extra for drizzling"
       },
       {
         "ingredient": "shallot",
