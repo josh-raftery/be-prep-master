@@ -57,7 +57,7 @@ export default function Day({
         return [...currDinner, recipe];
       });
     }
-    if (mealType === "snacks") {
+    if (mealType === "snack") {
       setTodaysSnacks((currSnacks) => {
         return [...currSnacks, recipe];
       });
@@ -90,7 +90,9 @@ export default function Day({
       setHasFetched(true);
       const currNutrition = calculateNutrition(recipes);
       setNutrition(currNutrition);
-      setCleared(false)
+      if(!popUp){
+        setCleared(false)
+      }
     });
   }, [todaysMeals]);
 
