@@ -18,11 +18,11 @@ export const UserProvider = ({ children }) => {
   });
 
   const signIn = async (userData) => {
-    setUser(userData); // Update the user state with the provided user data
+    setUser(userData)
   };
 
   const signOut = () => {
-    setUser(null); // Clear user state on sign out
+    setUser({}); 
   };
 
   return (
