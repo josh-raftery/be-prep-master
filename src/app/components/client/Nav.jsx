@@ -25,7 +25,7 @@ export default function Nav() {
     <>
       <nav>
         <div className="flex items-center justify-between bg-white border-b border-gray-200 dark:bg-gray-900 py-2">
-          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+          <div className="max-w-screen-xl flex items-center justify-between mx-auto p-2">
             <div
               onClick={routeHome}
               className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -36,19 +36,16 @@ export default function Nav() {
                 alt="PrepMaster logo"
               />
             </div>
-            <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-              <div className="dropdown">
-                {/* Recipe nav button  */}
+            <div className="flex items-center space-x-3 rtl:space-x-reverse">
+              <div className="relative">
                 <button
                   className="btn m-1 btn-primary"
                   onClick={() => toggleDropdown("recipes")}
                 >
                   Recipes
                 </button>
-                {/* EH */}
                 {activeDropdown === "recipes" && (
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow-lg">
-                    {/* ALL RECIPES */}
+                  <ul className="absolute top-full left-0 mt-2 bg-base-100 rounded-box z-[1] w-32 p-2 shadow-lg">
                     <Link href="/recipes">
                       <button
                         className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
@@ -58,9 +55,7 @@ export default function Nav() {
                         All Recipes
                       </button>
                     </Link>
-                    {/* Divider */}
-                    <div className="divider my-2 mr-2"></div>
-                    {/* POST RECIPE BUTTON */}
+                    <div className="divider my-2"></div>
                     <Link href="/recipes/post-recipe">
                       <button
                         className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
@@ -73,8 +68,7 @@ export default function Nav() {
                   </ul>
                 )}
               </div>
-              <div className="dropdown">
-                {/* Meal Plan button  */}
+              <div className="relative">
                 <button
                   className="btn btn-secondary"
                   onClick={() => toggleDropdown("mealplan")}
@@ -82,9 +76,8 @@ export default function Nav() {
                 >
                   Meal Plan
                 </button>
-                {/* Dropdown from the above main button below */}
                 {activeDropdown === "mealplan" && (
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow-lg">
+                  <ul className="absolute top-full left-0 mt-2 bg-base-100 rounded-box z-[1] w-32 p-2 shadow-lg">
                     <Link href="/mealplan">
                       <button
                         className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
@@ -94,8 +87,7 @@ export default function Nav() {
                         My Meal Plan
                       </button>
                     </Link>
-                    <div className="divider my-2 mr-2"></div>
-
+                    <div className="divider my-2"></div>
                     <Link href={`/shopping-list`}>
                       <button
                         className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
@@ -105,17 +97,17 @@ export default function Nav() {
                         Shopping List
                       </button>
                     </Link>
-                    <div className="divider my-2 mr-2"></div>
+                    <div className="divider my-2"></div>
                     <Link href="/mealPlanGenerator">
                       <button
                         className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                         onClick={closeDropdown}
-                        style={{ whiteSpace: "no wrap" }}
+                        style={{ whiteSpace: "nowrap" }}
                       >
                         Generate Plan
                       </button>
                     </Link>
-                    <div className="divider my-2 mr-2"></div>
+                    <div className="divider my-2"></div>
                     <Link href="/achievements">
                       <button
                         className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
@@ -127,18 +119,15 @@ export default function Nav() {
                   </ul>
                 )}
               </div>
-              <div className="dropdown">
-                {/* Profile nav bar button  */}
+              <div className="relative">
                 <button
                   className="btn btn-accent"
                   onClick={() => toggleDropdown("profile")}
-                  style={{ marginLeft: "8.5px" }}
                 >
                   Profile
                 </button>
-                {/* Profile dropdown list below  */}
                 {activeDropdown === "profile" && (
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
+                  <ul className="absolute top-full left-0 mt-2 bg-base-100 rounded-box z-[1] w-32 p-2 shadow-lg">
                     {user.user_id && (
                       <>
                         <Link href={`/profile/${user.user_id}`}>
@@ -150,19 +139,19 @@ export default function Nav() {
                             My Profile
                           </button>
                         </Link>
-                        <div className="divider my-2 mr-2"></div>
+                        <div className="divider my-2"></div>
                       </>
                     )}
                     <Link href={user.username ? "/signout" : "/signin"}>
                       <button
-                        className="btn btn-ghost "
+                        className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                         onClick={closeDropdown}
                         style={{ whiteSpace: "nowrap" }}
                       >
                         {user.username ? "Sign Out" : "Sign In"}
                       </button>
                     </Link>
-                    <div className="divider my-2 mr-2"></div>
+                    <div className="divider my-2"></div>
                     <Link href="/signup">
                       <button
                         className="btn btn-ghost text-left w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
