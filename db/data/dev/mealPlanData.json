@@ -10,91 +10,25 @@
         {
             "meal_id": 2, 
             "date": "25/08/2024",
-            "recipe_id": 2,
+            "recipe_id": 30,
             "mealType": "lunch"
         },
         {
             "meal_id": 3, 
             "date": "25/08/2024",
-            "recipe_id": 3,
+            "recipe_id": 75,
             "mealType": "dinner"
         },
         {
             "meal_id": 4, 
             "date": "25/08/2024",
-            "recipe_id": 5,
+            "recipe_id": 27,
             "mealType": "snack"
         },
         {
             "meal_id": 5, 
-            "date": "26/08/2024",
-            "recipe_id": 1,
-            "mealType": "breakfast"
-        },
-        {
-            "meal_id": 6, 
-            "date": "26/08/2024",
-            "recipe_id": 2,
-            "mealType": "lunch"
-        },
-        {
-            "meal_id": 7, 
-            "date": "26/08/2024",
-            "recipe_id": 3,
-            "mealType": "dinner"
-        },
-        {
-            "meal_id": 8, 
-            "date": "26/08/2024",
-            "recipe_id": 3,
-            "mealType": "snack"
-        },
-        {
-            "meal_id": 9, 
-            "date": "27/08/2024",
-            "recipe_id": 1,
-            "mealType": "breakfast"
-        },
-        {
-            "meal_id": 10, 
-            "date": "27/08/2024",
-            "recipe_id": 2,
-            "mealType": "lunch"
-        },
-        {
-            "meal_id": 11, 
-            "date": "27/08/2024",
-            "recipe_id": 3,
-            "mealType": "dinner"
-        },
-        {
-            "meal_id": 12, 
-            "date": "27/08/2024",
-            "recipe_id": 4,
-            "mealType": "dessert"
-        },
-        {
-            "meal_id": 13, 
-            "date": "28/08/2024",
-            "recipe_id": 1,
-            "mealType": "breakfast"
-        },
-        {
-            "meal_id": 14, 
-            "date": "28/08/2024",
-            "recipe_id": 2,
-            "mealType": "lunch"
-        },
-        {
-            "meal_id": 15, 
-            "date": "28/08/2024",
-            "recipe_id": 3,
-            "mealType": "dinner"
-        },
-        {
-            "meal_id": 16, 
-            "date": "28/08/2024",
-            "recipe_id": 4,
+            "date": "25/08/2024",
+            "recipe_id": 13,
             "mealType": "dessert"
         }
     ]
