@@ -251,7 +251,7 @@ export default function Day({
                   : "collapse-title text-xl font-medium"
               }
             >
-              {day}
+              <p style={{marginLeft: "2.2rem"}} >{day}</p>
             </div>
             <div className="collapse-content">
               {todaysRecipes.length > 0 ? (
@@ -294,7 +294,7 @@ export default function Day({
                   );
                 })
               ) : (
-                <p style={{marginRight: "1.8rem"}} >No meals!</p>
+                <p style={{marginLeft: "0.4rem"}} >No meals!</p>
               )}
               {todaysRecipes.length > 0 && (
                 <section
