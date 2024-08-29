@@ -192,7 +192,7 @@ export default function Day({
               </h3>
               <input
                 onClick={() => {
-                  handleClick({ mealType: "snacks", date });
+                  handleClick({ mealType: "snack", date });
                 }}
                 style={{ marginLeft: "277px", marginTop: "1.2rem" }}
                 type="checkbox"
