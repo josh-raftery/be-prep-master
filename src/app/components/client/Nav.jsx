@@ -87,16 +87,7 @@ export default function Nav() {
                         My Meal Plan
                       </button>
                     </Link>
-                    <div className="divider my-2"></div>
-                    <Link href={`/shopping-list`}>
-                      <button
-                        className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
-                        onClick={closeDropdown}
-                        style={{ whiteSpace: "nowrap" }}
-                      >
-                        Shopping List
-                      </button>
-                    </Link>
+                   
                     <div className="divider my-2"></div>
                     <Link href="/mealPlanGenerator">
                       <button
@@ -114,6 +105,16 @@ export default function Nav() {
                         onClick={closeDropdown}
                       >
                         Progress
+                      </button>
+                    </Link>
+                    <div className="divider my-2"></div>
+                    <Link href={`/shopping-list`}>
+                      <button
+                        className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
+                        onClick={closeDropdown}
+                        style={{ whiteSpace: "nowrap" }}
+                      >
+                        Shopping List
                       </button>
                     </Link>
                   </ul>
