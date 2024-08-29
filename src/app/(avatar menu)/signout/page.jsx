@@ -7,8 +7,8 @@ import Loading from '@components/client/Loading'
 
 export default function SignOut() {
     const router = useRouter()
-    const {signOut} = useContext(UserContext)
-    signOut()
+    const {signOut, setUser} = useContext(UserContext)
+    setUser({})
     router.push('/')
     return (
         <Loading/>

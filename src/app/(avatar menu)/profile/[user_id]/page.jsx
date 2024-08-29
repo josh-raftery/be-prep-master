@@ -15,18 +15,21 @@ export default async function Profile({ params }) {
   const responseData = await res.json();
   const user = responseData.user;
 
-  const myRecipesData = await Promise.all(
-    user.my_recipes.map(async (recipe_id) => {
-      const resRecipe = await fetch(
-        `http://${host}:${port}/api/recipes/${recipe_id}`
-      );
-      return await resRecipe.json();
-    })
-  );
+  const myRecipesData = user.my_recipes.length > 0 
+  ? await Promise.all(
+      user.my_recipes.map(async (recipe_id) => {
+        const resRecipe = await fetch(
+          `http://${host}:${port}/api/recipes/${recipe_id}`
+        );
+        return await resRecipe.json();
+      })
+    )
+  : [];
+  
 
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+      <div className="min-h-screen flex flex-col justify-center bg-gray-100 m-2">
         <div className="card bg-white max-w-3xl shadow-xl p-4 flex flex-col items-center m-2">
           <h2 className="text-xl font-medium text-gray-900 dark:text-white mb-4">
             Hi {user.name}!
@@ -42,11 +45,13 @@ export default async function Profile({ params }) {
             <p>Username: {user.username}</p>
           </div>
         </div>
-
+        {user.my_recipes.length > 0 && (
         <div className="card bg-primary max-w-3xl shadow-xl p-4 m-4 flex flex-col items-center">
+        
           <h2 className="text-xl font-medium text-gray-900 dark:text-white mb-4">
             My Posted Recipes
           </h2>
+        
           <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
             {myRecipesData.map((recipeObj) => (
               <Link
@@ -68,7 +73,7 @@ export default async function Profile({ params }) {
               </Link>
             ))}
           </section>
-        </div>
+        </div>)}
       </div>
     </>
   );
