@@ -1,3 +1,84 @@
 {
-  "ingredients": []
+  "ingredients": [
+    {
+      "id": "6cf7",
+      "name": "spray oil, for frying",
+      "ingredient_id": "475421b6-4ee6-4bd4-ba91-e9d7b6cd8e1d"
+    },
+    {
+      "id": "42f0",
+      "name": "2 rashers back bacon, all visible fat removed",
+      "ingredient_id": "ab9df5f4-9135-4883-8966-0d2ec2df21bf"
+    },
+    {
+      "id": "65ec",
+      "name": "125g/4½oz mushrooms, thinly sliced",
+      "ingredient_id": "b5f3dd09-9c91-46cb-9c04-cff4c2904eb7"
+    },
+    {
+      "id": "3dbc",
+      "name": "4 medium free-range eggs, beaten",
+      "ingredient_id": "b3dfbd27-0dbf-4fe8-a763-4bc2ed332233"
+    },
+    {
+      "id": "1fcf",
+      "name": "75g/2½oz spinach",
+      "ingredient_id": "93dbc9e9-2d3e-4934-bd63-4cd1f77a316b"
+    },
+    {
+      "id": "5e12",
+      "name": "100g/3½oz boiled potatoes (or leftover baked potatoes) cut into rough chunks",
+      "ingredient_id": "cbc999ae-0778-4282-9172-65693d905965"
+    },
+    {
+      "id": "78b1",
+      "name": "100g/3½oz cherry tomatoes, halved",
+      "ingredient_id": "922f5b55-9310-4e5f-bde1-6115f9d547de"
+    },
+    {
+      "id": "621a",
+      "name": "salt and freshly ground black pepper",
+      "ingredient_id": "aab37af5-7d8b-414d-bc91-3a88f73c5b59"
+    },
+    {
+      "id": "6098",
+      "name": "spray oil, for frying",
+      "ingredient_id": "e0c1fb3d-a071-43d3-a9e3-7f038ebe6100"
+    },
+    {
+      "id": "f3ba",
+      "name": "125g/4½oz mushrooms, thinly sliced",
+      "ingredient_id": "ee6987b3-b7d2-487d-b89f-39019f00e399"
+    },
+    {
+      "id": "3fc3",
+      "name": "2 rashers back bacon, all visible fat removed",
+      "ingredient_id": "40a84301-2285-4a70-b8f7-41112330075d"
+    },
+    {
+      "id": "a8cf",
+      "name": "75g/2½oz spinach",
+      "ingredient_id": "1aecb7c6-7373-40df-9856-6199b3faa279"
+    },
+    {
+      "id": "de6d",
+      "name": "100g/3½oz boiled potatoes (or leftover baked potatoes) cut into rough chunks",
+      "ingredient_id": "41bf4cc4-d7fc-4679-b601-65d8bfbf8d8b"
+    },
+    {
+      "id": "9f8d",
+      "name": "100g/3½oz cherry tomatoes, halved",
+      "ingredient_id": "0da59311-86bc-49c7-8e41-55d02ff434a9"
+    },
+    {
+      "id": "aa51",
+      "name": "4 medium free-range eggs, beaten",
+      "ingredient_id": "ffe6ac67-d90f-4259-a8ae-1af5b8b3756b"
+    },
+    {
+      "id": "131f",
+      "name": "salt and freshly ground black pepper",
+      "ingredient_id": "4315ec75-962c-43ac-94be-775c94ced398"
+    }
+  ]
 }

@@ -47,21 +47,23 @@ export default function Nav() {
                 </button>
                 {/* EH */}
                 {activeDropdown === "recipes" && (
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
+                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow-lg">
+                    {/* ALL RECIPES */}
                     <Link href="/recipes">
                       <button
-                        className="btn  btn-ghost"
+                        className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                         onClick={closeDropdown}
                         style={{ whiteSpace: "nowrap" }}
                       >
                         All Recipes
                       </button>
                     </Link>
-                    <div className="divider"></div>
-
+                    {/* Divider */}
+                    <div className="divider my-2 mr-2"></div>
+                    {/* POST RECIPE BUTTON */}
                     <Link href="/recipes/post-recipe">
                       <button
-                        className="btn btn-ghost"
+                        className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                         onClick={closeDropdown}
                         style={{ whiteSpace: "nowrap" }}
                       >
@@ -72,49 +74,51 @@ export default function Nav() {
                 )}
               </div>
               <div className="dropdown">
+                {/* Meal Plan button  */}
                 <button
-                  className="btn m-1 btn-secondary"
+                  className="btn btn-secondary"
                   onClick={() => toggleDropdown("mealplan")}
                   style={{ whiteSpace: "nowrap" }}
                 >
                   Meal Plan
                 </button>
+                {/* Dropdown from the above main button below */}
                 {activeDropdown === "mealplan" && (
-                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
+                  <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow-lg">
                     <Link href="/mealplan">
                       <button
-                        className="btn  btn-ghost "
+                        className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                         onClick={closeDropdown}
                         style={{ whiteSpace: "nowrap" }}
                       >
                         My Meal Plan
                       </button>
                     </Link>
-                    <div className="divider"></div>
+                    <div className="divider my-2 mr-2"></div>
 
                     <Link href={`/shopping-list`}>
                       <button
-                        className="btn  btn-ghost "
+                        className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                         onClick={closeDropdown}
                         style={{ whiteSpace: "nowrap" }}
                       >
                         Shopping List
                       </button>
                     </Link>
-                    <div className="divider"></div>
+                    <div className="divider my-2 mr-2"></div>
                     <Link href="/mealPlanGenerator">
                       <button
-                        className="btn btn-ghost"
+                        className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                         onClick={closeDropdown}
                         style={{ whiteSpace: "no wrap" }}
                       >
                         Generate Plan
                       </button>
                     </Link>
-                    <div className="divider"></div>
+                    <div className="divider my-2 mr-2"></div>
                     <Link href="/achievements">
                       <button
-                        className="btn btn-ghost ml-4 "
+                        className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                         onClick={closeDropdown}
                       >
                         Progress
@@ -124,27 +128,29 @@ export default function Nav() {
                 )}
               </div>
               <div className="dropdown">
+                {/* Profile nav bar button  */}
                 <button
-                  className="btn m-1 btn-accent"
+                  className="btn btn-accent"
                   onClick={() => toggleDropdown("profile")}
                   style={{ marginLeft: "8.5px" }}
                 >
                   Profile
                 </button>
+                {/* Profile dropdown list below  */}
                 {activeDropdown === "profile" && (
                   <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
                     {user.user_id && (
                       <>
                         <Link href={`/profile/${user.user_id}`}>
                           <button
-                            className="btn btn-ghost"
+                            className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                             onClick={closeDropdown}
                             style={{ whiteSpace: "nowrap" }}
                           >
                             My Profile
                           </button>
                         </Link>
-                        <div className="divider"></div>
+                        <div className="divider my-2 mr-2"></div>
                       </>
                     )}
                     <Link href={user.username ? "/signout" : "/signin"}>
@@ -156,10 +162,10 @@ export default function Nav() {
                         {user.username ? "Sign Out" : "Sign In"}
                       </button>
                     </Link>
-                    <div className="divider"></div>
+                    <div className="divider my-2 mr-2"></div>
                     <Link href="/signup">
                       <button
-                        className="btn btn-ghost "
+                        className="btn btn-ghost text-left w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                         onClick={closeDropdown}
                         style={{ whiteSpace: "nowrap" }}
                       >
