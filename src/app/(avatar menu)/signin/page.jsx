@@ -8,11 +8,11 @@ import { getUserByUsername } from "api";
 
 export default function SignIn() {
   const { setUser, signIn } = useContext(UserContext);
-  const [username, setUsername] = useState(""); // Initialize as a string
+  const [username, setUsername] = useState(""); 
   const router = useRouter();
 
   function handleSignIn(event) {
-    setUsername(event.target.value); // Update username as a string
+    setUsername(event.target.value); 
   }
 
   async function handleSubmitSignIn(event) {
@@ -26,8 +26,8 @@ export default function SignIn() {
     const responseData = await userData.json();
     const userObj = responseData.user;
       if (userObj) {
-        signIn(userObj);  // Update context with fetched user data
-        router.push(`/profile/${userObj.user_id}`);  // Redirect to profile
+        signIn(userObj);  
+        router.push(`/profile/${userObj.user_id}`); 
       } else {
         console.error("User not found or error occurred");
       }
@@ -54,8 +54,8 @@ export default function SignIn() {
                 className="grow"
                 placeholder="Username"
                 onChange={handleSignIn}
-                value={username} // Use the string value directly
-                name="username" // Provide a name for the input
+                value={username} 
+                name="username" 
               />
             </label>
             <div className="card-actions justify-end">
