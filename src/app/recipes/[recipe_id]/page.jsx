@@ -13,8 +13,8 @@ export default function SingleRecipe({ params }) {
   const [recipe, setRecipe] = useState({});
   const [clicked, setClicked] = useState(false);
   const [isLoading, setisLoading] = useState(true);
-
-
+  const [buttonText, setButtonText] = useState("+ Shopping List");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   useEffect(() => {
     getRecipeById(params.recipe_id)
       .then((recipe) => {
@@ -44,9 +44,9 @@ export default function SingleRecipe({ params }) {
           });
         })
       );
-  
-      router.push("/shopping-list");
-      router.refresh("/shopping-list");
+
+      setButtonText("Shopping List Updated");
+      setIsButtonDisabled(true);
     } catch (err) {
       console.log(err, " err");
     }
@@ -151,8 +151,9 @@ export default function SingleRecipe({ params }) {
                   <button
                     onClick={handleAddToShoppingList}
                     className="btn bg-secondary mt-4"
+                    disabled={isButtonDisabled} // Disable the button if true
                   >
-                    + Shopping List
+                    {buttonText} {/* Display the "+ Shopping List" */}
                   </button>
                 </div>
               </div>
