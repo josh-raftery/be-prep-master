@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed-test": "NODE_ENV=test node ./db/seed/run-seed.js",
+    "seed-test": "NODE_ENV=production node ./db/seed/run-seed.js",
     "seed-dev": "NODE_ENV=development node ./db/seed/run-seed.js",
     "test": "jest",
     "json-server": "json-server --watch shopping-list-data/data.json --port 3001"

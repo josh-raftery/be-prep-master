@@ -2,21 +2,11 @@ const { NextResponse } = require("next/server");
 const clientPromise = require("../connection");
 const User = require("../schemas/usersSchema.js");
 const { getUserId } = require("../db/utils/getUserId");
-const PatchUserMyRecipes= require("../schemas/patchMyRecipesUsers.js")
+const PatchUserMyRecipes= require("../schemas/patchMyRecipesUsers.js");
+const { selectUsers } = require("models/usersModel");
 
 const getUsers = async () => {
-  try {
-    const client = await clientPromise;
-    const db = await client.db();
-    const users = await db.collection("users");
-    const result = await users
-      .find({})
-      .map((user) => ({ ...user, _id: user._id.toString() }))
-      .toArray();
-    return { users: result };
-  } catch (err) {
-    console.log(err);
-  }
+  return await selectUsers()
 };
 
 const getUserForSignIn = async (username) => {
