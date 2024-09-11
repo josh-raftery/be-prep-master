@@ -2,7 +2,9 @@ const { default: axios } = require("axios");
 
 const host = process.env.HOST || "localhost";
 const port = process.env.PORT || 3000;
-const baseUrl = 'http://localhost:3000/api'
+
+const baseUrl = `http://${host}:${port}/api`;
+
 
 const api = axios.create({
   baseURL: baseUrl
@@ -29,6 +31,9 @@ function getRecipes(params) {
   return api.get("/recipes", { params }).then(({ data }) => {
     console.log(data, ' recipes')
     return data.recipes;
+  }).catch((error) => {
+    console.error("Error fetching recipes:", error);
+    throw error; // Re-throw the error so it can be handled further upstream
   });
 }
 
