@@ -1,9 +1,9 @@
-const Recipes = require("../../models/recipeSchema");
+const Recipes = require("../../schemas/recipeSchema");
 const clientPromise = require("../../connection");
-const Ingredients = require("../../models/ingredientsListSchema.js")
-const User = require("../../models/usersSchema.js");
-const MealPlan = require("../../models/mealPlanSchema");
-const Basket =require("../../models/basketSchema")
+const Ingredients = require("../../schemas/ingredientsListSchema.js")
+const User = require("../../schemas/usersSchema.js");
+const MealPlan = require("../../schemas/mealPlanSchema");
+const Basket =require("../../schemas/basketSchema")
 
 
 async function seedDB({ recipeData, ingredientsData, userData, mealPlanData, basketData }) {

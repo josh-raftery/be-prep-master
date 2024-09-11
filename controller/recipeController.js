@@ -1,7 +1,7 @@
 import { getRecipeId } from "db/utils/getRecipeId";
 import { NextResponse } from "next/server";
 const clientPromise = require("../connection");
-const Recipe = require("../models/recipeSchema");
+const Recipe = require("../schemas/recipeSchema");
 
 const getRecipes = async (
   title,

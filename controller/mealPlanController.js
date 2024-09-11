@@ -1,8 +1,8 @@
 const { NextResponse } = require("next/server");
 const clientPromise = require("../connection");
-const PatchMealPlan = require("models/patchMealplanSchema");
+const PatchMealPlan = require("schemas/patchMealplanSchema");
 const { getMealId } = require("db/utils/getMealId");
-const DeleteMeal = require("models/patchDeleteMeal");
+const DeleteMeal = require("schemas/patchDeleteMeal");
 
 const getMealPlan = async (user_id) => {
     try {
