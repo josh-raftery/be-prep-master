@@ -1,7 +1,7 @@
 const { NextResponse } = require("next/server");
 const clientPromise = require("../connection");
-const Basket = require("../models/basketSchema");
-const BasketPatch = require("models/basketPatchSchema");
+const Basket = require("../schemas/basketSchema");
+const BasketPatch = require("schemas/basketPatchSchema");
 
 
 const getAllBaskets = async () => {

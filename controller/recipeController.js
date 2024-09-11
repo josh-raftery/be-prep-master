@@ -1,7 +1,7 @@
-import { getRecipeId } from "db/utils/getRecipeId";
+import { insertRecipe } from "models/recipeModel";
 import { NextResponse } from "next/server";
 const clientPromise = require("../connection");
-const Recipe = require("../models/recipeSchema");
+const Recipe = require("../schemas/recipeSchema");
 
 const getRecipes = async (
   title,
@@ -23,7 +23,7 @@ const getRecipes = async (
     if (mealType) {
       findQuery.mealType = { $regex: mealType, $options: "i" };
     }
-    
+
     if (preparation_time_minutes) {
       findQuery.preparation_time_minutes = {
         $eq: Number(preparation_time_minutes),
@@ -62,28 +62,15 @@ const getRecipeById = async (recipe_id) => {
     }
 
     return NextResponse.json({ recipe: result }, { status: 200 });
-
   } catch (error) {}
 };
 
 const postRecipe = async (body) => {
   try {
-    const validation = new Recipe(body);
-    await validation.validate();
-    const recipe_id = await getRecipeId();
-    body.recipe_id = recipe_id;
-    const recipeId = parseInt(recipe_id);
-  
-    const client = await clientPromise;
-    const db = await client.db();
-    const recipeCollection = await db.collection("recipes");
-    const result = await recipeCollection.insertOne(body);
-    const newRecipe = await recipeCollection.findOne({ recipe_id: recipeId });
-
+    const newRecipe = await insertRecipe(body);
     return NextResponse.json({ recipe: newRecipe }, { status: 200 });
   } catch (err) {
-    console.error('Validation error:', err);
-    return NextResponse.json({ error: err.message || "Bad Request", details: err.errors }, { status: 400 });
+    console.log("Error while creating recipe: ", err);
   }
 };
 

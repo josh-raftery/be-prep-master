@@ -1,8 +1,8 @@
 const { NextResponse } = require("next/server");
 const clientPromise = require("../connection");
-const User = require("../models/usersSchema.js");
+const User = require("../schemas/usersSchema.js");
 const { getUserId } = require("../db/utils/getUserId");
-const PatchUserMyRecipes= require("../models/patchMyRecipesUsers.js")
+const PatchUserMyRecipes= require("../schemas/patchMyRecipesUsers.js")
 
 const getUsers = async () => {
   try {
