@@ -2,10 +2,10 @@ const { default: axios } = require("axios");
 
 const host = process.env.HOST || "localhost";
 const port = process.env.PORT || 3000;
-const baseUrl = process.env.API_URL
+const baseUrl = 'http://localhost:3000/api'
 
 const api = axios.create({
-  baseURL: baseUrl,
+  baseURL: baseUrl
 });
 
 function getRandomInt(max) {
@@ -25,12 +25,15 @@ function deleteMeal(user_id,request){
 }
 
 function getRecipes(params) {
+  console.log(baseUrl, ' api')
   return api.get("/recipes", { params }).then(({ data }) => {
+    console.log(data, ' recipes')
     return data.recipes;
   });
 }
 
 function getMealPlan(user_id) {
+  console.log(user_id, ' fdsfdfsf')
   return api.get(`/mealplan/${user_id}`).then(({ data }) => {
     return data.user;
   });

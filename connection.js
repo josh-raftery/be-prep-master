@@ -8,6 +8,8 @@ const {MongoClient} = require('mongodb')
 
 const mongoURI = process.env.MONGO_URI;
 
+console.log(mongoURI, ' mongoURI')
+
 if(!mongoURI) throw Error('Please add your MONGO URL to .env')
 
 let client = new MongoClient(mongoURI,{})
