@@ -2,7 +2,7 @@ const { default: axios } = require("axios");
 
 const host = process.env.HOST || "localhost";
 const port = process.env.PORT || 3000;
-const baseUrl = `http://${host}:${port}/api`;
+const baseUrl = process.env.API_URL
 
 const api = axios.create({
   baseURL: baseUrl,

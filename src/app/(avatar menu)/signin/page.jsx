@@ -17,12 +17,13 @@ export default function SignIn() {
 
   async function handleSubmitSignIn(event) {
     event.preventDefault();
-    const host = process.env.HOST || "localhost";
-      const port = process.env.PORT || 3000;
+    // const host = process.env.HOST || "localhost";
+    //   const port = process.env.PORT || 3000;
+      const baseUrl = process.env.API_URL
     try {
       
       const userData = await fetch(
-    `http://${host}:${port}/api/users/?username=${username}`)
+    `${baseUrl}/api/users/?username=${username}`)
     const responseData = await userData.json();
     const userObj = responseData.user;
       if (userObj) {

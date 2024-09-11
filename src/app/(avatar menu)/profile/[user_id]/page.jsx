@@ -2,11 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Profile({ params }) {
-  const host = process.env.HOST || "localhost";
-  const port = process.env.PORT || 3000;
+  // const host = process.env.HOST || "localhost";
+  // const port = process.env.PORT || 3000;
+  const baseUrl = process.env.API_URL
 
   const res = await fetch(
-    `http://${host}:${port}/api/users/${params.user_id}`,
+    `${baseUrl}/api/users/${params.user_id}`,
     {
       cache: "no-store",
     }
@@ -19,7 +20,7 @@ export default async function Profile({ params }) {
   ? await Promise.all(
       user.my_recipes.map(async (recipe_id) => {
         const resRecipe = await fetch(
-          `http://${host}:${port}/api/recipes/${recipe_id}`
+          `${baseUrl}/api/recipes/${recipe_id}`
         );
         return await resRecipe.json();
       })
