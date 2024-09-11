@@ -1,10 +1,11 @@
 const { default: axios } = require("axios");
-const host = process.env.HOST || 'localhost'; 
-const port = process.env.PORT || 3000;  
+// const host = process.env.HOST || 'localhost'; 
+// const port = process.env.PORT || 3000; 
+const baseUrl = process.env.API_URL
 
 function getBasketId(){
    
-    return axios.get(`http://${host}:${port}/api/baskets`)
+    return axios.get(`${baseUrl}/api/baskets`)
     .then((response) => {
         return response.data.baskets.length + 1
     })
