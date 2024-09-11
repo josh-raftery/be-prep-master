@@ -1,11 +1,11 @@
 const { default: axios } = require("axios");
-// const host = process.env.HOST || "localhost";
-// const port = process.env.PORT || 3000;
-const baseUrl = process.env.API_URL
+const host = process.env.HOST || "localhost";
+const port = process.env.PORT || 3000;
+const baseUrl = `http://${host}:${port}/api`;
 
 function getRecipeId() {
   return axios
-    .get(`${baseUrl}/api/recipes`)
+    .get(`${baseUrl}/recipes`)
     .then((response) => {
       const recipe_ids = response.data.recipes.map((recipe) => {
         return recipe.recipe_id
