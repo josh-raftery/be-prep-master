@@ -46,8 +46,11 @@ const getRecipes = async (
       .sort(sortQuery)
       .map((recipe) => ({ ...recipe, _id: recipe._id.toString() }))
       .toArray();
-    return { recipes: result };
-  } catch (err) {}
+    console.log({recipes: result}, ' response')
+    return NextResponse.json({recipes: result}, { status: 200 })
+  } catch (err) {
+    console.log(err,'controller error')
+  }
 };
 
 const getRecipeById = async (recipe_id) => {
