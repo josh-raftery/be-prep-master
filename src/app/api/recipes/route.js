@@ -15,10 +15,6 @@ export async function GET(request) {
   const mealType = request.nextUrl.searchParams.get("mealType")
 
   return getRecipes(name, orderBy, sortBy, chef, prepTime, servings, mealType)
-    .then((recipes) => {
-      return NextResponse.json(recipes, { status: 200 });
-    })
-    .catch((err) => {});
 }
 
 export async function POST(request) {
