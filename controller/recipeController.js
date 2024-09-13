@@ -49,7 +49,8 @@ export const getRecipes = async (
     console.log({recipes: result}, ' response')
     return NextResponse.json({recipes: result}, { status: 200 })
   } catch (err) {
-    console.log(err,'controller error')
+    console.error(err,'controller error')
+    throw err
   }
 };
 
