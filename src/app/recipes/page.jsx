@@ -10,8 +10,6 @@ export default function Recipes() {
 
   const [allRecipes, setAllRecipes] = useState([])
 
-  console.log('test')
-
   useEffect(() => {
     getRecipes()
     .then((recipes) => {
@@ -19,12 +17,10 @@ export default function Recipes() {
     })
   }, [])
 
-  console.log(allRecipes, ' all recipes')
-
   if(allRecipes.length > 0){
     return (
       <>
-      {/* <SearchBar/> */}
+      <SearchBar/>
       <div className="recipe-card-container">
       <section className="grid gap-[20px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  mx-auto">
         {allRecipes.map((recipe) => {

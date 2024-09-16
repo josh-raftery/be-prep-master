@@ -22,9 +22,7 @@ const getMealPlan = async (user_id) => {
 };
 
 const addToMealPlan = async (updateData,user_id) => {
-  console.log('in meal plan')
   try{
-    console.log('before db connection')
     const client = await clientPromise;
     const db = await client.db();
     const mealplanCollection = db.collection("mealplan");
@@ -47,14 +45,10 @@ const addToMealPlan = async (updateData,user_id) => {
       return NextResponse.json({ error: "Not Found" }, { status: 404 });
     }
 
-    console.log('before update')
-
     const updateDB = await mealplanCollection.updateOne(
       { user_id: parseInt(user_id) },
       { $set: result }
     );
-
-    console.log('after update')
 
     const newMealPlan = await mealplanCollection.findOne({
       user_id: parseInt(user_id)
@@ -94,8 +88,6 @@ async function deleteFromMealPlan(updateData,user_id){
         }
       })
     })
-
-    console.log(newMealPlan, ' resultresult')
 
     const updateDB = await mealplanCollection.updateOne(
       { user_id: parseInt(user_id) },

@@ -59,18 +59,15 @@ export default function MealPlan({
   }
 
   function clearPlan(){
-    console.log(mealPlan.meals, ' meals')
     const meal_ids = mealPlan.meals.map((meal) => {
       let meal_id = meal.meal_id
       return { meal_id }
     })
     deleteMeal(user.user_id, meal_ids)
     .then(() => {
-      console.log(mealPlan, ' meal plan')
       setmealPlan((currMealPlan) => {
         let newMealPlan = currMealPlan
         newMealPlan.meals = []
-        console.log(newMealPlan, ' newMealPlan')
         return newMealPlan
       })
       setCleared(true)
