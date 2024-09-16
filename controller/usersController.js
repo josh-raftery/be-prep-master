@@ -59,7 +59,6 @@ const postUser = async (body) => {
     body.user_id = user_id;
     body.ingredients_used = []
     body.my_recipes = []
-    console.log(body)
     
     const validation = new User(body);
     await validation.validate();
@@ -107,10 +106,10 @@ const addToMyRecipes = async (user_id, updateData) => {
     const db = await client.db();
     const userCollection = db.collection("users");
     const userUpdate = { my_recipes: updateData.my_recipes };
-    console.log("before validation")
+
     const validation = new PatchUserMyRecipes(userUpdate);
     await validation.validate();
-    console.log("after validation")
+
     const result = await userCollection.findOne({
       user_id: parseInt(user_id)
     })
@@ -129,7 +128,6 @@ const addToMyRecipes = async (user_id, updateData) => {
 
     return NextResponse.json({ user: updatedUser }, { status: 200 });
   }catch (err) {
-    console.log(err, '<---- error from addtomyrecipes');
     return NextResponse.json({ error: err.message || "Unknown Error" }, { status: 400 });
   }
 }

@@ -22,14 +22,11 @@ function getRandomRecipe(params = {}){
 }
 
 function deleteMeal(user_id,request){
-  console.log(request, ' request')
   return api.patch(`/mealplan/${user_id}?add=false`,{meals: request})
 }
 
 function getRecipes(params) {
-  console.log(baseUrl, ' api')
   return api.get("/recipes", { params }).then(({ data }) => {
-    console.log(data, ' recipes')
     return data.recipes;
   }).catch((error) => {
     console.error("Error fetching recipes:", error);
@@ -38,7 +35,6 @@ function getRecipes(params) {
 }
 
 function getMealPlan(user_id) {
-  console.log(user_id, ' fdsfdfsf')
   return api.get(`/mealplan/${user_id}`).then(({ data }) => {
     return data.user;
   });
@@ -65,14 +61,11 @@ function postRecipe(request) {
 function addMeal(user_id,request){
   return api.patch(`/mealplan/${user_id}?add=true`,{meals: request})
   .then((response) => {
-    console.log(response)
   })
 }
 
 function patchUserMyRecipes(user_id, request){
-  return api.patch(`/users/${user_id}?myrecipes=true`, {my_recipes: request}).then((response) => {
-    console.log(response)
-  })
+  return api.patch(`/users/${user_id}?myrecipes=true`, {my_recipes: request})
 }
 
 function getUserByUsername(username) {
