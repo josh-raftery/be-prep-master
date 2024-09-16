@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ClockIcon } from "@heroicons/react/24/outline";
-// import SearchBar from "../components/client/SearchBar";
+import SearchBar from "../components/client/SearchBar";
 import { getRecipes } from "api";
 import { useEffect, useState } from "react";
 
