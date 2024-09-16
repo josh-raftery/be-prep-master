@@ -4,7 +4,7 @@ import Link from "next/link";
 export default async function Profile({ params }) {
   const host = process.env.HOST || "localhost";
   const port = process.env.PORT || 3000;
-  const baseUrl = `http://${host}:${port}/api`;
+  const baseUrl = `https://be-prep-master.vercel.app/api`;
 
   const res = await fetch(
     `${baseUrl}/users/${params.user_id}`,
