@@ -2,6 +2,7 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    // swcMinify: false, 
     async headers() {
         return [
             {
