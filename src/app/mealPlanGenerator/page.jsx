@@ -166,40 +166,21 @@ export default function MealPlanGenerator() {
   if(hasMealPlan){
     return (
       <div className="mealplan-popup">
-        <div className="card bg-primary text-primary-content w-full shadow-lg ">
+        <div className="card text-primary-content w-auto shadow-lg ">
           <div className="card-body">
-            <h2 className="card-title">
+            <h2 className="generator-header card-title">
               Meal Plan
+              </h2>
               <button
                 onClick={handleClick}
-                className="btn btn-outline"
-                style={{ marginLeft: "7rem" }}
+                className="generator-header btn btn-secondary"
+                style={{ marginLeft: "1.5rem",marginRight: "1.5rem" }}
               >
-                {diff === 0 ? "Next Week" : "This Week"}
+                {diff > 0 && <img style={{width: "20px"}} src='/previous.png'/>}
+                {diff === 0 ? "next week" : "this week"}
+                {diff === 0 && <img style={{width: "20px"}} src='/next.png'/>}
               </button>
-            </h2>
-            {/* Form to add new meal
-            */}
-            {/* <form onSubmit={handleFormSubmit}>
-              <div className="form-control">
-                <label htmlFor="mealInput" className="label">
-                  <span className="label-text text-lg">Add a meal for {today}</span>
-                </label>
-                <input
-                  type="text"
-                  id="mealInput"
-                  value={newMeal}
-                  onChange={handleChange}
-                  className="input input-bordered w-full max-w-xs"
-                  placeholder="Enter meal name"
-                />
-              </div>
-              <button type="submit" className="btn mt-4">
-                Add Meal
-              </button>
-            </form> */}
-            {/* Display the meal plan  */}
-            <button onClick={onSubmit} className="btn ml-6 btn-outline">
+            <button onClick={onSubmit} style={{marginRight: "1.5rem"}} className="btn ml-6 btn-accent">
                 Generate
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -215,27 +196,29 @@ export default function MealPlanGenerator() {
                 </svg>
               </button>
             <div className="card-actions justify-end">
+              <section className="week-container">
+              <div className="grid gap-[20px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  mx-auto">
               {days.map((day, index) => (
-                <div key={`${dates[index]}-container`}>
-                  <MealGeneratorDays
-                    setbreakfastServings={setbreakfastServings}
-                    setNewBreakfasts={setNewBreakfasts}
-                    setlunchServings={setlunchServings}
-                    setNewLunch={setNewLunch}
-                    setdinnerServings={setdinnerServings}
-                    setNewDinners={setNewDinners}
-                    setdessertServings={setdessertServings}
-                    setNewDesserts={setNewDesserts}
-                    setsnacksServings={setsnacksServings}
-                    setNewSnacks={setNewSnacks}
-                    key={dates[index]}
-                    today={today}
-                    day={day}
-                    date={dates[index]}
-                    mealPlan={mealPlan}
-                  />
-                </div>
+                <MealGeneratorDays
+                setbreakfastServings={setbreakfastServings}
+                setNewBreakfasts={setNewBreakfasts}
+                setlunchServings={setlunchServings}
+                setNewLunch={setNewLunch}
+                setdinnerServings={setdinnerServings}
+                setNewDinners={setNewDinners}
+                setdessertServings={setdessertServings}
+                setNewDesserts={setNewDesserts}
+                setsnacksServings={setsnacksServings}
+                setNewSnacks={setNewSnacks}
+                key={dates[index]}
+                today={today}
+                day={day}
+                date={dates[index]}
+                mealPlan={mealPlan}
+                />
               ))}
+              </div>
+              </section>
             </div>
           </div>
         </div>

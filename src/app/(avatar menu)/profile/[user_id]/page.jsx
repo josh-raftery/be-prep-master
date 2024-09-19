@@ -30,7 +30,7 @@ export default async function Profile({ params }) {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col justify-center bg-gray-100 m-2">
+      <div className="user-profile min-h-screen flex flex-col justify-center bg-gray-100 m-2">
         <div className="card bg-white max-w-3xl shadow-xl p-4 flex flex-col items-center m-2">
           <h2 className="text-xl font-medium text-gray-900 dark:text-white mb-4">
             Hi {user.name}!
@@ -59,7 +59,7 @@ export default async function Profile({ params }) {
                 href={`/recipes/${recipeObj.recipe.recipe_id}`}
                 key={recipeObj.recipe.recipe_id}
               >
-                <div className="card bg-base-100 shadow-xl flex flex-col items-center p-4">
+                <div className="card bg-base-100 shadow-xl h-80 w-80 flex flex-col items-center p-4">
                   <figure>
                     <img
                       src={recipeObj.recipe.photo_url}

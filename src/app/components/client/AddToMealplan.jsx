@@ -77,19 +77,21 @@ export default function AddToMealPlan({ recipe, setClicked }) {
   if (hasMealPlan) {
     return (
       <div className="mealplan-popup">
-        <div className="justify-center card bg-primary text-primary-content w-96">
+        <div className="card text-primary-content w-auto shadow-lg">
           <div className="card-body">
-            <h2 className="card-title">
+            <h2 className="add-mealplan-header card-title">
               Meal Plan
               <button
                 onClick={handleClick}
-                className="btn btn-outline"
-                style={{ marginLeft: "6rem" }}
+                className="btn btn-secondary"
+                style={{ marginLeft: "2rem" }}
               >
+                {diff > 0 && <img style={{width: "20px"}} src='/previous.png'/>}
                 {diff === 0 ? "next week" : "this week"}
+                {diff === 0 && <img style={{width: "20px"}} src='/next.png'/>}
               </button>
               <button
-                className="btn btn-outline"
+                className="btn btn-error"
                 onClick={handleClose}
                 style={{ marginLeft: "2rem" }}
               >
@@ -98,17 +100,17 @@ export default function AddToMealPlan({ recipe, setClicked }) {
             </h2>
             <h2
               style={{ marginTop: "1rem" }}
-              className="card-title"
+              className="add-mealplan-header card-title"
             >{`New Meal: ${recipe.title}`}</h2>
-            <h2 className="card-title">
+            <h2 className="add-mealplan-header card-title">
               <b>{`Select ${servingsToAllocate} slots`}</b>
             </h2>
-            <button onClick={handleSubmit} className="btn btn-wide btn-outline">Submit</button>
+            <button onClick={handleSubmit} style={{marginRight: "1.5rem"}} className="btn ml-6 btn-accent">Submit</button>
             <div className="card-actions justify-end">
               <section className="week-container">
+                <div className="grid gap-[20px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  mx-auto">
                 {days.map((day, index) => {
                   return (
-                    <div key={`${dates[index]}-container`}>
                       <Day
                         setClicked={setClicked}
                         user_id={user.user_id}
@@ -124,9 +126,9 @@ export default function AddToMealPlan({ recipe, setClicked }) {
                         newMeals={newMeals}
                         setNewMeals={setNewMeals}
                       />
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </section>
             </div>
           </div>
