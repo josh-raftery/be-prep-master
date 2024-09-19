@@ -28,7 +28,7 @@ export default function Nav() {
           <div className="max-w-screen-xl flex items-center justify-between mx-auto p-2">
             <div
               onClick={routeHome}
-              className="flex items-center space-x-3 rtl:space-x-reverse"
+              className="prepmaster-logo"
             >
               <img
                 src="/logo.png"
