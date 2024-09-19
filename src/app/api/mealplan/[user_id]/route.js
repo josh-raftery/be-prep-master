@@ -12,8 +12,10 @@ export async function PATCH(request){
     const updateData = await request.json();
     const add = request.nextUrl.searchParams.get("add")
     if(add === 'true'){
+        console.log('api route')
         return addToMealPlan(updateData,user_id)
     }else if(add === 'false'){
+        console.log('api route')
         return deleteFromMealPlan(updateData,user_id)
     }
 }

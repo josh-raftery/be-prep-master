@@ -5,6 +5,7 @@ import {
 } from "../../../../controller/recipeController";
 
 export async function GET(request) {
+  console.log('TEST TEST TEST')
   const name = request.nextUrl.searchParams.get("title") || null;
   const orderBy = request.nextUrl.searchParams.get("order_by") || "1";
   const sortBy = request.nextUrl.searchParams.get("sort_by") || "recipe_id";

@@ -17,13 +17,13 @@ export default function SignIn() {
 
   async function handleSubmitSignIn(event) {
     event.preventDefault();
-    // const host = process.env.HOST || "localhost";
-    //   const port = process.env.PORT || 3000;
-      const baseUrl = process.env.API_URL
+    const host = process.env.HOST || "localhost";
+      const port = process.env.PORT || 3000;
+    const baseUrl = `https://be-prep-master.vercel.app/api`;
     try {
       
       const userData = await fetch(
-    `${baseUrl}/api/users/?username=${username}`)
+    `${baseUrl}/users/?username=${username}`)
     const responseData = await userData.json();
     const userObj = responseData.user;
       if (userObj) {

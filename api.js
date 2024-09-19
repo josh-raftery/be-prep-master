@@ -2,10 +2,12 @@ const { default: axios } = require("axios");
 
 const host = process.env.HOST || "localhost";
 const port = process.env.PORT || 3000;
-const baseUrl = process.env.API_URL
+
+const baseUrl = `https://be-prep-master.vercel.app/api`;
+
 
 const api = axios.create({
-  baseURL: baseUrl,
+  baseURL: baseUrl
 });
 
 function getRandomInt(max) {
@@ -20,13 +22,15 @@ function getRandomRecipe(params = {}){
 }
 
 function deleteMeal(user_id,request){
-  console.log(request, ' request')
   return api.patch(`/mealplan/${user_id}?add=false`,{meals: request})
 }
 
 function getRecipes(params) {
   return api.get("/recipes", { params }).then(({ data }) => {
     return data.recipes;
+  }).catch((error) => {
+    console.error("Error fetching recipes:", error);
+    throw error; // Re-throw the error so it can be handled further upstream
   });
 }
 
@@ -57,14 +61,11 @@ function postRecipe(request) {
 function addMeal(user_id,request){
   return api.patch(`/mealplan/${user_id}?add=true`,{meals: request})
   .then((response) => {
-    console.log(response)
   })
 }
 
 function patchUserMyRecipes(user_id, request){
-  return api.patch(`/users/${user_id}?myrecipes=true`, {my_recipes: request}).then((response) => {
-    console.log(response)
-  })
+  return api.patch(`/users/${user_id}?myrecipes=true`, {my_recipes: request})
 }
 
 function getUserByUsername(username) {
