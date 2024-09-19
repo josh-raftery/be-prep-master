@@ -6,6 +6,8 @@ import { getDates } from "src/utils/getDates";
 import Day from "@components/client/Day";
 import Loading from "@components/client/Loading";
 import ToCook from "@components/client/ToCook";
+import Next from "@components/client/Next";
+import Previous from "@components/Previous";
 
 
 export default function MealPlan({
@@ -49,9 +51,7 @@ export default function MealPlan({
   }, [diff]);
 
   function changeWeek(inc){
-    setDiff((currDiff) => {
-      return currDiff + inc
-    })
+    setDiff(inc)
   }
 
   function thisWeek(){
@@ -80,38 +80,58 @@ export default function MealPlan({
 
   if (mealPlan.meals && !isLoading) {
     return (
-      <>
-        <div className="date-buttons" >
-          <button style={{marginRight: "1rem"}} onClick={() => changeWeek(-1)} className={diff < 0 ? "btn btn-outline btn-success" : "btn btn-outline"}>Last Week</button>
-          <button onClick={thisWeek} className={diff === 0 ? "btn btn-outline btn-success" : "btn btn-outline"}>This Week</button>
-          <button style={{marginLeft: "1rem"}} onClick={() => changeWeek(1)} className={diff > 0 ? "btn btn-outline btn-success" : "btn btn-outline"}>Next Week</button>
+      <section className="mealplan">
+        <div className="mealplan-container w-full">
+          <h2 className="card-title">My MealPlan</h2>
+          <div className="date-buttons flex w-full gap-x-4">
+            <button
+              onClick={() => changeWeek(-1)}
+              className={`${diff < 0 ? "border-2 border-green-500" : ""} btn btn-accent flex-grow`}
+            >
+              <Previous /> Last Week
+            </button>
+            <button
+              onClick={thisWeek}
+              className={`${diff === 0 ? "border-2 border-green-500" : ""} btn btn-accent flex-grow`}
+            >
+              This Week
+            </button>
+            <button
+              onClick={() => changeWeek(1)}
+              className={`${diff > 0 ? "border-2 border-green-500" : ""} btn btn-accent flex-grow`}
+            >
+              Next Week <Next />
+            </button>
+          </div>
+          <div className="clear-button mt-2">
+            <button onClick={clearPlan} className="btn btn-error w-full">
+              Clear Meal Plan
+            </button>
+          </div>
+          <section style={{marginTop: "1rem"}} className="week-container">
+            {days.map((day, index) => {
+              return (
+                <div key={`${dates[index]}-container`}>
+                  <Day
+                    key={dates[index]}
+                    today={today}
+                    day={day}
+                    date={dates[index]}
+                    mealPlan={mealPlan}
+                    popUp={popUp}
+                    servingsToAllocate={servingsToAllocate}
+                    setServingsToAllocate={setServingsToAllocate}
+                    recipeToAdd={recipeToAdd}
+                    diff={diff}
+                    cleared={cleared}
+                    setCleared={setCleared}
+                  />
+                </div>
+              );
+            })}
+          </section>
         </div>
-        <div style={{marginBottom: "0.5rem"}} className="clear-button" >
-          <button  style={{ width: "340px" }} onClick={clearPlan} className="btn btn-wide btn-outline btn-error">Clear Meal Plan</button>
-        </div>
-        <section className="week-container">
-          {days.map((day, index) => {
-            return (
-              <div key={`${dates[index]}-container`}>
-                <Day
-                  key={dates[index]}
-                  today={today}
-                  day={day}
-                  date={dates[index]}
-                  mealPlan={mealPlan}
-                  popUp={popUp}
-                  servingsToAllocate={servingsToAllocate}
-                  setServingsToAllocate={setServingsToAllocate}
-                  recipeToAdd={recipeToAdd}
-                  diff={diff}
-                  cleared={cleared}
-                  setCleared={setCleared}
-                />
-              </div>
-            );
-          })}
-        </section>
-      </>
+      </section>
     );
   }
 }

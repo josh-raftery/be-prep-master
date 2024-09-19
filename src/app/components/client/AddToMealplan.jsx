@@ -6,6 +6,8 @@ import { UserContext } from "@components/client/userProvider";
 import { getDates } from "src/utils/getDates";
 import Day from "@components/client/Day";
 import Loading from "@components/client/Loading";
+import Next from "./Next";
+import Previous from "@components/Previous";
 
 export default function AddToMealPlan({ recipe, setClicked }) {
   const [diff, setDiff] = useState(0);
@@ -79,25 +81,25 @@ export default function AddToMealPlan({ recipe, setClicked }) {
       <div className="mealplan-popup">
         <div className="card text-primary-content w-auto shadow-lg">
           <div className="card-body">
-            <h2 className="add-mealplan-header card-title">
-              Meal Plan
+            <h2 className="add-mealplan-header card-title">Meal Plan
+
+            </h2>
+              <button
+                className="close-popup btn btn-ghost"
+                onClick={handleClose}
+                style={{ marginLeft: "2rem" }}
+              >
+                <img style={{width: "25px"}} src="/close.png" />
+              </button>
               <button
                 onClick={handleClick}
                 className="btn btn-secondary"
                 style={{ marginLeft: "2rem" }}
               >
-                {diff > 0 && <img style={{width: "20px"}} src='/previous.png'/>}
+                {diff > 0 && <Previous/>}
                 {diff === 0 ? "next week" : "this week"}
-                {diff === 0 && <img style={{width: "20px"}} src='/next.png'/>}
+                {diff === 0 && <Next/>}
               </button>
-              <button
-                className="btn btn-error"
-                onClick={handleClose}
-                style={{ marginLeft: "2rem" }}
-              >
-                X
-              </button>
-            </h2>
             <h2
               style={{ marginTop: "1rem" }}
               className="add-mealplan-header card-title"

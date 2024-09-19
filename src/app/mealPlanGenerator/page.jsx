@@ -6,6 +6,8 @@ import { getDates } from "src/utils/getDates";
 import Loading from "@components/client/Loading";
 import MealGeneratorDays from "@components/client/MealGeneratorDays";
 import { useRouter } from "next/navigation";
+import Next from "@components/client/Next";
+import Previous from "@components/Previous";
 
 export default function MealPlanGenerator() {
   const { user } = useContext(UserContext);
@@ -169,16 +171,16 @@ export default function MealPlanGenerator() {
         <div className="card text-primary-content w-auto shadow-lg ">
           <div className="card-body">
             <h2 className="generator-header card-title">
-              Meal Plan
+              Meal Plan Generator
               </h2>
               <button
                 onClick={handleClick}
                 className="generator-header btn btn-secondary"
                 style={{ marginLeft: "1.5rem",marginRight: "1.5rem" }}
               >
-                {diff > 0 && <img style={{width: "20px"}} src='/previous.png'/>}
+                {diff > 0 && <Previous/>}
                 {diff === 0 ? "next week" : "this week"}
-                {diff === 0 && <img style={{width: "20px"}} src='/next.png'/>}
+                {diff === 0 && <Next/>}
               </button>
             <button onClick={onSubmit} style={{marginRight: "1.5rem"}} className="btn ml-6 btn-accent">
                 Generate
