@@ -1,128 +1,89 @@
-import { getRecipeId } from "db/utils/getRecipeId";
+import {
+  deleteRecipeById,
+  fetchRecipeById,
+  fetchRecipes,
+  insertRecipe,
+  updateRecipeById,
+} from "models/recipeModel";
 import { NextResponse } from "next/server";
 const clientPromise = require("../connection");
 const Recipe = require("../schemas/recipeSchema");
 
-export const getRecipes = async (
-  title,
-  order_by = "1",
-  sort_by = "recipe_id",
-  chef,
-  preparation_time_minutes,
-  serves,
-  mealType
-) => {
+export const getRecipes = async (req, res) => {
   try {
-    let findQuery = {};
-    if (title) {
-      findQuery.title = { $regex: title, $options: "i" };
-    }
-    if (chef) {
-      findQuery.chef = { $regex: chef, $options: "i" };
-    }
-    if (mealType) {
-      findQuery.mealType = { $regex: mealType, $options: "i" };
-    }
-    
-    if (preparation_time_minutes) {
-      findQuery.preparation_time_minutes = {
-        $eq: Number(preparation_time_minutes),
-      };
-    }
-    if (serves) {
-      findQuery.serves = {
-        $eq: Number(serves),
-      };
-    }
-    let sortQuery = {};
-    if (sort_by) {
-      sortQuery[sort_by] = Number(order_by);
-    }
-    const client = await clientPromise;
-    const db = await client.db();
-    const recipes = await db.collection("recipes");
-    const result = await recipes
-      .find(findQuery)
-      .sort(sortQuery)
-      .map((recipe) => ({ ...recipe, _id: recipe._id.toString() }))
-      .toArray();
-    console.log({recipes: result}, ' response')
-    return NextResponse.json({recipes: result}, { status: 200 })
+    const {
+      title,
+      order_by = "1",
+      sort_by = "recipe_id",
+      chef,
+      preparation_time_minutes,
+      serves,
+      mealType,
+    } = req.query;
+    const recipes = await fetchRecipes({
+      title,
+      order_by,
+      sort_by,
+      chef,
+      preparation_time_minutes,
+      serves,
+      mealType,
+    });
+    return NextResponse.json({ recipes }, { status: 200 });
   } catch (err) {
-    console.error(err,'controller error')
-    throw err
+    console.error("error from the contoller: ", err);
   }
 };
 
-export const getRecipeById = async (recipe_id) => {
+export const getRecipeById = async (req, res) => {
   try {
-    const client = await clientPromise;
-    const db = await client.db();
-    const recipes = await db.collection("recipes");
-    const result = await recipes.findOne({ recipe_id: parseInt(recipe_id) });
-
-    if (result === null) {
-      return NextResponse.json({ error: "Not Found" }, { status: 404 });
+    const { recipe_id } = req.query;
+    const recipe = await fetchRecipeById(recipe_id);
+    if (!recipe) {
+      return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
-
-    return NextResponse.json({ recipe: result }, { status: 200 });
-
-  } catch (error) {}
+    return NextResponse.json({ recipe }, { status: 200 });
+  } catch (error) {
+    console.log("error from  the controller: ", err);
+  }
 };
 
 export const postRecipe = async (body) => {
   try {
-    const validation = new Recipe(body);
-    await validation.validate();
-    const recipe_id = await getRecipeId();
-    body.recipe_id = recipe_id;
-    const recipeId = parseInt(recipe_id);
-  
-    const client = await clientPromise;
-    const db = await client.db();
-    const recipeCollection = await db.collection("recipes");
-    const result = await recipeCollection.insertOne(body);
-    const newRecipe = await recipeCollection.findOne({ recipe_id: recipeId });
-
+    const newRecipe = await insertRecipe(body);
     return NextResponse.json({ recipe: newRecipe }, { status: 200 });
   } catch (err) {
-    console.error('Validation error:', err);
-    return NextResponse.json({ error: err.message || "Bad Request", details: err.errors }, { status: 400 });
+    console.log("Error while creating recipe: ", err);
   }
 };
 
-export const patchRecipe = async (recipe_id, updateData) => {
+export const patchRecipe = async (req, res) => {
   try {
-    const client = await clientPromise;
-    const db = await client.db();
-    const reciCollection = db.collection("recipes");
-
+    const { recipe_id } = req.query;
+    const { updateData } = req.body;
     const recipeUpdate = updateData.recipe;
-
-    const recipeId = parseInt(recipe_id);
     const validation = new Recipe(recipeUpdate);
     await validation.validate();
+    const result = await updateRecipeById(recipe_id, recipeUpdate);
 
-    const result = await reciCollection.updateOne(
-      { recipe_id: recipeId },
-      { $set: recipeUpdate }
-    );
-    return NextResponse.json(
-      { message: "Recipe updated successfully" },
-      { status: 200 }
-    );
+    if (result.modifiedCount === 1) {
+      return NextResponse.json(
+        { message: "Recipe updated successfully" },
+        { status: 200 }
+      );
+    } else {
+      return NextResponse.json({ error: "Recipe not found" }, { status: 404 });
+    }
   } catch (err) {
     return NextResponse.json({ error: "Bad Request" }, { status: 400 });
   }
 };
 
-export const deleteRecipe = async (recipe_id) => {
+export const deleteRecipe = async (req, res) => {
   try {
-    const client = await clientPromise;
-    const db = await client.db();
-    const recipeCollection = db.collection("recipes");
-    const recipeId = parseInt(recipe_id);
-    const result = await recipeCollection.deleteOne({ recipe_id: recipeId });
+    const { recipe_id } = req.query;
+
+    const result = await deleteRecipeById(recipe_id);
     if (result.deletedCount === 1) {
       return NextResponse.json(
         { message: "Recipe deleted successfully" },
@@ -135,4 +96,3 @@ export const deleteRecipe = async (recipe_id) => {
     return NextResponse.json({ error: "Bad Request" }, { status: 400 });
   }
 };
-

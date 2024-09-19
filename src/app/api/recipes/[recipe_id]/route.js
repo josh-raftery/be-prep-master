@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import {
   getRecipeById,
   patchRecipe,
@@ -5,9 +6,19 @@ import {
 } from "../../../../../controller/recipeController";
 
 export async function GET(request) {
-  const splitUrl = request.url.split("/");
-  const recipe_id = splitUrl[splitUrl.length - 1];
-  return getRecipeById(recipe_id);
+  try {
+    const url = new URL(request.url);
+    const splitUrl = url.pathname.split("/");
+    const recipe_id = splitUrl[splitUrl.length - 1];
+
+    return await getRecipeById({ query: { recipe_id } });
+  } catch (error) {
+    console.error("Error fetching recipe by ID:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch recipe" },
+      { status: 500 }
+    );
+  }
 }
 
 export async function PATCH(request) {
@@ -18,8 +29,14 @@ export async function PATCH(request) {
 
     const updateData = await request.json();
 
-    return await patchRecipe(recipe_id, updateData);
-  } catch (error) {}
+    return await patchRecipe({ query: { recipe_id }, body: updateData });
+  } catch (error) {
+    console.error("Error updating recipe:", error);
+    return NextResponse.json(
+      { error: "Failed to update recipe" },
+      { status: 400 }
+    );
+  }
 }
 
 export async function DELETE(request) {
@@ -28,6 +45,12 @@ export async function DELETE(request) {
     const splitUrl = url.pathname.split("/");
     const recipe_id = splitUrl[splitUrl.length - 1];
 
-    return await deleteRecipe(recipe_id);
-  } catch (error) {}
+    return await deleteRecipe({ query: { recipe_id } });
+  } catch (error) {
+    console.error("Error deleting recipe:", error);
+    return NextResponse.json(
+      { error: "Failed to delete recipe" },
+      { status: 400 }
+    );
+  }
 }
