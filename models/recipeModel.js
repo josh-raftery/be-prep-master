@@ -17,7 +17,6 @@ export const insertRecipe = async (body) => {
     const newRecipe = await recipeCollection.findOne({
       recipe_id: recipeId,
     });
-
     return newRecipe;
   } catch (err) {
     console.log(err, ":Model error");

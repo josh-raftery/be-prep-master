@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 const clientPromise = require("../connection");
 const Recipe = require("../schemas/recipeSchema");
 
-const getRecipes = async (
+export const getRecipes = async (
   title,
   order_by = "1",
   sort_by = "recipe_id",
@@ -46,11 +46,15 @@ const getRecipes = async (
       .sort(sortQuery)
       .map((recipe) => ({ ...recipe, _id: recipe._id.toString() }))
       .toArray();
-    return { recipes: result };
-  } catch (err) {}
+    console.log({recipes: result}, ' response')
+    return NextResponse.json({recipes: result}, { status: 200 })
+  } catch (err) {
+    console.error(err,'controller error')
+    throw err
+  }
 };
 
-const getRecipeById = async (recipe_id) => {
+export const getRecipeById = async (recipe_id) => {
   try {
     const client = await clientPromise;
     const db = await client.db();
@@ -65,7 +69,7 @@ const getRecipeById = async (recipe_id) => {
   } catch (error) {}
 };
 
-const postRecipe = async (body) => {
+export const postRecipe = async (body) => {
   try {
     const newRecipe = await insertRecipe(body);
     return NextResponse.json({ recipe: newRecipe }, { status: 200 });
@@ -74,7 +78,7 @@ const postRecipe = async (body) => {
   }
 };
 
-const patchRecipe = async (recipe_id, updateData) => {
+export const patchRecipe = async (recipe_id, updateData) => {
   try {
     const client = await clientPromise;
     const db = await client.db();
@@ -99,7 +103,7 @@ const patchRecipe = async (recipe_id, updateData) => {
   }
 };
 
-const deleteRecipe = async (recipe_id) => {
+export const deleteRecipe = async (recipe_id) => {
   try {
     const client = await clientPromise;
     const db = await client.db();
@@ -118,10 +122,4 @@ const deleteRecipe = async (recipe_id) => {
     return NextResponse.json({ error: "Bad Request" }, { status: 400 });
   }
 };
-module.exports = {
-  getRecipes,
-  getRecipeById,
-  postRecipe,
-  patchRecipe,
-  deleteRecipe,
-};
+
