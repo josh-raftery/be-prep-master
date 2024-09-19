@@ -8,6 +8,12 @@
   margin-bottom: 0.5rem;
 }
 
+.day-container,
+.recipe-card-container,
+.add-to-mealplan,
+.add-mealplan-header,
+.generator-header,
+.mealplan-popup,
 .clear-button,
 .date-buttons,
 .recipe-stats,
@@ -23,6 +29,11 @@
 
 .checkbox-container{
   display: flex;
+}
+
+.user-profile{
+  display: table;
+  margin-inline: auto;
 }
 
 :root {
@@ -54,17 +65,14 @@ body {
   text-align: center;
 }
 
-.day-container,
-.recipe-card-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .recipe-info{
   position: absolute;
   bottom: 0;
   right: 0;
   margin-bottom: 10px;
   margin-right: 10px; 
+}
+
+.recipe-card-container{
+  padding: 1rem;
 }

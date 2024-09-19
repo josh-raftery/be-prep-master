@@ -122,110 +122,112 @@ export default function Day({
   if (hasFetched && !cleared) {
     if (popUp) {
       return (
-        <div className="day-card card flex justify-start bg-primary text-primary-content w-96">
-          <div className="card-body">
-            <h2 className="card-title">{`${day}, ${date}`}</h2>
-            <div className="checkbox-container">
-              <h3 style={{ marginTop: "1rem" }} className="card-title">
-                Breakfast:
-              </h3>
-              <input
-                onClick={() => {
-                  handleClick({ mealType: "breakfast", date });
-                }}
-                style={{ marginLeft: "250px", marginTop: "1.2rem" }}
-                type="checkbox"
-                className="checkbox-custom checkbox"
-              />
-            </div>
-            {todaysBreakfast.length > 0 ? (
-              todaysBreakfast.map((breakfast) => {
-                return <p>{breakfast.title}</p>;
-              })
-            ) : (
-              <p>No breakfast</p>
-            )}
-            <div className="checkbox-container">
-              <h3 style={{ marginTop: "1rem" }} className="card-title">
-                Lunch:
-              </h3>
-              <input
-                onClick={() => {
-                  handleClick({ mealType: "lunch", date });
-                }}
-                style={{ marginLeft: "285px", marginTop: "1.2rem" }}
-                type="checkbox"
-                className="checkbox-custom checkbox"
-              />
-            </div>
+        <div style={{marginRight: "0.7rem"}} className="add-to-mealplan">
+          <div className="card bg-primary text-primary-content w-80">
+            <div className="card-body">
+              <h2 className="card-title">{`${day}, ${date}`}</h2>
+              <div className="checkbox-container">
+                <h3 style={{ marginTop: "1rem" }} className="card-title">
+                  Breakfast:
+                </h3>
+                <input
+                  onClick={() => {
+                    handleClick({ mealType: "breakfast", date });
+                  }}
+                  style={{ marginLeft: "150px", marginTop: "1.2rem" }}
+                  type="checkbox"
+                  className="checkbox-custom checkbox"
+                />
+              </div>
+              {todaysBreakfast.length > 0 ? (
+                todaysBreakfast.map((breakfast) => {
+                  return <p>{breakfast.title}</p>;
+                })
+              ) : (
+                <p>No breakfast</p>
+              )}
+              <div className="checkbox-container">
+                <h3 style={{ marginTop: "1rem" }} className="card-title">
+                  Lunch:
+                </h3>
+                <input
+                  onClick={() => {
+                    handleClick({ mealType: "lunch", date });
+                  }}
+                  style={{ marginLeft: "185px", marginTop: "1.2rem" }}
+                  type="checkbox"
+                  className="checkbox-custom checkbox"
+                />
+              </div>
 
-            {todaysLunch.length > 0 ? (
-              todaysLunch.map((lunch) => {
-                return <p>{lunch.title}</p>;
-              })
-            ) : (
-              <p>No Lunch</p>
-            )}
-            <div className="checkbox-container">
-              <h3 style={{ marginTop: "1rem" }} className="card-title">
-                Dinner:
-              </h3>
-              <input
-                onClick={() => {
-                  handleClick({ mealType: "dinner", date });
-                }}
-                style={{ marginLeft: "277px", marginTop: "1.2rem" }}
-                type="checkbox"
-                className="checkbox-custom checkbox"
-              />
+              {todaysLunch.length > 0 ? (
+                todaysLunch.map((lunch) => {
+                  return <p>{lunch.title}</p>;
+                })
+              ) : (
+                <p>No Lunch</p>
+              )}
+              <div className="checkbox-container">
+                <h3 style={{ marginTop: "1rem" }} className="card-title">
+                  Dinner:
+                </h3>
+                <input
+                  onClick={() => {
+                    handleClick({ mealType: "dinner", date });
+                  }}
+                  style={{ marginLeft: "177px", marginTop: "1.2rem" }}
+                  type="checkbox"
+                  className="checkbox-custom checkbox"
+                />
+              </div>
+              {todaysDinner.length > 0 ? (
+                todaysDinner.map((dinner) => {
+                  return <p>{dinner.title}</p>;
+                })
+              ) : (
+                <p>No Dinner</p>
+              )}
+              <div className="checkbox-container">
+                <h3 style={{ marginTop: "1rem" }} className="card-title">
+                  Snacks:
+                </h3>
+                <input
+                  onClick={() => {
+                    handleClick({ mealType: "snack", date });
+                  }}
+                  style={{ marginLeft: "177px", marginTop: "1.2rem" }}
+                  type="checkbox"
+                  className="checkbox-custom checkbox"
+                />
+              </div>
+              {todaysSnacks.length > 0 ? (
+                todaysSnacks.map((snack) => {
+                  return <p>{snack.title}</p>;
+                })
+              ) : (
+                <p>No Snacks</p>
+              )}
+              <div className="checkbox-container">
+                <h3 style={{ marginTop: "1rem" }} className="card-title">
+                  Dessert:
+                </h3>
+                <input
+                  onClick={() => {
+                    handleClick({ mealType: "dessert", date });
+                  }}
+                  style={{ marginLeft: "170px", marginTop: "1.2rem" }}
+                  type="checkbox"
+                  className="checkbox-custom checkbox"
+                />
+              </div>
+              {todaysDessert.length > 0 ? (
+                todaysDessert.map((dessert) => {
+                  return <p>{dessert.title}</p>;
+                })
+              ) : (
+                <p>No Dinner</p>
+              )}
             </div>
-            {todaysDinner.length > 0 ? (
-              todaysDinner.map((dinner) => {
-                return <p>{dinner.title}</p>;
-              })
-            ) : (
-              <p>No Dinner</p>
-            )}
-            <div className="checkbox-container">
-              <h3 style={{ marginTop: "1rem" }} className="card-title">
-                Snacks:
-              </h3>
-              <input
-                onClick={() => {
-                  handleClick({ mealType: "snack", date });
-                }}
-                style={{ marginLeft: "277px", marginTop: "1.2rem" }}
-                type="checkbox"
-                className="checkbox-custom checkbox"
-              />
-            </div>
-            {todaysSnacks.length > 0 ? (
-              todaysSnacks.map((snack) => {
-                return <p>{snack.title}</p>;
-              })
-            ) : (
-              <p>No Snacks</p>
-            )}
-            <div className="checkbox-container">
-              <h3 style={{ marginTop: "1rem" }} className="card-title">
-                Dessert:
-              </h3>
-              <input
-                onClick={() => {
-                  handleClick({ mealType: "dessert", date });
-                }}
-                style={{ marginLeft: "270px", marginTop: "1.2rem" }}
-                type="checkbox"
-                className="checkbox-custom checkbox"
-              />
-            </div>
-            {todaysDessert.length > 0 ? (
-              todaysDessert.map((dessert) => {
-                return <p>{dessert.title}</p>;
-              })
-            ) : (
-              <p>No Dinner</p>
-            )}
           </div>
         </div>
       );
