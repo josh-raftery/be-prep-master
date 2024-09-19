@@ -1,33 +1,33 @@
 const { NextResponse } = require("next/server");
-const clientPromise = require("../connection");
+const ingredientModel = require("../models/ingredientModel");
 
 const getIngredients = async () => {
   try {
-    const client = await clientPromise;
-    const db = await client.db();
-    const ingredients = await db.collection("ingredients");
-    const result = await ingredients
-      .find({})
-      .map((ingredient) => ({ ...ingredient, _id: ingredient._id.toString() }))
-      .toArray();
-    return { ingredients: result };
-  } catch (err) {}
+    const ingredients = await ingredientModel.fetchIngredients();
+    return NextResponse.json({ ingredients }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: "An error occurred" }, { status: 500 });
+  }
 };
 
 const getIngredientsById = async (ingredient_id) => {
   try {
-    const client = await clientPromise;
-    const db = await client.db();
-    const ingredients = await db.collection("ingredients");
-    const result = await ingredients.findOne({
-      ingredient_id: parseInt(ingredient_id),
-    });
-    if (result === null) {
-      return NextResponse.json({ error: "Not Found" }, { status: 404 });
+    const ingredient = await ingredientModel.fetchIngredientsById(
+      ingredient_id
+    );
+    if (!ingredient) {
+      return NextResponse.json(
+        {
+          error: "Not found",
+        },
+        {
+          status: 404,
+        }
+      );
     }
-    return NextResponse.json({ ingredient: result }, { status: 200 });
-  } catch (error) {
-    return { error: "An error occured" };
+    return NextResponse.json({ ingredient }, { status: 200 });
+  } catch (err) {
+    return NextResponse.json({ error: "An error occured" }, { status: 500 });
   }
 };
 
