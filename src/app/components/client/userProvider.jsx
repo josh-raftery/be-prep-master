@@ -12,8 +12,8 @@ export const UserProvider = ({ children }) => {
     "username": "samsoy",
     "name": "Samantha",
     "avatar_url": "https://api.dicebear.com/9.x/personas/svg?seed=Sammy&backgroundColor=b6e3f4",
-    "ingredients_used": [],
-    "my_recipes": [],
+    "shopping_list": [ "coffee", "bananas", "sliced bread"],
+    "my_recipes": [ 5, 10, 206]
   
   });
 

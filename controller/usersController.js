@@ -18,13 +18,12 @@ const getUserForSignIn = async (username) => {
     const result = await users.findOne({ username: username });
     
     if (!result) {
-      return null;  // Return null if user not found
+      return null;  
     }
-    
-    return result;  // Return the user object directly
+    return result;  
   } catch (error) {
     console.error("Error in getUserForSignIn:", error);
-    return null;  // Return null if there's an error
+    return null;  
   }
 };
 
@@ -57,7 +56,7 @@ const postUser = async (body) => {
     const user_id = allUsers.length + 1
 
     body.user_id = user_id;
-    body.ingredients_used = []
+    body.shopping_list = []
     body.my_recipes = []
     console.log(body)
     
