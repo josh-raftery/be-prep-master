@@ -4,7 +4,7 @@
     "username": "samsoy",
     "name": "Samantha",
     "avatar_url": "https://api.dicebear.com/9.x/personas/svg?seed=Sammy&backgroundColor=b6e3f4",
-    "ingredients_used": [],
+    "shopping_list": [ "coffee", "bananas", "sliced bread"],
     "my_recipes": [ 5, 10, 206]
 },
 {
@@ -12,7 +12,7 @@
     "username": "hazzaharissa",
     "name": "Harry",
     "avatar_url": "https://api.dicebear.com/9.x/personas/svg?seed=Tiger&backgroundColor=b6e3f4",
-    "ingredients": [],
+    "shopping_list": ["tea bags", "dark chocolate"],
     "my_recipes": [55, 75, 76]
 },
 {
@@ -20,7 +20,7 @@
     "username": "dotdough",
     "name": "Dorothy",
     "avatar_url": "https://api.dicebear.com/9.x/personas/svg?seed=Jasper&backgroundColor=b6e3f4",
-    "ingredients": [],
+    "shopping_list": ["milk chocolate"],
     "my_recipes": [9, 16, 34]
 },
 {
@@ -28,7 +28,7 @@
     "username": "calcauli",
     "name": "Carl",
     "avatar_url": "https://api.dicebear.com/9.x/personas/svg?seed=Spooky&backgroundColor=b6e3f4",
-    "ingredients": [],
+    "shopping_list": ["apples"],
     "my_recipes": [40, 66, 152]
 },
 {
@@ -36,7 +36,7 @@
     "username": "bellepepper",
     "name": "Belle",
     "avatar_url": "https://api.dicebear.com/9.x/personas/svg?seed=Mimi&backgroundColor=b6e3f4",
-    "ingredients": [],
+    "shopping_list": [],
     "my_recipes": [ 43, 139, 153]
 }
 ]
