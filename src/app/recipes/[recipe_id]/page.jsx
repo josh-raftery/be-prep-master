@@ -1,20 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import AddToMealPlan from "@components/client/AddToMealplan";
 import { getRecipeById } from "api";
 import Loading from "@components/client/Loading";
-// import { addItem } from "shopping-list-data/api";
-import { v4 as uuidv4 } from "uuid";
+import { UserContext } from "@components/client/userProvider";
+import Modal from "@components/client/Modal.jsx";
+import Link from "next/link";
 
 export default function SingleRecipe({ params }) {
-  const router = useRouter();
   const [recipe, setRecipe] = useState({});
   const [clicked, setClicked] = useState(false);
   const [isLoading, setisLoading] = useState(true);
   const [buttonText, setButtonText] = useState("+ Shopping List");
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [openModalSignInShopping, setOpenModalSignInShopping] = useState(false);
+  const [openModalSignInMealplan, setOpenModalSignInMealplan]  = useState(false);
+  const { user } = useContext(UserContext);
+
   useEffect(() => {
     getRecipeById(params.recipe_id)
       .then((recipe) => {
@@ -26,29 +29,35 @@ export default function SingleRecipe({ params }) {
       });
   }, []);
 
-  const ingredientArray = recipe.ingredients;
-
   function handleClick() {
-    setClicked((currClicked) => {
+    if (!user || !user.user_id) {
+      setOpenModalSignInMealplan(true);
+      return;
+    }else{
+      setClicked((currClicked) => {
       return !currClicked;
-    });
+    });}
+    
   }
 
   const handleAddToShoppingList = async () => {
-    try {
-      // await Promise.all(
-      //   ingredientArray.map(async (item) => {
-      //     await addItem({
-      //       name: item,
-      //       ingredient_id: uuidv4(),
-      //     });
-      //   })
-      // );
-
-      setButtonText("Shopping List Updated");
-      setIsButtonDisabled(true);
-    } catch (err) {
-      console.log(err, " err");
+    if (!user || !user.user_id) {
+      setOpenModalSignInShopping(true);
+      return;
+    }else{
+    fetch(`https://be-prep-master.vercel.app/api/users/${user.user_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const currentList = data.user.shopping_list;
+        const newList = [...currentList, ...recipe.ingredients];
+        console.log(newList);
+        //update shopping list in DB
+        setButtonText("Shopping List Updated");
+        setIsButtonDisabled(true);
+      })
+      .catch((err) => {
+        console.error("Error updating shopping list:", err);
+      })
     }
   };
 
@@ -173,6 +182,41 @@ export default function SingleRecipe({ params }) {
           </section>
         </div>
       </div>
+      {/*Sign In Shopping Modal */}
+      <Modal
+        isOpen={openModalSignInShopping}
+        onClose={() => setopenModalSignInShopping(false)}
+        className="p-6 bg-white shadow-lg rounded-lg"
+      >
+        <form className="space-y-4">
+          <p className="text-lg font-semibold mb-4 text-center">
+            You need to sign in to add ingredients to your shopping list
+          </p>
+          <Link href="/signin">
+            <button type="submit" className="btn btn-secondary w-full">
+              Go to sign in
+            </button>
+          </Link>
+        </form>
+      </Modal>
+
+       {/*Sign In MealPlan Modal */}
+       <Modal
+        isOpen={openModalSignInMealplan}
+        onClose={() => setopenModalSignInMealplan(false)}
+        className="p-6 bg-white shadow-lg rounded-lg"
+      >
+        <form className="space-y-4">
+          <p className="text-lg font-semibold mb-4 text-center">
+            You need to sign in to add recipes to your meal plan
+          </p>
+          <Link href="/signin">
+            <button type="submit" className="btn btn-secondary w-full">
+              Go to sign in
+            </button>
+          </Link>
+        </form>
+      </Modal>
     </div>
   );
 }
