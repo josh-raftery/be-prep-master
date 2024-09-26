@@ -8,6 +8,8 @@
   margin-bottom: 0.5rem;
 }
 
+
+.mealplan-container h2,
 .day-container,
 .recipe-card-container,
 .add-to-mealplan,
@@ -21,6 +23,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.selected{
+  border: bold orange;
 }
 
 .checkbox-custom{
@@ -50,6 +56,17 @@
   }
 }
 
+.date-buttons,
+.clear-button {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.mealplan{
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
 }
@@ -65,6 +82,23 @@ body {
   text-align: center;
 }
 
+.prepmaster-logo{
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 4px;
+  margin-left: 1%; 
+}
+
+.close-popup{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px; 
+}
+
 .recipe-info{
   position: absolute;
   bottom: 0;
@@ -73,6 +107,7 @@ body {
   margin-right: 10px; 
 }
 
+.mealplan-container,
 .recipe-card-container{
   padding: 1rem;
 }

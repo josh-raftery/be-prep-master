@@ -28,7 +28,7 @@ export default function Nav() {
           <div className="max-w-screen-xl flex items-center justify-between mx-auto p-2">
             <div
               onClick={routeHome}
-              className="flex items-center space-x-3 rtl:space-x-reverse"
+              className="prepmaster-logo"
             >
               <img
                 src="/logo.png"
@@ -108,7 +108,7 @@ export default function Nav() {
                       </button>
                     </Link>
                     <div className="divider my-2"></div>
-                    <Link href={`/shopping-list`}>
+                    <Link href={`/shopping-list/${user.user_id}`}>
                       <button
                         className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                         onClick={closeDropdown}
