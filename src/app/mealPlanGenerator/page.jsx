@@ -31,6 +31,7 @@ export default function MealPlanGenerator() {
   const [dessertServings,setdessertServings] = useState(0)
   const [hasAdded, sethasAdded] = useState(false)
   const [recipeAdded,setRecipeAdded] = useState(false)
+  const [hasCheckedUser,sethasCheckedUser] = useState(false)
 
   const router = useRouter();
   
@@ -44,29 +45,39 @@ export default function MealPlanGenerator() {
     "Sunday",
   ];
 
-  useEffect(() => {
-    setIsLoading(true);
-    getMealPlan(user.user_id)
-      .then((mealPlanData) => {
-        setMealPlan(mealPlanData);
-        setHasMealPlan(true);
-      })
-      .catch((err) => {
-        console.log("Failed to fetch meal plan", err);
-        setHasMealPlan(false);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-    setDates(getDates(diff));
-    const date = new Date();
-
-    if (date.getDay() === 0) {
-      setToday("Sunday");
-    } else {
-      setToday(days[date.getDay() - 1]);
+  useEffect(() =>{
+    if(user === null){
+      router.push('/redirect')
+    }else{
+      sethasCheckedUser(true)
     }
-  }, [diff, user.user_id]);
+  },[])
+
+  useEffect(() => {
+    if(hasCheckedUser){
+      setIsLoading(true);
+      getMealPlan(user.user_id)
+        .then((mealPlanData) => {
+          setMealPlan(mealPlanData);
+          setHasMealPlan(true);
+        })
+        .catch((err) => {
+          console.log("Failed to fetch meal plan", err);
+          setHasMealPlan(false);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+      setDates(getDates(diff));
+      const date = new Date();
+  
+      if (date.getDay() === 0) {
+        setToday("Sunday");
+      } else {
+        setToday(days[date.getDay() - 1]);
+      }
+    }
+  }, [diff, hasCheckedUser]);
 
   function handleClick() {
     setDiff((currDiff) => {

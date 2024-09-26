@@ -28,6 +28,7 @@ export default function SignUp() {
     postUser(formData)
       .then((newUser) => {
         setUser(newUser);
+        
         router.push(`/profile/${newUser.user_id}`);
       })
       .catch((error) => {

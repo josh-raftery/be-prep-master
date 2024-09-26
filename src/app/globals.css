@@ -8,7 +8,7 @@
   margin-bottom: 0.5rem;
 }
 
-
+.redirect-container,
 .mealplan-container h2,
 .day-container,
 .recipe-card-container,
@@ -75,6 +75,12 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.redirect-container{
+  padding: 2rem;
+  margin-top: 10%;
+  z-index: 100;
 }
 
 .day-container{
