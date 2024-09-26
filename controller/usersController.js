@@ -4,6 +4,7 @@ const User = require("../schemas/usersSchema.js");
 const { getUserId } = require("../db/utils/getUserId");
 const PatchUserMyRecipes= require("../schemas/patchMyRecipesUsers.js");
 const { selectUsers } = require("models/usersModel");
+const BasketPatch = require("schemas/basketPatchSchema");
 
 const getUsers = async () => {
   return await selectUsers()
@@ -99,6 +100,35 @@ const patchUser = async (user_id, updateData) => {
   }
 };
 
+
+const patchUserBasket = async (user_id, request) => {
+  try {
+    const client = await clientPromise;
+    const db = await client.db();
+    const userCollection = db.collection("users");
+
+    const userId = parseInt(user_id);
+
+    const validation = new BasketPatch(request);
+    await validation.validate();
+
+    const userObject = await userCollection.findOne({ user_id: userId });
+    userObject.shopping_list = request.shopping_list
+
+    const result = await userCollection.updateOne(
+      { user_id: userId },
+      { $set: userObject }
+    );
+
+    return NextResponse.json(
+      { message: "User updated successfully" },
+      { status: 200 }
+    );
+  } catch (err) {
+    return NextResponse.json({ error: err}, { status: 400 });
+  }
+}
+
 const addToMyRecipes = async (user_id, updateData) => {
   try {
     const client = await clientPromise;
@@ -137,5 +167,6 @@ module.exports = {
   postUser,
   patchUser,
   addToMyRecipes,
-  getUserForSignIn
+  getUserForSignIn,
+  patchUserBasket
 };
