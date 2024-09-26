@@ -7,33 +7,28 @@ import { useRouter } from "next/navigation";
 import { getUserByUsername } from "api";
 
 export default function SignIn() {
-  const { setUser, signIn } = useContext(UserContext);
+  const { signIn } = useContext(UserContext);
   const [username, setUsername] = useState(""); 
+  const [error, setError] = useState(false);
   const router = useRouter();
 
   function handleSignIn(event) {
     setUsername(event.target.value); 
   }
 
-  async function handleSubmitSignIn(event) {
+  function handleSubmitSignIn(event) {
     event.preventDefault();
-    const host = process.env.HOST || "localhost";
-      const port = process.env.PORT || 3000;
-    const baseUrl = `https://be-prep-master.vercel.app/api`;
-    try {
-      
-      const userData = await fetch(
-    `${baseUrl}/users/?username=${username}`)
-    const responseData = await userData.json();
-    const userObj = responseData.user;
-      if (userObj) {
-        signIn(userObj);  
-        router.push(`/profile/${userObj.user_id}`); 
-      } else {
-        console.error("User not found or error occurred");
-      }
-    } catch (error) {
-      console.error("Error during sign-in:", error);
+    if (!username || username.trim() === "") {
+      setError(true);
+    } else {
+      getUserByUsername(username)
+        .then((user) => {
+          signIn(user);
+          router.push(`/profile/${user.user_id}`);
+        })
+        .catch((error) => {
+          console.error("Error during sign-in:", error);
+        });
     }
   }
 
@@ -43,6 +38,11 @@ export default function SignIn() {
         <form className="card bg-white shadow-xl" >
           <div className="card-body">
             <h2 className="card-title">Sign In</h2>
+            {error && (
+            <p className="text-red-500 text-sm text-center">
+              Username cannot be empty.
+            </p>
+          )}
             <label className="input input-bordered flex items-center gap-2 bg-white">
               <Image
                 src="/userIcon.png"
@@ -57,6 +57,7 @@ export default function SignIn() {
                 onChange={handleSignIn}
                 value={username} 
                 name="username" 
+                required
               />
             </label>
             <div className="card-actions justify-end">

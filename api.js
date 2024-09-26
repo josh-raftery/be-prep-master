@@ -67,10 +67,9 @@ function patchUserMyRecipes(user_id, request){
 }
 
 function getUserByUsername(username) {
-
-  return api.get(`/users`, { params: { username } })  
+  return api.get(`/users?username=${username}`)  
     .then(({ data }) => {
-      return data;
+      return data.user
     })
     .catch((error) => {
       console.error("Error fetching user by username:", error);
