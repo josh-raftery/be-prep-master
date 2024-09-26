@@ -16,6 +16,12 @@ Welcome to **PrepMaster**, a mealplanner web application developed as part of th
 -   **Profile Pages**
     -   You can sign in, sign out and [sign up](https://be-prep-master.vercel.app/signup).
     -   The [profile page](https://be-prep-master.vercel.app/profile/1) contains some user information and a list of recipes you have posted.
+
+## Prep Master Overview
+
+https://github.com/user-attachments/assets/23ecfb51-73c5-4b07-9394-ca2ff80bfcde
+
+      
 ## Tech Stack
 -   **Back-End (API)**
     -   MongoDB
