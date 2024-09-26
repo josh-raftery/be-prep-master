@@ -1,5 +1,4 @@
 "use client";
-"use client";
 import { useContext, useEffect, useState } from "react";
 import { addMeal, getMealPlan } from "api";
 import { UserContext } from "@components/client/userProvider";
@@ -8,6 +7,8 @@ import Day from "@components/client/Day";
 import Loading from "@components/client/Loading";
 import Next from "./Next";
 import Previous from "@components/Previous";
+import checkUser from "./checkUser";
+import { useRouter } from "next/navigation";
 
 export default function AddToMealPlan({ recipe, setClicked }) {
   const [diff, setDiff] = useState(0);
@@ -19,6 +20,7 @@ export default function AddToMealPlan({ recipe, setClicked }) {
   const [isLoading, setIsLoading] = useState(true);
   const [today, setToday] = useState("");
   const [recipeToAdd, setRecipeToAdd] = useState(recipe);
+  const [hasCheckedUser,sethasCheckedUser] = useState(false)
   const [cleared,setCleared] = useState(false)
   const days = [
     "Monday",
@@ -30,22 +32,33 @@ export default function AddToMealPlan({ recipe, setClicked }) {
     "Sunday",
   ];
   const [newMeals, setNewMeals] = useState([]);
+  const router = useRouter()
+
+  useEffect(() =>{
+    if(user === null){
+      router.push('/redirect')
+    }else{
+      sethasCheckedUser(true)
+    }
+  },[])
 
   useEffect(() => {
-    getMealPlan(user.user_id).then((mealplanData) => {
-      setmealPlan(mealplanData);
-      setHasMealPlan(true);
-    });
-    setDates(getDates(diff));
-    setIsLoading(false);
-    const date = new Date();
-
-    if (date.getDay() === 0) {
-      setToday("Sunday");
-    } else {
-      setToday(days[date.getDay() - 1]);
+    if(hasCheckedUser){
+      getMealPlan(user.user_id).then((mealplanData) => {
+        setmealPlan(mealplanData);
+        setHasMealPlan(true);
+      });
+      setDates(getDates(diff));
+      setIsLoading(false);
+      const date = new Date();
+  
+      if (date.getDay() === 0) {
+        setToday("Sunday");
+      } else {
+        setToday(days[date.getDay() - 1]);
+      }
     }
-  }, [diff]);
+  }, [diff,hasCheckedUser]);
 
   if (isLoading) {
     return <Loading />;

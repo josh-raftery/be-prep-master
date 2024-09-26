@@ -8,7 +8,7 @@ import Loading from '@components/client/Loading'
 export default function SignOut() {
     const router = useRouter()
     const {signOut, setUser} = useContext(UserContext)
-    setUser({})
+    signOut()
     useEffect(() => {
         router.push('/')
     },[])

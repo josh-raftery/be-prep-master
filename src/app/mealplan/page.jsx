@@ -8,6 +8,7 @@ import Loading from "@components/client/Loading";
 import ToCook from "@components/client/ToCook";
 import Next from "@components/client/Next";
 import Previous from "@components/Previous";
+import { useRouter } from "next/navigation";
 
 
 export default function MealPlan({
@@ -24,6 +25,7 @@ export default function MealPlan({
   const [diff, setDiff] = useState(0) // diff 1 = next week dates, diff -1 = previous week dates, 0 this week
   const [today, setToday] = useState("");
   const [cleared,setCleared] = useState(false)
+  const [hasCheckedUser,sethasCheckedUser] = useState(false)
   const days = [
     "Monday",
     "Tuesday",
@@ -33,22 +35,33 @@ export default function MealPlan({
     "Saturday",
     "Sunday",
   ];
+  const router = useRouter()
+
+  useEffect(() =>{
+    if(user === null){
+      router.push('/redirect')
+    }else{
+      sethasCheckedUser(true)
+    }
+  },[])
 
   useEffect(() => {
-    getMealPlan(user.user_id).then((mealplanData) => {
-      setmealPlan(mealplanData);
-      setHasMealPlan(true);
-    });
-    setDates(getDates(diff));
-    setIsLoading(false);
-    const date = new Date();
-
-    if (date.getDay() === 0) {
-      setToday("Sunday");
-    } else {
-      setToday(days[date.getDay() - 1]);
+    if(hasCheckedUser){
+      getMealPlan(user.user_id).then((mealplanData) => {
+        setmealPlan(mealplanData);
+        setHasMealPlan(true);
+      });
+      setDates(getDates(diff));
+      setIsLoading(false);
+      const date = new Date();
+  
+      if (date.getDay() === 0) {
+        setToday("Sunday");
+      } else {
+        setToday(days[date.getDay() - 1]);
+      }
     }
-  }, [diff]);
+  }, [diff,hasCheckedUser]);
 
   function changeWeek(inc){
     setDiff(inc)

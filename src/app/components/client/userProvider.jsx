@@ -1,28 +1,34 @@
-"use client"
-import { createContext, useContext, useState } from 'react';
+"use client";
+import { createContext, useContext, useEffect, useState } from 'react';
 
 export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    "_id": {
-      "$oid": "66c4936bd5a3daa8eb7568b6"
-    },
-    "user_id": 1,
-    "username": "samsoy",
-    "name": "Samantha",
-    "avatar_url": "https://api.dicebear.com/9.x/personas/svg?seed=Sammy&backgroundColor=b6e3f4",
-    "shopping_list": [ "coffee", "bananas", "sliced bread"],
-    "my_recipes": [ 5, 10, 206]
-  
-  });
+  const [user, setUser] = useState(window.localStorage.getItem('user'));
+
+  console.log(window.localStorage.getItem('user'), ' local storage <-------------')
+
+  useEffect(() => {
+    const storedUser = typeof window !== 'undefined' ? window.localStorage.getItem('user') : null;
+    
+    if (storedUser) {
+      console.log(storedUser)
+      setUser(JSON.parse(storedUser)); // Initialize user state with data from localStorage
+    }
+  }, []);
+
+  // useEffect(() => {
+  //   window.localStorage.setItem('user', JSON.stringify(user));
+  // }, [user]);
 
   const signIn = async (userData) => {
-    setUser(userData)
+    window.localStorage.setItem('user',JSON.stringify(userData))
+    setUser(userData);
   };
 
   const signOut = () => {
-    setUser({}); 
+    setUser(null); 
+    window.localStorage.removeItem('user');
   };
 
   return (
@@ -35,4 +41,3 @@ export const UserProvider = ({ children }) => {
 export const useUser = () => {
   return useContext(UserContext);
 };
-
