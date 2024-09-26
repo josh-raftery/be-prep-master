@@ -70,9 +70,10 @@ If you would like to build off of our existing application, here is how you woul
     ```
 
 ## Behind the Scenes
-
--   [Josh Raftery](https://github.com/josh-raftery)
--   [Esme France](https://github.com/esmefrance)
--   [Prosper Opaogun](https://github.com/OpaogunProsper)
--   [Bryan Raflosa](https://github.com/bryanrafosala)
+<h1 align="center">Meet the Bee team!</h1>
+<p align="center">[Josh Raftery](https://github.com/josh-raftery)</p>  
+<p align="center">[Esme France](https://github.com/esmefrance)</p>
+<p align="center">[Prosper Opaogun](https://github.com/OpaogunProsper)</p>
+<p align="center">[Bryan Raflosa](https://github.com/bryanrafosala)</p>
+<img width="639" align="center" alt="Screenshot 2024-09-26 at 13 12 54" src="https://github.com/user-attachments/assets/fe1ca3c6-be34-485a-b6d5-99e5fb436e5c">
 
