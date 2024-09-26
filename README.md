@@ -24,6 +24,14 @@ Welcome to **PrepMaster**, a mealplanner web application developed as part of th
 
 https://github.com/user-attachments/assets/23ecfb51-73c5-4b07-9394-ca2ff80bfcde
 
+<h2 align="center">Mobile View</h2>
+<p align="center">Here is an overview of what Prep Master looks like on mobile.</p>
+<img width="600" alt="Screenshot 2024-09-26 at 12 43 27" src="https://github.com/user-attachments/assets/25a09482-d20f-4e36-8cfc-96f157a04eb3">
+
+<h2 align="center">Desktop View</h2>
+<p align="center">Here is an overview of what Prep Master looks like on desktop.</p>
+<img width="600" alt="Screenshot 2024-09-26 at 13 02 03" src="https://github.com/user-attachments/assets/18258fb2-ba01-42ab-84d9-3e13afc6dc51">
+
       
 ## Tech Stack
 -   **Back-End (API)**
@@ -35,6 +43,9 @@ https://github.com/user-attachments/assets/23ecfb51-73c5-4b07-9394-ca2ff80bfcde
     -   JavaScript/HTML/CSS
 - **Both**  
     -   Next.js
+
+<img width="500" alt="Screenshot 2024-09-26 at 12 09 16" src="https://github.com/user-attachments/assets/72e29787-5ea0-4f32-9b7a-2f14fc878132">
+
 
 ## Contributing
 
