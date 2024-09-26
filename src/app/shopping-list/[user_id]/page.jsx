@@ -1,11 +1,9 @@
 "use client";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { FiEdit } from "react-icons/fi";
 import { LuTrash2 } from "react-icons/lu";
 import Modal from "@components/client/Modal.jsx";
-import { patchUserShoppingList} from "api";
-import { useRouter } from "next/navigation";
-import { UserContext } from "@components/client/userProvider";
+import { patchUserShoppingList } from "api";
 
 export default function ShoppingList({ params }) {
   const [openModalEdit, setOpenModalEdit] = useState(false);
@@ -17,14 +15,10 @@ export default function ShoppingList({ params }) {
   const [openModalClearAll, setOpenModalClearAll] = useState(false);
   const [error, setError] = useState(false);
   const [shoppingList, setShoppingList] = useState([]);
-  const router = useRouter();
-  const { user } = useContext(UserContext);
+  const { user_id } = params;
 
   useEffect(() => {
-    if(user === null){
-      router.push('/redirect')
-    }else{
-    fetch(`https://be-prep-master.vercel.app/api/users/${user.user_id}`)
+    fetch(`https://be-prep-master.vercel.app/api/users/${user_id}`)
       .then((response) => response.json())
       .then((data) => {
         setShoppingList(data.user.shopping_list);
@@ -32,12 +26,12 @@ export default function ShoppingList({ params }) {
       .catch((err) => {
         console.error("Error fetching current shopping list:", err);
       });
-  }}, []);
+  }, [user_id]);
 
   // One function to overwrite the user's shopping list in the backend
   function updateShoppingList(newList) {
     setShoppingList(newList);
-    patchUserShoppingList(user.user_id, newList);
+    patchUserShoppingList(user_id, newList);
   }
 
   function handleDeleteOne() {
