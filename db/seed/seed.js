@@ -3,10 +3,9 @@ const clientPromise = require("../../connection");
 const Ingredients = require("../../schemas/ingredientsListSchema.js")
 const User = require("../../schemas/usersSchema.js");
 const MealPlan = require("../../schemas/mealPlanSchema");
-const Basket =require("../../schemas/basketSchema")
 
 
-async function seedDB({ recipeData, ingredientsData, userData, mealPlanData, basketData }) {
+async function seedDB({ recipeData, ingredientsData, userData, mealPlanData}) {
   try {
     const client = await clientPromise
     const db = await client.db()
@@ -15,8 +14,6 @@ async function seedDB({ recipeData, ingredientsData, userData, mealPlanData, bas
     await db.collection('recipes').deleteMany({});
     await db.collection('users').deleteMany({});
     await db.collection('mealplan').deleteMany({});
-    await db.collection('basket').deleteMany({});
-    //drop tables
 
 
     console.log("Existing data removed");
@@ -27,7 +24,7 @@ async function seedDB({ recipeData, ingredientsData, userData, mealPlanData, bas
     }
 
     for (const recipe of recipeData) {
-      const validation = new Recipes(recipe); //validate
+      const validation = new Recipes(recipe);
       await validation.validate();
     }
 
@@ -41,16 +38,11 @@ async function seedDB({ recipeData, ingredientsData, userData, mealPlanData, bas
       await validation.validate();
     }
 
-    for (const basket of basketData) {
-      const validation = new Basket(basket);
-      await validation.validate();
-    }
-
-    await db.collection('ingredients').insertMany(ingredientsData); //insert
+    await db.collection('ingredients').insertMany(ingredientsData);
     await db.collection('recipes').insertMany(recipeData);
     await db.collection('users').insertMany(userData);
     await db.collection('mealplan').insertMany(mealPlanData);
-    await db.collection('basket').insertMany(basketData)
+
 
     console.log("New data inserted successfully");
 

@@ -1,8 +1,5 @@
 const { default: axios } = require("axios");
 
-const host = process.env.HOST || "localhost";
-const port = process.env.PORT || 3000;
-
 const baseUrl = `https://be-prep-master.vercel.app/api`;
 
 
@@ -79,6 +76,7 @@ function getUserByUsername(username) {
       throw error;
     });
 }
+
 
 module.exports = {
   getRecipes,

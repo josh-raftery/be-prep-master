@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { FiEdit } from "react-icons/fi";
 import { LuTrash2 } from "react-icons/lu";
 import Modal from "@components/client/Modal.jsx";
-import { putUserShoppinglist } from "api";
+
 
 export default function ShoppingList({ params }) {
   const [openModalEdit, setOpenModalEdit] = useState(false);
@@ -38,36 +38,32 @@ export default function ShoppingList({ params }) {
     // NEED TO add function to replace shopping list in DB with new list
   }
 
-  // Handle deleting one item
   function handleDeleteOne() {
     const newList = shoppingList.filter((item) => item !== itemToDelete); // Remove the item
     updateShoppingList(newList);
     setOpenModalDelete(false); 
   }
 
-  // Handle adding a new item
   function handleAddItem(e) {
     e.preventDefault();
     if (newItem.trim() !== "") {
-      const newList = [...shoppingList, newItem]; // Add the new item
+      const newList = [...shoppingList, newItem]
       updateShoppingList(newList);
       setOpenModalAdd(false); 
       setNewItem("");
     }
   }
 
-  // Handle editing an item
   function handleEditItem(e) {
     e.preventDefault();
     const newList = shoppingList.map((item) =>
       item === itemToEdit.oldItem ? itemToEdit.newItem : item
     )
     updateShoppingList(newList);
-    setOpenModalEdit(false); // Close modal after editing
+    setOpenModalEdit(false); 
   }
 
-  function handleDeleteAll(e){
-    e.preventDefault()
+  function handleDeleteAll(){
     const newList =[]
     updateShoppingList(newList)
     setOpenModalClearAll(false)
