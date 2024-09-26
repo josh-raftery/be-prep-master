@@ -4,9 +4,8 @@ import { createContext, useContext, useEffect, useState } from 'react';
 export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(window.localStorage.getItem('user'));
+  const [user, setUser] = useState(typeof window !== 'undefined' ? window.localStorage.getItem('user') : null);
 
-  console.log(window.localStorage.getItem('user'), ' local storage <-------------')
 
   useEffect(() => {
     const storedUser = typeof window !== 'undefined' ? window.localStorage.getItem('user') : null;
@@ -22,13 +21,13 @@ export const UserProvider = ({ children }) => {
   // }, [user]);
 
   const signIn = async (userData) => {
-    window.localStorage.setItem('user',JSON.stringify(userData))
+    if(typeof window !== 'undefined') window.localStorage.setItem('user',JSON.stringify(userData))
     setUser(userData);
   };
 
   const signOut = () => {
     setUser(null); 
-    window.localStorage.removeItem('user');
+    if(typeof window !== 'undefined') window.localStorage.removeItem('user');
   };
 
   return (
