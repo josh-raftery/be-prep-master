@@ -5,7 +5,8 @@
       "@components/*": ["src/app/components/*"],
       "@lib/*": ["lib/*"],
       "@public/*": ["public/*"],
-      "@api/*": ["src/app/api/*"]
+      "@api/*": ["src/app/api/*"],
+      "@controller/*": ["controller/*"]
 
     }
   }

@@ -108,7 +108,7 @@ export default function Nav() {
                       </button>
                     </Link>
                     <div className="divider my-2"></div>
-                    <Link href={`/shopping-list`}>
+                    <Link href={`/shopping-list/${user.user_id}`}>
                       <button
                         className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                         onClick={closeDropdown}
