@@ -1,7 +1,7 @@
-import { postUser, signInUser } from "controller/usersController";
+import { getUsers, postUser, getUserForSignIn } from "controller/usersController";
 import { NextResponse } from "next/server";
 
-// Uncomment if there is a need to use this function
+//This function isn't being used
 // export async function GET() {
 //   return getUsers().then((users) => {
 //     return NextResponse.json(users, { status: 200 });
@@ -15,7 +15,7 @@ export async function POST(req) {
 
 export async function GET(request) {
   const username = request.nextUrl.searchParams.get("username");
-  const user = await signInUser(username);
+  const user = await getUserForSignIn(username);
 
   if (!user) {
     return NextResponse.json({ error: "User not found" }, { status: 404 });
