@@ -8,7 +8,7 @@
   margin-bottom: 0.5rem;
 }
 
-
+.redirect-container,
 .mealplan-container h2,
 .day-container,
 .recipe-card-container,
@@ -77,6 +77,12 @@ body {
   }
 }
 
+.redirect-container{
+  padding: 2rem;
+  margin-top: 10%;
+  z-index: 100;
+}
+
 .day-container{
   margin-bottom: 0.2rem;
   text-align: center;
@@ -84,7 +90,7 @@ body {
 
 .prepmaster-logo{
   cursor: pointer;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   margin-top: 4px;

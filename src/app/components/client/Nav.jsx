@@ -25,18 +25,14 @@ export default function Nav() {
     <>
       <nav>
         <div className="flex items-center justify-between bg-white border-b border-gray-200 dark:bg-gray-900 py-2">
-          <div className="max-w-screen-xl flex items-center justify-between mx-auto p-2">
-            <div
-              onClick={routeHome}
-              className="prepmaster-logo"
-            >
-              <img
-                src="/logo.png"
-                className="h-20 w-20"
-                alt="PrepMaster logo"
-              />
-            </div>
-            <div className="flex items-center space-x-3 rtl:space-x-reverse">
+         <img
+           src="/logo.png"
+           className="prepmaster-logo h-20 w-20"
+           alt="PrepMaster logo"
+           onClick={routeHome}
+         />
+         <div  className="max-w-screen-xl flex items-center justify-between mx-auto p-2">
+           <div style={{marginRight: "6.5rem"}} className="flex items-center space-x-3 rtl:space-x-reverse">
               <div className="relative">
                 <button
                   className="btn m-1 btn-primary"
@@ -107,16 +103,19 @@ export default function Nav() {
                         Progress
                       </button>
                     </Link>
-                    <div className="divider my-2"></div>
-                    <Link href={`/shopping-list/${user.user_id}`}>
-                      <button
-                        className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
-                        onClick={closeDropdown}
-                        style={{ whiteSpace: "nowrap" }}
-                      >
-                        Shopping List
-                      </button>
-                    </Link>
+                    {user &&
+                    <>
+                      <div className="divider my-2"></div>
+                      <Link href={`/shopping-list/${user.user_id}`}>
+                        <button
+                          className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
+                          onClick={closeDropdown}
+                          style={{ whiteSpace: "nowrap" }}
+                        >
+                          Shopping List
+                        </button>
+                      </Link>
+                    </> }
                   </ul>
                 )}
               </div>
@@ -129,7 +128,7 @@ export default function Nav() {
                 </button>
                 {activeDropdown === "profile" && (
                   <ul className="absolute top-full left-0 mt-2 bg-base-100 rounded-box z-[1] w-32 p-2 shadow-lg">
-                    {user.user_id && (
+                    {user && (
                       <>
                         <Link href={`/profile/${user.user_id}`}>
                           <button
@@ -143,13 +142,13 @@ export default function Nav() {
                         <div className="divider my-2"></div>
                       </>
                     )}
-                    <Link href={user.username ? "/signout" : "/signin"}>
+                    <Link href={user ? "/signout" : "/signin"}>
                       <button
                         className="btn btn-ghost text-center w-full hover:bg-primary hover:text-white transition-colors duration-200 ease-in-out"
                         onClick={closeDropdown}
                         style={{ whiteSpace: "nowrap" }}
                       >
-                        {user.username ? "Sign Out" : "Sign In"}
+                        {user ? "Sign Out" : "Sign In"}
                       </button>
                     </Link>
                     <div className="divider my-2"></div>

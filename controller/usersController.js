@@ -1,13 +1,10 @@
 const { NextResponse } = require("next/server");
-
-const {
-  selectUsers,
-  fetchUserById,
-  insertUser,
-  updateUser,
-  addToMyRecipes,
-  getUserForSignIn,
-} = require("models/usersModel");
+const clientPromise = require("../connection");
+const User = require("../schemas/usersSchema.js");
+const { getUserId } = require("../db/utils/getUserId");
+const PatchUserMyRecipes= require("../schemas/patchMyRecipesUsers.js");
+const { selectUsers } = require("models/usersModel");
+const BasketPatch = require("schemas/basketPatchSchema");
 
 const getUsers = async () => {
   return await selectUsers();
@@ -54,24 +51,78 @@ const postUser = async (req, res) => {
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 400 });
   }
-};
-const patchUser = async (req, res) => {
-  const user_id = req;
-  const updateData = req.body;
+}
+const patchUser = async (user_id, updateData) => {
   try {
-    const response = await updateUser(user_id, updateData);
-    return NextResponse.json(response, { status: 200 });
+    const client = await clientPromise;
+    const db = await client.db();
+    const userCollection = db.collection("users");
+
+    const userUpdate = updateData.user;
+
+    const userId = parseInt(user_id);
+
+    const validation = new User(userUpdate);
+    await validation.validate();
+
+    const result = await userCollection.updateOne(
+      { user_id: userId },
+      { $set: userUpdate }
+    );
+
+    return NextResponse.json(
+      { message: "User updated successfully" },
+      { status: 200 }
+    );
   } catch (err) {
-    return NextResponse.json({ error: err.message }, { status: 400 });
+    return NextResponse.json({ error: err}, { status: 400 });
   }
 };
 
-const addToMyRecipesInController = async (req, res) => {
-  const user_id = req;
-  const updateData = req.body;
+
+const patchUserBasket = async (user_id, request) => {
   try {
-    const updatedUser = await addToMyRecipes(user_id, updateData);
-    if (!updatedUser) {
+    const client = await clientPromise;
+    const db = await client.db();
+    const userCollection = db.collection("users");
+
+    const userId = parseInt(user_id);
+
+    const validation = new BasketPatch(request);
+    await validation.validate();
+
+    const userObject = await userCollection.findOne({ user_id: userId });
+    userObject.shopping_list = request.shopping_list
+
+    const result = await userCollection.updateOne(
+      { user_id: userId },
+      { $set: userObject }
+    );
+
+    return NextResponse.json(
+      { message: "User updated successfully" },
+      { status: 200 }
+    );
+  } catch (err) {
+    return NextResponse.json({ error: err}, { status: 400 });
+  }
+}
+
+const addToMyRecipes = async (user_id, updateData) => {
+  try {
+    const client = await clientPromise;
+    const db = await client.db();
+    const userCollection = db.collection("users");
+    const userUpdate = { my_recipes: updateData.my_recipes };
+
+    const validation = new PatchUserMyRecipes(userUpdate);
+    await validation.validate();
+
+    const result = await userCollection.findOne({
+      user_id: parseInt(user_id)
+    })
+
+    if (result === null) {
       return NextResponse.json({ error: "Not Found" }, { status: 404 });
     }
 
@@ -86,6 +137,7 @@ module.exports = {
   getUsersById,
   postUser,
   patchUser,
-  addToMyRecipesInController,
-  signInUser,
+  addToMyRecipes,
+  getUserForSignIn,
+  patchUserBasket
 };

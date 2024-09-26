@@ -1,8 +1,5 @@
 const { default: axios } = require("axios");
 
-const host = process.env.HOST || "localhost";
-const port = process.env.PORT || 3000;
-
 const baseUrl = `https://be-prep-master.vercel.app/api`;
 
 
@@ -26,7 +23,8 @@ function deleteMeal(user_id,request){
 }
 
 function getRecipes(params) {
-  return api.get("/recipes", { params }).then(({ data }) => {
+  return api.get("/recipes", { params })
+  .then(({ data }) => {
     return data.recipes;
   }).catch((error) => {
     console.error("Error fetching recipes:", error);
@@ -80,6 +78,17 @@ function getUserByUsername(username) {
     });
 }
 
+function patchUserShoppingList(user_id, request){
+  return api.patch(`/users/${user_id}?basket=true`, {shopping_list: request})
+  .then(({ data }) => {
+    return data.user;
+  }).catch((error) => {
+    console.error("Error updating shopping list:", error);
+    throw error;
+  });
+}
+
+
 module.exports = {
   getRecipes,
   getRecipes,
@@ -91,5 +100,6 @@ module.exports = {
   patchUserMyRecipes,
   getRandomRecipe,
   deleteMeal,
-  getUserByUsername
+  getUserByUsername,
+  patchUserShoppingList
 };
