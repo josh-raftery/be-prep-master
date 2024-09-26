@@ -1,5 +1,8 @@
 # PrepMaster: a mealplanner web application
 Welcome to **PrepMaster**, a mealplanner web application developed as part of the Northcoders Software Development Bootcamp. This Next.js project showcases our team's skills in web development.
+
+**https://northcoders.com/project-phase/prepmaster**
+
 ## Features
 -   **Meal Plan Pages** 
       - You can [view your meal plan](https://be-prep-master.vercel.app/mealplan) for a given week.
