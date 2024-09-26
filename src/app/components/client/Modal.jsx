@@ -3,7 +3,7 @@ import React from "react";
 const Modal = ({ isOpen, onClose, children }) => {
   return (
     <dialog open={isOpen} className="modal">
-      <div className="modal-box">
+      <div className="modal-box p-6 bg-white rounded-lg shadow-lg w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg ">
         <form method="dialog">
           <button
             type="button"
@@ -20,3 +20,4 @@ const Modal = ({ isOpen, onClose, children }) => {
 };
 
 export default Modal;
+

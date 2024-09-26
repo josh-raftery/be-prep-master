@@ -3,20 +3,17 @@ import { useState, useEffect } from "react";
 import { FiEdit } from "react-icons/fi";
 import { LuTrash2 } from "react-icons/lu";
 import Modal from "@components/client/Modal.jsx";
-
+import { patchUserShoppingList } from "api";
 
 export default function ShoppingList({ params }) {
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [itemToEdit, setItemToEdit] = useState({ oldItem: "", newItem: "" });
-
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const [itemToDelete, setItemToDelete] = useState("");
-
   const [openModalAdd, setOpenModalAdd] = useState(false);
-  const [newItem, setNewItem] = useState("")
-
+  const [newItem, setNewItem] = useState("");
   const [openModalClearAll, setOpenModalClearAll] = useState(false);
-
+  const [error, setError] = useState(false);
   const [shoppingList, setShoppingList] = useState([]);
   const { user_id } = params;
 
@@ -33,47 +30,55 @@ export default function ShoppingList({ params }) {
 
   // One function to overwrite the user's shopping list in the backend
   function updateShoppingList(newList) {
-    console.log(newList, "   << new list");
     setShoppingList(newList);
-    // NEED TO add function to replace shopping list in DB with new list
+    patchUserShoppingList(user_id, newList);
   }
 
   function handleDeleteOne() {
     const newList = shoppingList.filter((item) => item !== itemToDelete); // Remove the item
     updateShoppingList(newList);
-    setOpenModalDelete(false); 
+    setOpenModalDelete(false);
   }
 
   function handleAddItem(e) {
     e.preventDefault();
-    if (newItem.trim() !== "") {
-      const newList = [...shoppingList, newItem]
-      updateShoppingList(newList);
-      setOpenModalAdd(false); 
-      setNewItem("");
+    if (newItem.trim() == "") {
+      setError(true);
+      return;
     }
+    const newList = [...shoppingList, newItem];
+    updateShoppingList(newList);
+    setOpenModalAdd(false);
+    setNewItem("");
+    setError(false);
   }
 
   function handleEditItem(e) {
     e.preventDefault();
+    const trimmedNewItem = itemToEdit.newItem.trim();
+    if (trimmedNewItem === "") {
+      setError(true);
+      return;
+    }
     const newList = shoppingList.map((item) =>
-      item === itemToEdit.oldItem ? itemToEdit.newItem : item
-    )
+      item === itemToEdit.oldItem ? trimmedNewItem : item
+    );
     updateShoppingList(newList);
-    setOpenModalEdit(false); 
+    setOpenModalEdit(false);
+    setError(false);
   }
 
-  function handleDeleteAll(){
-    const newList =[]
-    updateShoppingList(newList)
-    setOpenModalClearAll(false)
+  function handleDeleteAll() {
+    const newList = [];
+    updateShoppingList(newList);
+    setOpenModalClearAll(false);
   }
 
   return (
     <>
       <section className="flex flex-col items-center pb-10 m-4">
         <div className="card bg-white w-96 shadow-xl rounded-lg p-4">
-          <div >
+          <div>
             <table className="table table-zebra w-full text-left">
               <thead>
                 <tr className="bg-primary text-black">
@@ -99,37 +104,36 @@ export default function ShoppingList({ params }) {
                 </tr>
               </thead>
               <tbody>
-  {shoppingList.map((item) => (
-    <tr key={item} >
-      <td className="p-4">{item}</td>
-      
-      {/* Edit and Delete icons */}
-      <td className="p-4 text-right">
-        <div className="flex gap-4 justify-end">
-          <FiEdit
-            onClick={() => {
-              setItemToEdit({ oldItem: item, newItem: "" });
-              setOpenModalEdit(true);
-            }}
-            cursor="pointer"
-            className="text-blue-600 hover:text-blue-800 transition-colors"
-            size={20}
-          />
-          <LuTrash2
-            onClick={() => {
-              setItemToDelete(item);
-              setOpenModalDelete(true);
-            }}
-            cursor="pointer"
-            className="text-red-600 hover:text-red-800 transition-colors"
-            size={20}
-          />
-        </div>
-      </td>
-    </tr>
-  ))}
-</tbody>
+                {shoppingList.map((item) => (
+                  <tr key={item}>
+                    <td className="p-4">{item}</td>
 
+                    {/* Edit and Delete icons */}
+                    <td className="p-4 text-right">
+                      <div className="flex gap-4 justify-end">
+                        <FiEdit
+                          onClick={() => {
+                            setItemToEdit({ oldItem: item, newItem: "" });
+                            setOpenModalEdit(true);
+                          }}
+                          cursor="pointer"
+                          className="text-blue-600 hover:text-blue-800 transition-colors"
+                          size={20}
+                        />
+                        <LuTrash2
+                          onClick={() => {
+                            setItemToDelete(item);
+                            setOpenModalDelete(true);
+                          }}
+                          cursor="pointer"
+                          className="text-red-600 hover:text-red-800 transition-colors"
+                          size={20}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           </div>
         </div>
@@ -138,11 +142,19 @@ export default function ShoppingList({ params }) {
       {/* Add Item Modal */}
       <Modal
         isOpen={openModalAdd}
-        onClose={() => setOpenModalAdd(false)}
+        onClose={() => {
+          setOpenModalAdd(false)
+          setError(false)
+        }}
         className="p-6 bg-white shadow-lg rounded-lg"
       >
         <form onSubmit={handleAddItem} className="space-y-4">
           <p className="text-lg font-semibold mb-4 text-center">Add New Item</p>
+          {error && (
+            <p className="text-red-500 text-sm text-center">
+              Item name cannot be empty.
+            </p>
+          )}
           <input
             value={newItem}
             onChange={(e) => setNewItem(e.target.value)}
@@ -159,10 +171,18 @@ export default function ShoppingList({ params }) {
       {/* Edit Item Modal */}
       <Modal
         isOpen={openModalEdit}
-        onClose={() => setOpenModalEdit(false)}
+        onClose={() => {
+          setOpenModalEdit(false)
+          setError(false)
+        }}
         className="p-6 bg-white shadow-lg rounded-lg"
       >
         <p className="text-lg font-semibold mb-4 text-center">Edit Item</p>
+        {error && (
+          <p className="text-red-500 text-sm text-center">
+            Item name cannot be empty.
+          </p>
+        )}
         <form onSubmit={handleEditItem} className="space-y-4">
           <input
             value={itemToEdit.newItem}
@@ -207,9 +227,7 @@ export default function ShoppingList({ params }) {
         onClose={() => setOpenModalClearAll(false)}
         className="p-6 bg-white shadow-lg rounded-lg"
       >
-        <p className="text-lg font-semibold mb-4 text-center">
-          Clear All
-        </p>
+        <p className="text-lg font-semibold mb-4 text-center">Clear All</p>
         <p className="text-center mb-4">
           Are you sure you want to delete all items from your shopping list?
         </p>

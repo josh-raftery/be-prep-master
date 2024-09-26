@@ -30,8 +30,8 @@ export default function AddRecipe() {
     });
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit() {
+
 
     const recipeData = {
       ...formData,
