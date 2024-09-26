@@ -1,4 +1,4 @@
-import { addToMealPlan, deleteFromMealPlan, getMealPlan } from "../../../../../controller/mealPlanController";
+import { addToMealPlan, deleteFromMealPlan, getMealPlan, postMealPlan } from "../../../../../controller/mealPlanController";
 
 export async function GET (request) {
     const splitUrl = request.url.split('/')
@@ -18,4 +18,11 @@ export async function PATCH(request){
         console.log('api route')
         return deleteFromMealPlan(updateData,user_id)
     }
+}
+
+export async function POST(request){
+    const splitUrl = request.url.split('/')
+    const user_id = splitUrl[splitUrl.length - 1]
+    const updateData = await request.json();
+    return postMealPlan(user_id,updateData)
 }
