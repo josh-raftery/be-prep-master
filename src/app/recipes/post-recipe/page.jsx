@@ -1,11 +1,15 @@
 "use client";
-import { useContext, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useContext, useState, useEffect } from "react";
 import { UserContext } from "@components/client/userProvider";
 import { postRecipe, patchUserMyRecipes } from "api";
+import { useRouter } from "next/navigation";
+
 
 export default function AddRecipe() {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext)
+  const [hasCheckedUser,sethasCheckedUser] = useState(false)
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     title: "",
     chef: "",
@@ -18,7 +22,14 @@ export default function AddRecipe() {
     photo_url: "",
   });
   const [error, setError] = useState(null);
-  const router = useRouter();
+
+  useEffect(() =>{
+    if(user === null){
+      router.push('/redirect')
+    }else{
+      sethasCheckedUser(true)
+    }
+  },[])
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -31,8 +42,7 @@ export default function AddRecipe() {
   }
 
   function handleSubmit() {
-
-
+    if(hasCheckedUser){
     const recipeData = {
       ...formData,
       ingredients: formData.ingredients.split(",").map((item) => item.trim()),
@@ -47,7 +57,7 @@ export default function AddRecipe() {
       .catch((error) => {
         setError("An error occurred while adding the recipe.");
         console.error(error);
-      });
+      })
 
     setFormData({
       title: "",
@@ -60,7 +70,7 @@ export default function AddRecipe() {
       cooking_time_minutes: "",
       photo_url: "",
     });
-  }
+  }}
 
   return (
     <>

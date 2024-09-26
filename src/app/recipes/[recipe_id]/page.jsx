@@ -5,9 +5,9 @@ import AddToMealPlan from "@components/client/AddToMealplan";
 import { getRecipeById } from "api";
 import Loading from "@components/client/Loading";
 import { UserContext } from "@components/client/userProvider";
-import Modal from "@components/client/Modal.jsx";
-import Link from "next/link";
 import {patchUserShoppingList} from "api";
+import { useRouter } from "next/navigation";
+
 
 export default function SingleRecipe({ params }) {
   const [recipe, setRecipe] = useState({});
@@ -15,8 +15,7 @@ export default function SingleRecipe({ params }) {
   const [isLoading, setisLoading] = useState(true);
   const [buttonText, setButtonText] = useState("+ Shopping List");
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const [openModalSignInShopping, setOpenModalSignInShopping] = useState(false);
-  const [openModalSignInMealplan, setOpenModalSignInMealplan]  = useState(false);
+  const router = useRouter();
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -31,9 +30,8 @@ export default function SingleRecipe({ params }) {
   }, []);
 
   function handleClick() {
-    if (!user || !user.user_id) {
-      setOpenModalSignInMealplan(true);
-      return;
+    if(user === null){
+      router.push('/redirect')
     }else{
       setClicked((currClicked) => {
       return !currClicked;
@@ -42,9 +40,8 @@ export default function SingleRecipe({ params }) {
   }
 
   const handleAddToShoppingList = async () => {
-    if (!user || !user.user_id) {
-      setOpenModalSignInShopping(true);
-      return;
+    if(user === null){
+      router.push('/redirect')
     }else{
     fetch(`https://be-prep-master.vercel.app/api/users/${user.user_id}`)
       .then((response) => response.json())
@@ -182,41 +179,6 @@ export default function SingleRecipe({ params }) {
           </section>
         </div>
       </div>
-      {/*Sign In Shopping Modal */}
-      <Modal
-        isOpen={openModalSignInShopping}
-        onClose={() => setopenModalSignInShopping(false)}
-        className="p-6 bg-white shadow-lg rounded-lg"
-      >
-        <form className="space-y-4">
-          <p className="text-lg font-semibold mb-4 text-center">
-            You need to sign in to add ingredients to your shopping list
-          </p>
-          <Link href="/signin">
-            <button type="submit" className="btn btn-secondary w-full">
-              Go to sign in
-            </button>
-          </Link>
-        </form>
-      </Modal>
-
-       {/*Sign In MealPlan Modal */}
-       <Modal
-        isOpen={openModalSignInMealplan}
-        onClose={() => setopenModalSignInMealplan(false)}
-        className="p-6 bg-white shadow-lg rounded-lg"
-      >
-        <form className="space-y-4">
-          <p className="text-lg font-semibold mb-4 text-center">
-            You need to sign in to add recipes to your meal plan
-          </p>
-          <Link href="/signin">
-            <button type="submit" className="btn btn-secondary w-full">
-              Go to sign in
-            </button>
-          </Link>
-        </form>
-      </Modal>
     </div>
   );
 }
