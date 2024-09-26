@@ -74,6 +74,6 @@ If you would like to build off of our existing application, here is how you woul
 <p>[Josh Raftery](https://github.com/josh-raftery)</p>  
 <p>[Esme France](https://github.com/esmefrance)</p>
 <p>[Prosper Opaogun](https://github.com/OpaogunProsper)</p>
-<p>[Bryan Raflosa](https://github.com/bryanrafosala)</p>
+<p>[Bryan Rafosala](https://github.com/bryanrafosala)</p>
 <img width="639" align="center" alt="Screenshot 2024-09-26 at 13 12 54" src="https://github.com/user-attachments/assets/fe1ca3c6-be34-485a-b6d5-99e5fb436e5c">
 
