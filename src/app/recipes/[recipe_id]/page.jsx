@@ -5,7 +5,7 @@ import Image from "next/image";
 import AddToMealPlan from "@components/client/AddToMealplan";
 import { getRecipeById } from "api";
 import Loading from "@components/client/Loading";
-import { addItem } from "shopping-list-data/api";
+// import { addItem } from "shopping-list-data/api";
 import { v4 as uuidv4 } from "uuid";
 
 export default function SingleRecipe({ params }) {
@@ -36,14 +36,14 @@ export default function SingleRecipe({ params }) {
 
   const handleAddToShoppingList = async () => {
     try {
-      await Promise.all(
-        ingredientArray.map(async (item) => {
-          await addItem({
-            name: item,
-            ingredient_id: uuidv4(),
-          });
-        })
-      );
+      // await Promise.all(
+      //   ingredientArray.map(async (item) => {
+      //     await addItem({
+      //       name: item,
+      //       ingredient_id: uuidv4(),
+      //     });
+      //   })
+      // );
 
       setButtonText("Shopping List Updated");
       setIsButtonDisabled(true);
