@@ -1,141 +1,91 @@
 const { NextResponse } = require("next/server");
-const clientPromise = require("../connection");
-const User = require("../schemas/usersSchema.js");
-const { getUserId } = require("../db/utils/getUserId");
-const PatchUserMyRecipes= require("../schemas/patchMyRecipesUsers.js");
-const { selectUsers } = require("models/usersModel");
+
+const {
+  selectUsers,
+  fetchUserById,
+  insertUser,
+  updateUser,
+  addToMyRecipes,
+  getUserForSignIn,
+} = require("models/usersModel");
 
 const getUsers = async () => {
-  return await selectUsers()
+  return await selectUsers();
 };
 
-const getUserForSignIn = async (username) => {
+const signInUser = async (req, res) => {
+  const username = req;
+
   try {
-    const client = await clientPromise;
-    const db = await client.db();
-    const users = await db.collection("users");
-    
-    const result = await users.findOne({ username: username });
-    
-    if (!result) {
-      return null;  
+    const user = await getUserForSignIn(username);
+    if (!user) {
+      return { message: "User not found" };
     }
-    return result;  
+    return { user };
   } catch (error) {
     console.error("Error in getUserForSignIn:", error);
-    return null;  
+    return res.status(500).json({ message: "Server error" });
   }
 };
 
-const getUsersById = async (user_id) => {
+const getUsersById = async (req, res) => {
+  const user_id = req;
   try {
-    const client = await clientPromise;
-    const db = await client.db();
-    const user = await db.collection("users");
-    const result = await user.findOne({ user_id: parseInt(user_id) });
+    const user = await fetchUserById(user_id);
 
-    if (result === null) {
+    if (!user) {
       return NextResponse.json({ error: "Not Found" }, { status: 404 });
     }
-    return NextResponse.json({ user: result }, { status: 200 });
+
+    return NextResponse.json({ user }, { status: 200 });
   } catch (error) {
-    return { error: "An error occurred" };
+    console.error("Error in getUserByIdController:", error);
+    return NextResponse.json({ error: "An error occurred" }, { status: 500 });
   }
 };
 
-const postUser = async (body) => {
+const postUser = async (req, res) => {
+  const body = req;
+
   try {
-    const client = await clientPromise;
-    const db = await client.db();
-    const userCollection = await db.collection("users");
+    const newUser = await insertUser(body);
 
-    const allUsers = await userCollection
-    .find({})
-    .toArray()
-
-    const user_id = allUsers.length + 1
-
-    body.user_id = user_id;
-    body.shopping_list = []
-    body.my_recipes = []
-    
-    const validation = new User(body);
-    await validation.validate();
-
-    const result = await userCollection.insertOne(body);
-
-    const newUser = await userCollection.findOne({ user_id });
-    
     return NextResponse.json({ user: newUser }, { status: 200 });
   } catch (err) {
-
     return NextResponse.json({ error: err.message }, { status: 400 });
   }
-}
-const patchUser = async (user_id, updateData) => {
+};
+const patchUser = async (req, res) => {
+  const user_id = req;
+  const updateData = req.body;
   try {
-    const client = await clientPromise;
-    const db = await client.db();
-    const userCollection = db.collection("users");
-
-    const userUpdate = updateData.user;
-
-    const userId = parseInt(user_id);
-
-    const validation = new User(userUpdate);
-    await validation.validate();
-
-    const result = await userCollection.updateOne(
-      { user_id: userId },
-      { $set: userUpdate }
-    );
-
-    return NextResponse.json(
-      { message: "User updated successfully" },
-      { status: 200 }
-    );
+    const response = await updateUser(user_id, updateData);
+    return NextResponse.json(response, { status: 200 });
   } catch (err) {
-    return NextResponse.json({ error: err}, { status: 400 });
+    return NextResponse.json({ error: err.message }, { status: 400 });
   }
 };
 
-const addToMyRecipes = async (user_id, updateData) => {
+const addToMyRecipesInController = async (req, res) => {
+  const user_id = req;
+  const updateData = req.body;
   try {
-    const client = await clientPromise;
-    const db = await client.db();
-    const userCollection = db.collection("users");
-    const userUpdate = { my_recipes: updateData.my_recipes };
-
-    const validation = new PatchUserMyRecipes(userUpdate);
-    await validation.validate();
-
-    const result = await userCollection.findOne({
-      user_id: parseInt(user_id)
-    })
-
-    if (result === null) {
+    const updatedUser = await addToMyRecipes(user_id, updateData);
+    if (!updatedUser) {
       return NextResponse.json({ error: "Not Found" }, { status: 404 });
-    } 
-    result.my_recipes.push(userUpdate.my_recipes)
-    const updateDB = await userCollection.updateOne(
-      { user_id: parseInt(user_id) },
-      { $set: result }
-    )
-    const updatedUser = await userCollection.findOne({
-      user_id: parseInt(user_id)
-    });
+    }
 
     return NextResponse.json({ user: updatedUser }, { status: 200 });
-  }catch (err) {
-    return NextResponse.json({ error: err.message || "Unknown Error" }, { status: 400 });
+  } catch (err) {
+    return NextResponse.json({ error: err.message }, { status: 400 });
   }
-}
+};
 
 module.exports = {
   getUsers,
   getUsersById,
   postUser,
   patchUser,
-  addToMyRecipes,
-  getUserForSignIn
+  addToMyRecipesInController,
+  signInUser,
 };
