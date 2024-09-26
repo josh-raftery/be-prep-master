@@ -25,18 +25,14 @@ export default function Nav() {
     <>
       <nav>
         <div className="flex items-center justify-between bg-white border-b border-gray-200 dark:bg-gray-900 py-2">
-          <div className="max-w-screen-xl flex items-center justify-between mx-auto p-2">
-            <div
-              onClick={routeHome}
-              className="prepmaster-logo"
-            >
-              <img
-                src="/logo.png"
-                className="h-20 w-20"
-                alt="PrepMaster logo"
-              />
-            </div>
-            <div className="flex items-center space-x-3 rtl:space-x-reverse">
+         <img
+           src="/logo.png"
+           className="prepmaster-logo h-20 w-20"
+           alt="PrepMaster logo"
+           onClick={routeHome}
+         />
+         <div  className="max-w-screen-xl flex items-center justify-between mx-auto p-2">
+           <div style={{marginRight: "6.5rem"}} className="flex items-center space-x-3 rtl:space-x-reverse">
               <div className="relative">
                 <button
                   className="btn m-1 btn-primary"
