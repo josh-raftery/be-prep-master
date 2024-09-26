@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const basketPatchSchema = new mongoose.Schema({
-  ingredients: [{ type: String, required: true }] // Array of ingredient names
+  shopping_list: {
+    type: [String], 
+    required: true,  
+  }
 });
 
 const BasketPatch = mongoose.models.BasketPatch ? mongoose.models.BasketPatch : mongoose.model('BasketPatch', basketPatchSchema);
