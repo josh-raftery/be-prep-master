@@ -69,7 +69,6 @@ If you would like to build off of our existing application, here is how you woul
     $ npm run dev
     ```
 
-## Behind the Scenes
 <h1>Meet the Bee team!</h1>
 <p>[Josh Raftery](https://github.com/josh-raftery)</p>  
 <p>[Esme France](https://github.com/esmefrance)</p>
