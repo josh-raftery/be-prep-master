@@ -7,6 +7,7 @@ import Loading from "@components/client/Loading";
 import { UserContext } from "@components/client/userProvider";
 import Modal from "@components/client/Modal.jsx";
 import Link from "next/link";
+import {patchUserShoppingList} from "api";
 
 export default function SingleRecipe({ params }) {
   const [recipe, setRecipe] = useState({});
@@ -50,8 +51,7 @@ export default function SingleRecipe({ params }) {
       .then((data) => {
         const currentList = data.user.shopping_list;
         const newList = [...currentList, ...recipe.ingredients];
-        console.log(newList);
-        //update shopping list in DB
+        patchUserShoppingList(user.user_id, newList)
         setButtonText("Shopping List Updated");
         setIsButtonDisabled(true);
       })
