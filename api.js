@@ -22,6 +22,10 @@ function deleteMeal(user_id,request){
   return api.patch(`/mealplan/${user_id}?add=false`,{meals: request})
 }
 
+function postMealPlan(user_id,request){
+  return api.post(`/mealplan/${user_id}`,request)
+}
+
 function getRecipes(params) {
   return api.get("/recipes", { params })
   .then(({ data }) => {
@@ -89,6 +93,7 @@ function patchUserShoppingList(user_id, request){
 
 
 module.exports = {
+  postMealPlan,
   getRecipes,
   getRecipes,
   getMealPlan,
