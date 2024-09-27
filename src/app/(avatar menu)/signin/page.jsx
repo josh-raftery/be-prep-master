@@ -19,7 +19,7 @@ export default function SignIn() {
   function handleSubmitSignIn(event) {
     event.preventDefault();
     if (!username || username.trim() === "") {
-      setError(true);
+      setError('Username cannot be empty.');
     } else {
       getUserByUsername(username)
         .then((user) => {
@@ -27,7 +27,8 @@ export default function SignIn() {
           router.push(`/profile/${user.user_id}`);
         })
         .catch((error) => {
-          console.error("Error during sign-in:", error);
+          console.error("Error during sign-in:", error)
+          setError('Invalid username, please try again.')
         });
     }
   }
@@ -40,7 +41,7 @@ export default function SignIn() {
             <h2 className="card-title">Sign In</h2>
             {error && (
             <p className="text-red-500 text-sm text-center">
-              Username cannot be empty.
+              {error}
             </p>
           )}
             <label className="input input-bordered flex items-center gap-2 bg-white">
