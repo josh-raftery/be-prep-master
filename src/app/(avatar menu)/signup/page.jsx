@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { UserContext } from "@components/client/userProvider";
 import { useContext, useState } from "react";
-import { postUser } from "api";
+import { postMealPlan, postUser } from "api";
 import { useRouter } from "next/navigation";
 
 export default function SignUp() {
@@ -24,12 +24,20 @@ export default function SignUp() {
   }
 
   function handleSubmitSignUp(event) {
+    let newUser = ''
     event.preventDefault();
-    postUser(formData)
-      .then((newUser) => {
+    return postUser(formData)
+      .then((response) => {
+        newUser = response
+        console.log('here')
+        if(typeof window !== 'undefined') window.localStorage.setItem('user',JSON.stringify(newUser))
         setUser(newUser);
-        
+        return postMealPlan(newUser.user_id,{meals:[]})
+      })
+      .then(() => {
+        console.log('here1')
         router.push(`/profile/${newUser.user_id}`);
+        
       })
       .catch((error) => {
         setError("An error occurred during sign up.");
