@@ -29,7 +29,7 @@ export default function AddRecipe() {
     }else{
       sethasCheckedUser(true)
     }
-  },[])
+  },[user])
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -42,6 +42,7 @@ export default function AddRecipe() {
   }
 
   function handleSubmit() {
+    event.preventDefault()
     if(hasCheckedUser){
     const recipeData = {
       ...formData,
@@ -53,23 +54,22 @@ export default function AddRecipe() {
       .then((newRecipe) => {
         router.push(`/recipes/${newRecipe.recipe_id}`);
         patchUserMyRecipes(user.user_id, newRecipe.recipe_id);
+        setFormData({
+          title: "",
+          chef: "",
+          description: "",
+          ingredients: "",
+          instructions: "",
+          serves: "",
+          preparation_time_minutes: "",
+          cooking_time_minutes: "",
+          photo_url: "",
+        });
       })
       .catch((error) => {
         setError("An error occurred while adding the recipe.");
         console.error(error);
       })
-
-    setFormData({
-      title: "",
-      chef: "",
-      description: "",
-      ingredients: "",
-      instructions: "",
-      serves: "",
-      preparation_time_minutes: "",
-      cooking_time_minutes: "",
-      photo_url: "",
-    });
   }}
 
   return (
